@@ -1,6 +1,7 @@
 package br.edu.vianna.fifa.model.domain;
 
 import javax.annotation.Generated;
+import javax.persistence.metamodel.ListAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
@@ -9,9 +10,9 @@ import javax.persistence.metamodel.StaticMetamodel;
 public abstract class Usuario_ {
 
 	public static volatile SingularAttribute<Usuario, String> senha;
+	public static volatile ListAttribute<Usuario, Time> timeList;
 	public static volatile SingularAttribute<Usuario, String> nome;
 	public static volatile SingularAttribute<Usuario, Integer> id;
-	public static volatile SingularAttribute<Usuario, Time> time;
 	public static volatile SingularAttribute<Usuario, String> login;
 
 }

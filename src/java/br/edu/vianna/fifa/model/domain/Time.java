@@ -17,7 +17,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -39,14 +38,15 @@ public class Time implements Serializable {
     @Basic(optional = false)
     @Column(nullable = false, length = 45)
     private String nome;
-    @JoinColumn(name = "jogadores", referencedColumnName = "id", nullable = false)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idTime")
+    private List<Gol> golList;
+    @JoinColumn(name = "idUsuario", referencedColumnName = "id", nullable = false)
     @ManyToOne(optional = false)
-    private Jogador jogadores;
-    @JoinColumn(name = "id", referencedColumnName = "id", nullable = false, insertable = false, updatable = false)
-    @OneToOne(optional = false)
-    private Usuario usuario;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idTimes")
+    private Usuario idUsuario;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idTime")
     private List<Campeonato> campeonatoList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idTime")
+    private List<Jogador> jogadorList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idPrimeiroTime")
     private List<Partida> partidaList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idSegundoTime")
@@ -80,20 +80,20 @@ public class Time implements Serializable {
         this.nome = nome;
     }
 
-    public Jogador getJogadores() {
-        return jogadores;
+    public List<Gol> getGolList() {
+        return golList;
     }
 
-    public void setJogadores(Jogador jogadores) {
-        this.jogadores = jogadores;
+    public void setGolList(List<Gol> golList) {
+        this.golList = golList;
     }
 
-    public Usuario getUsuario() {
-        return usuario;
+    public Usuario getIdUsuario() {
+        return idUsuario;
     }
 
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
+    public void setIdUsuario(Usuario idUsuario) {
+        this.idUsuario = idUsuario;
     }
 
     public List<Campeonato> getCampeonatoList() {
@@ -102,6 +102,14 @@ public class Time implements Serializable {
 
     public void setCampeonatoList(List<Campeonato> campeonatoList) {
         this.campeonatoList = campeonatoList;
+    }
+
+    public List<Jogador> getJogadorList() {
+        return jogadorList;
+    }
+
+    public void setJogadorList(List<Jogador> jogadorList) {
+        this.jogadorList = jogadorList;
     }
 
     public List<Partida> getPartidaList() {
@@ -142,7 +150,7 @@ public class Time implements Serializable {
 
     @Override
     public String toString() {
-        return "br.edu.vianna.fifa.model.domain.Time[ id=" + id + " ]";
+        return "br.edu.vianna.fifa.model.domain2.Time[ id=" + id + " ]";
     }
     
 }

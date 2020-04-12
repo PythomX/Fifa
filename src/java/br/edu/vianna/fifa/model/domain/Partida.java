@@ -6,6 +6,7 @@
 package br.edu.vianna.fifa.model.domain;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -20,6 +21,8 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
@@ -29,7 +32,8 @@ import javax.persistence.Table;
 @Table(catalog = "fifa", schema = "")
 @NamedQueries({
     @NamedQuery(name = "Partida.findAll", query = "SELECT p FROM Partida p"),
-    @NamedQuery(name = "Partida.findById", query = "SELECT p FROM Partida p WHERE p.id = :id")})
+    @NamedQuery(name = "Partida.findById", query = "SELECT p FROM Partida p WHERE p.id = :id"),
+    @NamedQuery(name = "Partida.findByLocalTime", query = "SELECT p FROM Partida p WHERE p.localTime = :localTime")})
 public class Partida implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -37,10 +41,12 @@ public class Partida implements Serializable {
     @Basic(optional = false)
     @Column(nullable = false)
     private Integer id;
+    @Basic(optional = false)
+    @Column(nullable = false)
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date localTime;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idPartida")
     private List<Gol> golList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idPartidas")
-    private List<Campeonato> campeonatoList;
     @JoinColumn(name = "idCampeonato", referencedColumnName = "id", nullable = false)
     @ManyToOne(optional = false)
     private Campeonato idCampeonato;
@@ -58,6 +64,11 @@ public class Partida implements Serializable {
         this.id = id;
     }
 
+    public Partida(Integer id, Date localTime) {
+        this.id = id;
+        this.localTime = localTime;
+    }
+
     public Integer getId() {
         return id;
     }
@@ -66,20 +77,20 @@ public class Partida implements Serializable {
         this.id = id;
     }
 
+    public Date getLocalTime() {
+        return localTime;
+    }
+
+    public void setLocalTime(Date localTime) {
+        this.localTime = localTime;
+    }
+
     public List<Gol> getGolList() {
         return golList;
     }
 
     public void setGolList(List<Gol> golList) {
         this.golList = golList;
-    }
-
-    public List<Campeonato> getCampeonatoList() {
-        return campeonatoList;
-    }
-
-    public void setCampeonatoList(List<Campeonato> campeonatoList) {
-        this.campeonatoList = campeonatoList;
     }
 
     public Campeonato getIdCampeonato() {
@@ -128,7 +139,7 @@ public class Partida implements Serializable {
 
     @Override
     public String toString() {
-        return "br.edu.vianna.fifa.model.domain.Partida[ id=" + id + " ]";
+        return "br.edu.vianna.fifa.model.domain2.Partida[ id=" + id + " ]";
     }
     
 }

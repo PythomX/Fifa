@@ -37,15 +37,9 @@ public class Campeonato implements Serializable {
     @Basic(optional = false)
     @Column(nullable = false)
     private Integer id;
-    @JoinColumn(name = "idGols", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "idTime", referencedColumnName = "id", nullable = false)
     @ManyToOne(optional = false)
-    private Gol idGols;
-    @JoinColumn(name = "idPartidas", referencedColumnName = "id", nullable = false)
-    @ManyToOne(optional = false)
-    private Partida idPartidas;
-    @JoinColumn(name = "idTimes", referencedColumnName = "id", nullable = false)
-    @ManyToOne(optional = false)
-    private Time idTimes;
+    private Time idTime;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idCampeonato")
     private List<Partida> partidaList;
 
@@ -64,28 +58,12 @@ public class Campeonato implements Serializable {
         this.id = id;
     }
 
-    public Gol getIdGols() {
-        return idGols;
+    public Time getIdTime() {
+        return idTime;
     }
 
-    public void setIdGols(Gol idGols) {
-        this.idGols = idGols;
-    }
-
-    public Partida getIdPartidas() {
-        return idPartidas;
-    }
-
-    public void setIdPartidas(Partida idPartidas) {
-        this.idPartidas = idPartidas;
-    }
-
-    public Time getIdTimes() {
-        return idTimes;
-    }
-
-    public void setIdTimes(Time idTimes) {
-        this.idTimes = idTimes;
+    public void setIdTime(Time idTime) {
+        this.idTime = idTime;
     }
 
     public List<Partida> getPartidaList() {
@@ -118,7 +96,7 @@ public class Campeonato implements Serializable {
 
     @Override
     public String toString() {
-        return "br.edu.vianna.fifa.model.domain.Campeonato[ id=" + id + " ]";
+        return "br.edu.vianna.fifa.model.domain2.Campeonato[ id=" + id + " ]";
     }
     
 }

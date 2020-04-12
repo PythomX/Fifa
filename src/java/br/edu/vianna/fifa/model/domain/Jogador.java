@@ -14,6 +14,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -49,8 +51,9 @@ public class Jogador implements Serializable {
     private String posicao;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idJogador")
     private List<Gol> golList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "jogadores")
-    private List<Time> timeList;
+    @JoinColumn(name = "idTime", referencedColumnName = "id", nullable = false)
+    @ManyToOne(optional = false)
+    private Time idTime;
 
     public Jogador() {
     }
@@ -106,12 +109,12 @@ public class Jogador implements Serializable {
         this.golList = golList;
     }
 
-    public List<Time> getTimeList() {
-        return timeList;
+    public Time getIdTime() {
+        return idTime;
     }
 
-    public void setTimeList(List<Time> timeList) {
-        this.timeList = timeList;
+    public void setIdTime(Time idTime) {
+        this.idTime = idTime;
     }
 
     @Override
@@ -136,7 +139,7 @@ public class Jogador implements Serializable {
 
     @Override
     public String toString() {
-        return "br.edu.vianna.fifa.model.domain.Jogador[ id=" + id + " ]";
+        return "br.edu.vianna.fifa.model.domain2.Jogador[ id=" + id + " ]";
     }
     
 }

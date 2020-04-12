@@ -6,6 +6,7 @@
 package br.edu.vianna.fifa.model.domain;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -15,7 +16,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
@@ -49,8 +50,8 @@ public class Usuario implements Serializable {
     @Basic(optional = false)
     @Column(nullable = false, length = 12)
     private String senha;
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "usuario")
-    private Time time;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsuario")
+    private List<Time> timeList;
 
     public Usuario() {
     }
@@ -98,12 +99,12 @@ public class Usuario implements Serializable {
         this.senha = senha;
     }
 
-    public Time getTime() {
-        return time;
+    public List<Time> getTimeList() {
+        return timeList;
     }
 
-    public void setTime(Time time) {
-        this.time = time;
+    public void setTimeList(List<Time> timeList) {
+        this.timeList = timeList;
     }
 
     @Override
@@ -128,7 +129,7 @@ public class Usuario implements Serializable {
 
     @Override
     public String toString() {
-        return "br.edu.vianna.fifa.model.domain.Usuario[ id=" + id + " ]";
+        return "br.edu.vianna.fifa.model.domain2.Usuario[ id=" + id + " ]";
     }
     
 }

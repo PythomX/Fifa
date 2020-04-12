@@ -6,6 +6,7 @@
 package br.edu.vianna.fifa.model.dao.impl;
 
 import br.edu.vianna.fifa.model.dao.GenericDAO;
+import br.edu.vianna.fifa.model.domain.Jogador;
 import java.sql.SQLException;
 import javax.persistence.Query;
 
@@ -13,19 +14,19 @@ import javax.persistence.Query;
  *
  * @author mateu
  */
-public class JogadorDAO extends GenericDAO<JogadorDAO, Long>{
+public class JogadorDAO extends GenericDAO<Jogador, Long>{
 
     @Override
-    public JogadorDAO findById(Long key) throws SQLException {
-        return conexao.find(JogadorDAO.class, key);
+    public Jogador findById(Long key) throws SQLException {
+        return conexao.find(Jogador.class, key);
     }
 
     @Override
-    public JogadorDAO findAll(Long key) throws SQLException {
+    public Jogador findAll(Long key) throws SQLException {
         
         Query q = conexao.createNamedQuery("Jogador.findAll");
         
-        return (JogadorDAO) q.getResultList();
+        return (Jogador) q.getResultList();
     }
     
 }

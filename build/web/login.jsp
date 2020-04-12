@@ -4,6 +4,9 @@
     Author     : mateu
 --%>
 
+<%@page import="java.sql.SQLException"%>
+<%@page import="br.edu.vianna.fifa.model.dao.impl.UsuarioDAO"%>
+<%@page import="br.edu.vianna.fifa.model.domain.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -73,13 +76,13 @@
                                 Sem cadastro?
                             </span>
 
-                            <!-- Modal -->
+
 
                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@fat">Clique aqui</button>
                         </div>
 
                     </form>
-
+                    <!-- Modal -->
                 </div>
                 <div class="modal fade" id="exampleModal"  role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
@@ -90,29 +93,31 @@
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
-                            <form>
+                            <form action="CadastroUsuario" method="POST">
                                 <div class="modal-body">
                                     <div class="form-group">
                                         <label for="recipient-name" class="col-form-label">Nome</label>
-                                        <input type="text" class="form-control" id="input-name">
+                                        <input type="text" name="nome" class="form-control" id="input-name">
                                     </div>
                                     <div class="form-group">
                                         <label for="message-text" class="col-form-label">Login</label>
-                                        <input class="form-control" id="input-login">
+                                        <input class="form-control" name="login" id="input-login">
                                     </div>
                                     <div class="form-group">
                                         <label for="message-text" class="col-form-label">Senha:</label>
-                                        <input class="form-control" id="input-senha">
+                                        <input class="form-control" name="senha" id="input-senha">
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                                        <button type="button" class="btn btn-primary">Cadastrar</button>
+                                        <button type="button" type="submit" class="btn btn-primary">Cadastrar</button>
                                     </div>
                                 </div>
                             </form>
+
                         </div>
                     </div>
                 </div>
+
             </div>
 
         </div>
