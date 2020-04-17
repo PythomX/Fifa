@@ -44,15 +44,15 @@
                         </span>
 
                         <div class="wrap-input100 validate-input m-b-16" data-validate = "Valid email is required: ex@abc.xyz">
-                            <input class="input100" type="text" name="email"  placeholder="Email">
+                            <input class="input100" type="text" name="email"  placeholder="User">
                             <span class="focus-input100"></span>
                             <span class="symbol-input100">
-                                <span class="lnr lnr-envelope"></span>
+                                <span class="lnr lnr-user"></span>
                             </span>
                         </div>
 
                         <div class="wrap-input100 validate-input m-b-16" data-validate = "Password is required">
-                            <input class="input100" type="password" name="pass"   placeholder="Password">
+                            <input class="input100" type="password" name="pass" placeholder="Password">
                             <span class="focus-input100"></span>
                             <span class="symbol-input100">
                                 <span class="lnr lnr-lock"></span>
@@ -82,8 +82,9 @@
                         </div>
 
                     </form>
-                    <!-- Modal -->
                 </div>
+
+                <!-- Modal -->
                 <div class="modal fade" id="exampleModal"  role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
@@ -93,7 +94,7 @@
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
-                            <form action="CadastroUsuario" method="POST">
+                            <form action="fifa?page=saveUser" method="POST">
                                 <div class="modal-body">
                                     <div class="form-group">
                                         <label for="recipient-name" class="col-form-label">Nome</label>
@@ -104,20 +105,21 @@
                                         <input class="form-control" name="login" id="input-login">
                                     </div>
                                     <div class="form-group">
-                                        <label for="message-text" class="col-form-label">Senha:</label>
-                                        <input class="form-control" name="senha" id="input-senha">
+                                        <label for="message-text" class="col-form-label">Senha</label>
+                                        <input class="form-control" type="password" name="senha" id="input-senha">
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                                        <button type="button" type="submit" class="btn btn-primary">Cadastrar</button>
+                                        <button id="Cadastrar" name="Cadastrar" class="btn btn-success" type="Submit">Cadastrar</button>
                                     </div>
                                 </div>
                             </form>
-
                         </div>
                     </div>
                 </div>
 
+                <!-- Fim Modal -->
+                
             </div>
 
         </div>

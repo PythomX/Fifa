@@ -122,7 +122,7 @@ public class Gol implements Serializable {
 
     @Override
     public String toString() {
-        return "br.edu.vianna.fifa.model.domain2.Gol[ id=" + id + " ]";
+        return "br.edu.vianna.fifa.model.domain.Gol[ id=" + id + " ]";
     }
     
 }

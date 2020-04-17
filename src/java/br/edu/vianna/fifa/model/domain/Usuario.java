@@ -129,7 +129,7 @@ public class Usuario implements Serializable {
 
     @Override
     public String toString() {
-        return "br.edu.vianna.fifa.model.domain2.Usuario[ id=" + id + " ]";
+        return "br.edu.vianna.fifa.model.domain.Usuario[ id=" + id + " ]";
     }
     
 }

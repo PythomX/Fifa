@@ -66,3 +66,11 @@ $('#exampleModal').on('show.bs.modal', function (event) {
   modal.find('.modal-title').text('Nova mensagem para ' + recipient)
   modal.find('.modal-body input').val(recipient)
 })
+
+$(document).ready(function() {
+    $('#sucessPopup').modal('show');
+});
+
+$(document).ready(function() {
+    $('#erroCadPopup').modal('show');
+});

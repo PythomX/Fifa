@@ -15,7 +15,7 @@ import javax.persistence.EntityTransaction;
  */
 public abstract class GenericDAO<C, K> {
 
-    public final EntityManager conexao;
+    protected final EntityManager conexao;
 
     public GenericDAO() {
         conexao = Connection.getInstance().getConnection();

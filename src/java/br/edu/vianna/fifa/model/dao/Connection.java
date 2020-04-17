@@ -18,7 +18,7 @@ public class Connection {
     private final EntityManager conexao;
 
     private Connection() {
-        conexao = (EntityManager) Persistence.createEntityManagerFactory("FifaPU");
+        conexao = Persistence.createEntityManagerFactory("FifaPU").createEntityManager();
     }
     
     public EntityManager getConnection(){

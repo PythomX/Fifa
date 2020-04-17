@@ -96,7 +96,7 @@ public class Campeonato implements Serializable {
 
     @Override
     public String toString() {
-        return "br.edu.vianna.fifa.model.domain2.Campeonato[ id=" + id + " ]";
+        return "br.edu.vianna.fifa.model.domain.Campeonato[ id=" + id + " ]";
     }
     
 }

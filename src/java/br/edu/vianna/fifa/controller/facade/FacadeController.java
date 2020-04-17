@@ -3,10 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.edu.vianna.fifa.servlet;
+package br.edu.vianna.fifa.controller.facade;
 
+import br.edu.vianna.fifa.controller.ICommanderAction;
+import br.edu.vianna.fifa.controller.action.view.ViewLoginAction;
+import br.edu.vianna.fifa.controller.action.view.db.ViewSaveUserAction;
+import br.edu.vianna.fifa.controller.action.view.popup.ViewErroPopupAction;
+import br.edu.vianna.fifa.controller.action.view.popup.ViewSucessPopupAction;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.HashMap;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,37 +24,42 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author mateu
  */
-@WebServlet(name = "CadastroUsuario", urlPatterns = {"/CadastroUsuario"})
-public class CadastroUsuario extends HttpServlet {
+@WebServlet(name = "FacadeController", urlPatterns = {"/fifa"})
+public class FacadeController extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+    public static final HashMap<String, ICommanderAction> comandos;
+    static{
+        comandos = new HashMap<>();
+        comandos.put(null, new ViewLoginAction());
+        comandos.put("login", new ViewLoginAction());
+        
+        
+        /*---------------Views DB------------*/
+        comandos.put("saveUser", new ViewSaveUserAction());
+        
+        
+        /* --------------Erro Pop-----------*/
+        comandos.put("erroPopup", new ViewErroPopupAction());
+        comandos.put("sucessPopup", new ViewSucessPopupAction());
+        
+        
+    }
+    
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        String nome = request.getParameter("nome");
-        String login = request.getParameter("login");
-        String senha = request.getParameter("senha");
-        
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet CadastroUsuario</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet CadastroUsuario at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+        
+        
+        String page = request.getParameter("page");
+
+        try {
+            comandos.get(page).openPage(request, response);
+
+        } catch (Exception ex) {
+            RequestDispatcher rd = request.getRequestDispatcher("pages/erro.jsp");
+            request.setAttribute("err", "Página não encontrada!");
+            rd.forward(request, response);
         }
     }
 

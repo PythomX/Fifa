@@ -139,7 +139,7 @@ public class Partida implements Serializable {
 
     @Override
     public String toString() {
-        return "br.edu.vianna.fifa.model.domain2.Partida[ id=" + id + " ]";
+        return "br.edu.vianna.fifa.model.domain.Partida[ id=" + id + " ]";
     }
     
 }
