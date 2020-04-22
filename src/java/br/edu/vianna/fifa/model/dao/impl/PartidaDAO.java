@@ -8,6 +8,7 @@ package br.edu.vianna.fifa.model.dao.impl;
 import br.edu.vianna.fifa.model.dao.GenericDAO;
 import br.edu.vianna.fifa.model.domain.Partida;
 import java.sql.SQLException;
+import java.util.List;
 import javax.persistence.Query;
 
 /**
@@ -22,11 +23,11 @@ public class PartidaDAO extends GenericDAO<Partida, Long>{
     }
 
     @Override
-    public Partida findAll(Long key) throws SQLException {
+    public List<Partida> findAll() throws SQLException {
         
         Query q = conexao.createNamedQuery("Partida.findAll");
         
-        return (Partida) q.getResultList();
+        return (List<Partida>) q.getResultList();
     }
     
 }

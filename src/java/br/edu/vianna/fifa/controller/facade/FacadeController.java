@@ -7,11 +7,13 @@ package br.edu.vianna.fifa.controller.facade;
 
 import br.edu.vianna.fifa.controller.ICommanderAction;
 import br.edu.vianna.fifa.controller.action.view.ViewLoginAction;
+import br.edu.vianna.fifa.controller.action.view.ViewCheckLoginAction;
+import br.edu.vianna.fifa.controller.action.view.ViewHomeAction;
 import br.edu.vianna.fifa.controller.action.view.db.ViewSaveUserAction;
 import br.edu.vianna.fifa.controller.action.view.popup.ViewErroPopupAction;
+import br.edu.vianna.fifa.controller.action.view.popup.ViewErroPopupLoginAction;
 import br.edu.vianna.fifa.controller.action.view.popup.ViewSucessPopupAction;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.HashMap;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -32,15 +34,18 @@ public class FacadeController extends HttpServlet {
         comandos = new HashMap<>();
         comandos.put(null, new ViewLoginAction());
         comandos.put("login", new ViewLoginAction());
+        comandos.put("home", new ViewHomeAction());
         
         
         /*---------------Views DB------------*/
         comandos.put("saveUser", new ViewSaveUserAction());
+        comandos.put("checkLogin", new ViewCheckLoginAction());
         
         
         /* --------------Erro Pop-----------*/
         comandos.put("erroPopup", new ViewErroPopupAction());
         comandos.put("sucessPopup", new ViewSucessPopupAction());
+        comandos.put("erroPopupLogin", new ViewErroPopupLoginAction());
         
         
     }
@@ -55,10 +60,18 @@ public class FacadeController extends HttpServlet {
 
         try {
             comandos.get(page).openPage(request, response);
+            
+            /*
+            Usuario user = (Usuario) request.getSession().getAttribute("user");
+            if (user != null) {
+                request.setAttribute("user", user);
+            } else if(){
+                
+            }*/
 
         } catch (Exception ex) {
             RequestDispatcher rd = request.getRequestDispatcher("pages/erro.jsp");
-            request.setAttribute("err", "Página não encontrada!");
+            request.setAttribute("erro", ex.toString());
             rd.forward(request, response);
         }
     }

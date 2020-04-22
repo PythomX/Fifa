@@ -6,8 +6,6 @@
 package br.edu.vianna.fifa.controller.action.view;
 
 import br.edu.vianna.fifa.controller.ICommanderAction;
-import br.edu.vianna.fifa.model.dao.impl.UsuarioDAO;
-import br.edu.vianna.fifa.model.domain.Usuario;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,14 +14,14 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author mateu
  */
-public class ViewLoginAction implements ICommanderAction {
+public class ViewHomeAction implements ICommanderAction {
 
     @Override
     public void openPage(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
 
+        RequestDispatcher rd = request.getRequestDispatcher("home.jsp");
+        
         rd.forward(request, response);
     }
-
 
 }

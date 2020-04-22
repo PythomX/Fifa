@@ -8,6 +8,7 @@ package br.edu.vianna.fifa.model.dao.impl;
 import br.edu.vianna.fifa.model.dao.GenericDAO;
 import br.edu.vianna.fifa.model.domain.Time;
 import java.sql.SQLException;
+import java.util.List;
 import javax.persistence.Query;
 
 /**
@@ -22,11 +23,11 @@ public class TimeDAO extends GenericDAO<Time, Long>{
     }
 
     @Override
-    public Time findAll(Long key) throws SQLException {
+    public List<Time> findAll() throws SQLException {
         
         Query q = conexao.createNamedQuery("Time.findAll");
         
-        return (Time) q.getResultList();
+        return (List<Time>) q.getResultList();
     }
     
 }

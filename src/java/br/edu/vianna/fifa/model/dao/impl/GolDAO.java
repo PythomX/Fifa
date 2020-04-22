@@ -8,6 +8,7 @@ package br.edu.vianna.fifa.model.dao.impl;
 import br.edu.vianna.fifa.model.dao.GenericDAO;
 import br.edu.vianna.fifa.model.domain.Gol;
 import java.sql.SQLException;
+import java.util.List;
 import javax.persistence.Query;
 
 /**
@@ -22,11 +23,11 @@ public class GolDAO extends GenericDAO<Gol, Long>{
     }
 
     @Override
-    public Gol findAll(Long key) throws SQLException {
+    public List<Gol> findAll() throws SQLException {
         
         Query q = conexao.createNamedQuery("Gol.findAll");
         
-        return (Gol) q.getResultList();
+        return (List<Gol>) q.getResultList();
     }
     
 }

@@ -8,6 +8,7 @@ package br.edu.vianna.fifa.model.dao.impl;
 import br.edu.vianna.fifa.model.dao.GenericDAO;
 import br.edu.vianna.fifa.model.domain.Usuario;
 import java.sql.SQLException;
+import java.util.List;
 import javax.persistence.Query;
 
 /**
@@ -22,10 +23,40 @@ public class UsuarioDAO extends GenericDAO<Usuario, Long> {
     }
 
     @Override
-    public Usuario findAll(Long key) throws SQLException {
+    public List<Usuario> findAll() throws SQLException {
         Query q = conexao.createNamedQuery("Usuario.findAll");
 
-        return (Usuario) q.getResultList();
+        return (List<Usuario>) q.getResultList();
 
     }
+
+    public Usuario findLogin(String login) throws SQLException {
+
+        Query q = conexao.createNamedQuery("Usuario.findByLogin");
+
+        try {
+            q.setParameter("login", login);
+            return (Usuario) q.getSingleResult();
+
+        } catch (Exception e) {
+            return null;
+        }
+
+    }
+    
+    public Usuario findByAccount(String login, String senha) throws SQLException {
+
+        Query q = conexao.createNamedQuery("Usuario.findByAccount");
+
+        try {
+            q.setParameter("login", login);
+            q.setParameter("senha", senha);
+            return (Usuario) q.getSingleResult();
+
+        } catch (Exception e) {
+            return null;
+        }
+
+    }
+
 }

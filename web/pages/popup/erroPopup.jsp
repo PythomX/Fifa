@@ -35,7 +35,8 @@
     </head>
     <body>
 
-        <form action="fifa?page=login">
+        <form action="${context}fifa">
+            <input type="hidden" name="page" value="login"/>
 
             <div class="container theme-showcase" role="main">
 
@@ -52,7 +53,7 @@
                                 <h5>Não foi possivel realizar o cadastro do jogador.</h5>
                             </div>
                             <div class="modal-footer">
-                                <button id="login" name="login" class="btn btn-success" type="Submit">Fechar</button>
+                                <button id="login" class="btn btn-success" type="Submit">Fechar</button>
                             </div>
                         </div>
                     </div>

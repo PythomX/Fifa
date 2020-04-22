@@ -1,6 +1,6 @@
 <%-- 
-    Document   : sucessPopup
-    Created on : 16/04/2020, 17:12:36
+    Document   : erroPopupLogin
+    Created on : 19/04/2020, 01:06:35
     Author     : mateu
 --%>
 
@@ -41,17 +41,17 @@
 
             <div class="container theme-showcase" role="main">
 
-                <div class="modal fade" id="sucessPopup" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal fade" id="erroCadPopup" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h4 class="modal-title" id="exampleModalLabel">Sucesso</h4>
+                                <h4 class="modal-title" id="exampleModalLabel">Erro</h4>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <h5>Jogador cadastrado com sucesso.</h5>
+                                <h5>Jogador não encontrado!</h5>
                             </div>
                             <div class="modal-footer">
                                 <button id="login" class="btn btn-success" type="Submit">Fechar</button>

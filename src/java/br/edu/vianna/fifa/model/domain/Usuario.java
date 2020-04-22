@@ -18,22 +18,20 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
 
 /**
  *
  * @author mateu
  */
 @Entity
-@Table(catalog = "fifa", schema = "", uniqueConstraints = {
-    @UniqueConstraint(columnNames = {"senha"}),
-    @UniqueConstraint(columnNames = {"login"})})
+@Table(catalog = "fifa", schema = "")
 @NamedQueries({
     @NamedQuery(name = "Usuario.findAll", query = "SELECT u FROM Usuario u"),
     @NamedQuery(name = "Usuario.findById", query = "SELECT u FROM Usuario u WHERE u.id = :id"),
     @NamedQuery(name = "Usuario.findByNome", query = "SELECT u FROM Usuario u WHERE u.nome = :nome"),
     @NamedQuery(name = "Usuario.findByLogin", query = "SELECT u FROM Usuario u WHERE u.login = :login"),
-    @NamedQuery(name = "Usuario.findBySenha", query = "SELECT u FROM Usuario u WHERE u.senha = :senha")})
+    @NamedQuery(name = "Usuario.findBySenha", query = "SELECT u FROM Usuario u WHERE u.senha = :senha"),
+    @NamedQuery(name = "Usuario.findByAccount", query = "SELECT u FROM Usuario u WHERE u.login = :login and u.senha = :senha")})
 public class Usuario implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -45,11 +43,14 @@ public class Usuario implements Serializable {
     @Column(nullable = false, length = 45)
     private String nome;
     @Basic(optional = false)
-    @Column(nullable = false, length = 10)
+    @Column(nullable = false, length = 20)
     private String login;
     @Basic(optional = false)
-    @Column(nullable = false, length = 12)
+    @Column(nullable = false, length = 20)
     private String senha;
+    @Basic(optional = false)
+    @Column(nullable = false)
+    private boolean nivelAcesso;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsuario")
     private List<Time> timeList;
 
@@ -60,11 +61,12 @@ public class Usuario implements Serializable {
         this.id = id;
     }
 
-    public Usuario(Integer id, String nome, String login, String senha) {
+    public Usuario(Integer id, String nome, String login, String senha, boolean nivelAcesso) {
         this.id = id;
         this.nome = nome;
         this.login = login;
         this.senha = senha;
+        this.nivelAcesso = nivelAcesso;
     }
 
     public Integer getId() {
@@ -97,6 +99,14 @@ public class Usuario implements Serializable {
 
     public void setSenha(String senha) {
         this.senha = senha;
+    }
+
+    public boolean getNivelAcesso() {
+        return nivelAcesso;
+    }
+
+    public void setNivelAcesso(boolean nivelAcesso) {
+        this.nivelAcesso = nivelAcesso;
     }
 
     public List<Time> getTimeList() {

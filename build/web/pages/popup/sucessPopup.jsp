@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<c:set var="context" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
     <head>
@@ -35,7 +36,8 @@
     </head>
     <body>
 
-        <form action="fifa?${param}=login">
+        <form action="${context}fifa">
+            <input type="hidden" name="page" value="login"/>
 
             <div class="container theme-showcase" role="main">
 
@@ -49,10 +51,10 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <h5>Cadastro de jogador Realizado com sucesso.</h5>
+                                <h5>Jogador cadastrado com sucesso.</h5>
                             </div>
                             <div class="modal-footer">
-                                <button id="login" name="login" class="btn btn-success" type="Submit">Fechar</button>
+                                <button id="login" class="btn btn-success" type="Submit">Fechar</button>
                             </div>
                         </div>
                     </div>

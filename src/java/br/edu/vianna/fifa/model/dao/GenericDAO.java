@@ -6,6 +6,7 @@
 package br.edu.vianna.fifa.model.dao;
 
 import java.sql.SQLException;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
@@ -56,7 +57,7 @@ public abstract class GenericDAO<C, K> {
     
     public abstract C findById(K key) throws SQLException;
     
-    public abstract C findAll(K key) throws SQLException;
+    public abstract List<C> findAll() throws SQLException;
     
 
 }

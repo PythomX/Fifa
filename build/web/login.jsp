@@ -8,6 +8,7 @@
 <%@page import="br.edu.vianna.fifa.model.dao.impl.UsuarioDAO"%>
 <%@page import="br.edu.vianna.fifa.model.domain.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<c:set var="context" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -38,13 +39,14 @@
         <div class="limiter">
             <div class="container-login100">
                 <div class="wrap-login100 p-l-50 p-r-50 p-t-77 p-b-30">
-                    <form class="login100-form validate-form" id="idform">
+                    <form action="${context}fifa" method="Post" class="login100-form validate-form">
+                        <input type="hidden" name="page" value="checkLogin"/>
                         <span class="login100-form-title p-b-55">
                             Fifa 
                         </span>
 
                         <div class="wrap-input100 validate-input m-b-16" data-validate = "Valid email is required: ex@abc.xyz">
-                            <input class="input100" type="text" name="email"  placeholder="User">
+                            <input class="input100" type="text" name="login"  placeholder="Login">
                             <span class="focus-input100"></span>
                             <span class="symbol-input100">
                                 <span class="lnr lnr-user"></span>
@@ -52,7 +54,7 @@
                         </div>
 
                         <div class="wrap-input100 validate-input m-b-16" data-validate = "Password is required">
-                            <input class="input100" type="password" name="pass" placeholder="Password">
+                            <input class="input100" type="password" name="senha" placeholder="Password">
                             <span class="focus-input100"></span>
                             <span class="symbol-input100">
                                 <span class="lnr lnr-lock"></span>
@@ -62,11 +64,9 @@
 
 
                         <div class="container01" >
-                            <a class="txt1 hov1" href="home.jsp">
-                                <div class="btn-logar " type="submit">
-                                    <input class="btn-logar-img " type=image src="images/icons/bola.png" width="50" height="50"> 
-                                </div>							
-                            </a>
+                                <div class="btn-logar-img " >
+                                    <input class="botao" name="Logar" id="Logar" type="submit" width="50" height="50"> 
+                                </div>
 
                         </div>
 
@@ -94,7 +94,8 @@
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
-                            <form action="fifa?page=saveUser" method="POST">
+                            <form action="${context}fifa" method="POST">
+                                <input type="hidden" name="page" value="saveUser"/>
                                 <div class="modal-body">
                                     <div class="form-group">
                                         <label for="recipient-name" class="col-form-label">Nome</label>
