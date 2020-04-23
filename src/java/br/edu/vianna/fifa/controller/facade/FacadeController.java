@@ -6,6 +6,7 @@
 package br.edu.vianna.fifa.controller.facade;
 
 import br.edu.vianna.fifa.controller.ICommanderAction;
+import br.edu.vianna.fifa.controller.action.view.ViewAcessoNegado;
 import br.edu.vianna.fifa.controller.action.view.ViewLoginAction;
 import br.edu.vianna.fifa.controller.action.view.db.CheckLoginAction;
 import br.edu.vianna.fifa.controller.action.view.ViewHomeAction;
@@ -30,44 +31,40 @@ import javax.servlet.http.HttpServletResponse;
 public class FacadeController extends HttpServlet {
 
     public static final HashMap<String, ICommanderAction> comandos;
-    static{
+
+    static {
         comandos = new HashMap<>();
         comandos.put(null, new ViewLoginAction());
         comandos.put("login", new ViewLoginAction());
         comandos.put("home", new ViewHomeAction());
-        
-        
+
         /*---------------Views DB------------*/
         comandos.put("saveUser", new SaveUserAction());
         comandos.put("checkLogin", new CheckLoginAction());
         comandos.put("logout", new LogoutAction());
-        
-        
+
         /* --------------Erro Pop-----------*/
         comandos.put("erroPopup", new ViewErroPopupAction());
         comandos.put("sucessPopup", new ViewSucessPopupAction());
-        
-        
+        comandos.put("acessoNegado", new ViewAcessoNegado());
+
     }
-    
-    
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
-        
+
         String page = request.getParameter("page");
 
         try {
-            comandos.get(page).openPage(request, response);
-            
-            /*
-            Usuario user = (Usuario) request.getSession().getAttribute("user");
-            if (user != null) {
-                request.setAttribute("user", user);
-            } else if(){
-                
-            }*/
+
+            if (comandos.get(page).pageReleased()) {
+                comandos.get(page).openPage(request, response);
+            } else if (request.getSession().getAttribute("user") != null) {
+                comandos.get(page).openPage(request, response);
+            } else {
+                comandos.get("acessoNegado").openPage(request, response);
+            }
 
         } catch (Exception ex) {
             RequestDispatcher rd = request.getRequestDispatcher("pages/erro.jsp");

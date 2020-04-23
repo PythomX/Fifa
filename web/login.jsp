@@ -83,7 +83,7 @@
                                 Sem cadastro?
                             </span>
 
-                            <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModal" data-whatever="@fat">Clique aqui</button>
+                            <a href="#" data-toggle="modal" data-target="#exampleModal" data-whatever="@fat">Clique aqui</a>
                         </div>
 
                     </form>
