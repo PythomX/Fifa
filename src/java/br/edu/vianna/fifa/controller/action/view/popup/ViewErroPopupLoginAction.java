@@ -24,4 +24,8 @@ public class ViewErroPopupLoginAction implements ICommanderAction{
         
     }
     
+    @Override
+    public boolean pageReleased() {
+        return true;
+    }
 }

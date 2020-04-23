@@ -7,9 +7,9 @@ package br.edu.vianna.fifa.controller.facade;
 
 import br.edu.vianna.fifa.controller.ICommanderAction;
 import br.edu.vianna.fifa.controller.action.view.ViewLoginAction;
-import br.edu.vianna.fifa.controller.action.view.ViewCheckLoginAction;
+import br.edu.vianna.fifa.controller.action.view.CheckLoginAction;
 import br.edu.vianna.fifa.controller.action.view.ViewHomeAction;
-import br.edu.vianna.fifa.controller.action.view.db.ViewSaveUserAction;
+import br.edu.vianna.fifa.controller.action.view.db.SaveUserAction;
 import br.edu.vianna.fifa.controller.action.view.popup.ViewErroPopupAction;
 import br.edu.vianna.fifa.controller.action.view.popup.ViewErroPopupLoginAction;
 import br.edu.vianna.fifa.controller.action.view.popup.ViewSucessPopupAction;
@@ -38,8 +38,8 @@ public class FacadeController extends HttpServlet {
         
         
         /*---------------Views DB------------*/
-        comandos.put("saveUser", new ViewSaveUserAction());
-        comandos.put("checkLogin", new ViewCheckLoginAction());
+        comandos.put("saveUser", new SaveUserAction());
+        comandos.put("checkLogin", new CheckLoginAction());
         
         
         /* --------------Erro Pop-----------*/

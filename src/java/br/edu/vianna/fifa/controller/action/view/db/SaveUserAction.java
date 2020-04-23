@@ -6,6 +6,7 @@
 package br.edu.vianna.fifa.controller.action.view.db;
 
 import br.edu.vianna.fifa.controller.ICommanderAction;
+import br.edu.vianna.fifa.controller.action.view.ViewLoginAction;
 import br.edu.vianna.fifa.controller.action.view.popup.ViewErroPopupAction;
 import br.edu.vianna.fifa.controller.action.view.popup.ViewSucessPopupAction;
 import br.edu.vianna.fifa.model.dao.impl.UsuarioDAO;
@@ -17,36 +18,36 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author mateu
  */
-public class ViewSaveUserAction implements ICommanderAction {
+public class SaveUserAction implements ICommanderAction {
 
-    private Usuario usu;
+    private Usuario user;
 
     @Override
     public void openPage(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-        try {
+        UsuarioDAO usudao = new UsuarioDAO();
 
-            UsuarioDAO usudao = new UsuarioDAO();
+        user = usudao.findLogin(request.getParameter("login"));
 
-            usu = usudao.findLogin(request.getParameter("login"));
+        if (user == null) {
+            String nome = request.getParameter("nome");
+            String login = request.getParameter("login");
+            String senha = request.getParameter("senha");
 
-            if (usu == null) {
-                usu = new Usuario();
-                usu.setNome(request.getParameter("nome"));
-                usu.setLogin(request.getParameter("login"));
-                usu.setSenha(request.getParameter("senha"));
+            user = new Usuario(null, nome, login, senha, false);
 
-                usudao.insert(usu);
+            usudao.insert(user);
+            new ViewSucessPopupAction().openPage(request, response);
 
-                new ViewSucessPopupAction().openPage(request, response);
-            } else {
-                throw new Exception();
-            }
-
-        } catch (Exception e) {
+        } else {
             new ViewErroPopupAction().openPage(request, response);
         }
 
+    }
+
+    @Override
+    public boolean pageReleased() {
+        return true;
     }
 
 }

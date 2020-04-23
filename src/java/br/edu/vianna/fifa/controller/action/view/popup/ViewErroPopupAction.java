@@ -23,4 +23,9 @@ public class ViewErroPopupAction implements ICommanderAction {
         rd.forward(request, response);
     }
 
+    @Override
+    public boolean pageReleased() {
+        return true;
+    }
+
 }

@@ -6,8 +6,6 @@
 package br.edu.vianna.fifa.controller.action.view;
 
 import br.edu.vianna.fifa.controller.ICommanderAction;
-import br.edu.vianna.fifa.model.dao.impl.UsuarioDAO;
-import br.edu.vianna.fifa.model.domain.Usuario;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -23,6 +21,11 @@ public class ViewLoginAction implements ICommanderAction {
         RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
 
         rd.forward(request, response);
+    }
+
+    @Override
+    public boolean pageReleased() {
+        return true;
     }
 
 

@@ -24,4 +24,9 @@ public class ViewHomeAction implements ICommanderAction {
         rd.forward(request, response);
     }
 
+    @Override
+    public boolean pageReleased() {
+        return false;
+    }
+
 }

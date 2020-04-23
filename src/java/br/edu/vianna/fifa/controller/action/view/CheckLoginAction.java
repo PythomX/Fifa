@@ -17,8 +17,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author mateu
  */
-public class ViewCheckLoginAction implements ICommanderAction {
-
+public class CheckLoginAction implements ICommanderAction {
+    
     @Override
     public void openPage(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
@@ -36,6 +36,11 @@ public class ViewCheckLoginAction implements ICommanderAction {
         request.setAttribute("user", user);
         new ViewHomeAction().openPage(request, response);
 
+    }
+
+    @Override
+    public boolean pageReleased() {
+        return true;
     }
 
 

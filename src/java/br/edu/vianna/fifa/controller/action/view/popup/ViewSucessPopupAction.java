@@ -23,4 +23,9 @@ public class ViewSucessPopupAction implements ICommanderAction{
         rd.forward(request, response);
     }
     
+    @Override
+    public boolean pageReleased() {
+        return true;
+    }
+    
 }

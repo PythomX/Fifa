@@ -4,6 +4,7 @@
     Author     : mateu
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="java.sql.SQLException"%>
 <%@page import="br.edu.vianna.fifa.model.dao.impl.UsuarioDAO"%>
 <%@page import="br.edu.vianna.fifa.model.domain.Usuario"%>
@@ -39,7 +40,7 @@
         <div class="limiter">
             <div class="container-login100">
                 <div class="wrap-login100 p-l-50 p-r-50 p-t-77 p-b-30">
-                    <form action="${context}fifa" method="Post" class="login100-form validate-form">
+                    <form action="${context}/fifa" method="Post" class="login100-form validate-form">
                         <input type="hidden" name="page" value="checkLogin"/>
                         <span class="login100-form-title p-b-55">
                             Fifa 
@@ -64,9 +65,9 @@
 
 
                         <div class="container01" >
-                                <div class="btn-logar-img " >
-                                    <input class="botao" name="Logar" id="Logar" type="submit" width="50" height="50"> 
-                                </div>
+                            <div class="btn-logar-img " >
+                                <input class="botao" name="Logar" id="Logar" type="submit" width="50" height="50"> 
+                            </div>
 
                         </div>
 
@@ -94,7 +95,8 @@
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
-                            <form action="${context}fifa" method="POST">
+                            
+                            <form action="${context}/fifa" method="POST">
                                 <input type="hidden" name="page" value="saveUser"/>
                                 <div class="modal-body">
                                     <div class="form-group">
@@ -103,15 +105,15 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="message-text" class="col-form-label">Login</label>
-                                        <input class="form-control" name="login" id="input-login">
+                                        <input class="form-control" name="login" required="" id="input-login">
                                     </div>
                                     <div class="form-group">
-                                        <label for="message-text" class="col-form-label">Senha</label>
-                                        <input class="form-control" type="password" name="senha" id="input-senha">
+                                        <label for="message-text" class="col-form-label ">Senha</label>
+                                        <input class="form-control " type="password" required="" name="senha" id="input-senha">
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                                        <button id="Cadastrar" name="Cadastrar" class="btn btn-success" type="Submit">Cadastrar</button>
+                                        <button id="Cadastrar" class="btn btn-success"  type="Submit">Cadastrar</button>
                                     </div>
                                 </div>
                             </form>
@@ -120,7 +122,7 @@
                 </div>
 
                 <!-- Fim Modal -->
-                
+
             </div>
 
         </div>

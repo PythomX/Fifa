@@ -14,6 +14,8 @@ import javax.servlet.http.HttpServletResponse;
  */
 public interface ICommanderAction {
  
+    public boolean pageReleased();
+    
     public void openPage(HttpServletRequest request, HttpServletResponse response) throws Exception;
     
 }
