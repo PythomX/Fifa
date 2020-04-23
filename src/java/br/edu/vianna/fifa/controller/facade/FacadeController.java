@@ -9,6 +9,7 @@ import br.edu.vianna.fifa.controller.ICommanderAction;
 import br.edu.vianna.fifa.controller.action.view.ViewLoginAction;
 import br.edu.vianna.fifa.controller.action.view.db.CheckLoginAction;
 import br.edu.vianna.fifa.controller.action.view.ViewHomeAction;
+import br.edu.vianna.fifa.controller.action.view.db.LogoutAction;
 import br.edu.vianna.fifa.controller.action.view.db.SaveUserAction;
 import br.edu.vianna.fifa.controller.action.view.popup.ViewErroPopupAction;
 import br.edu.vianna.fifa.controller.action.view.popup.ViewSucessPopupAction;
@@ -39,6 +40,7 @@ public class FacadeController extends HttpServlet {
         /*---------------Views DB------------*/
         comandos.put("saveUser", new SaveUserAction());
         comandos.put("checkLogin", new CheckLoginAction());
+        comandos.put("logout", new LogoutAction());
         
         
         /* --------------Erro Pop-----------*/

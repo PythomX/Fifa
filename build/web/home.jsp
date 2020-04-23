@@ -29,7 +29,7 @@
     <body>
 
         <div class="wrapper">
-            
+
             <!-- Page Content  -->
             <div id="content">
 
@@ -42,11 +42,14 @@
                         <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                             <i class="fas fa-align-justify"></i>
                         </button>
+
                     </div>
+
+
                 </nav>
 
             </div>
-            
+
             <!-- Sidebar  -->
             <nav class="bg-dark " id="sidebar">
                 <div id="dismiss">
@@ -59,49 +62,94 @@
                     </li>
                 </div>
 
-                <ul class="list-unstyled components sidebar-trans">
-                    <p>Dummy Heading</p>
-                    <li class="active">
-                        <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Home</a>
-                        <ul class="collapse list-unstyled" id="homeSubmenu">
-                            <li>
-                                <a href="#">Home 1</a>
-                            </li>
-                            <li>
-                                <a href="#">Home 2</a>
-                            </li>
-                            <li>
-                                <a href="#">Home 3</a>
-                            </li>
-                        </ul>
-                    </li>
+                <ul class="list-unstyled sidebar-trans">
+                    
                     <li>
-                        <a href="#">About</a>
-                        <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">Pages</a>
+                        <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">
+                            <img class="p-1 " src="images/icons/home.png"> 
+                            Home
+                        </a>
+                    
+                        <a href="#">
+                            <img class="p-1 " src="images/icons/champion.png">
+                            Campeonato
+                        </a>
+                        
+                        <c:if test="${user.nivelAcesso}" var="user">
+                        <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">
+                            <img class="p-1 " src="images/icons/user.png">
+                            Administrador
+                        </a>
                         <ul class="collapse list-unstyled" id="pageSubmenu">
                             <li>
-                                <a href="#">Page 1</a>
+                                <a href="#">Jogadores</a>
                             </li>
                             <li>
-                                <a href="#">Page 2</a>
+                                <a href="#">ADM 2</a>
                             </li>
                             <li>
-                                <a href="#">Page 3</a>
+                                <a href="#">ADM 3</a>
                             </li>
                         </ul>
+                        </c:if>
+                        
                     </li>
                     <li>
-                        <a href="#">Portfolio</a>
+                        <a href="#">
+                            <img class="p-1 " src="images/icons/team.png">
+                            Time
+                        </a>
                     </li>
                     <li>
-                        <a href="#">Contact</a>
+                        <a href="#">
+                            <img class="p-1 " src="images/icons/ranking.png">
+                            Rank
+                        </a>
                     </li>
+
+                    <hr class="components">
+                    
+                    <li>
+                        <a href="#" data-toggle="modal" data-target="#myModal">
+                            <img class="p-1 " src="images/icons/logout.png">
+                            Sair
+                        </a>
+                    </li>
+
                 </ul>
+
+
+
 
 
             </nav>
 
-            
+
+            <!-- Modal -->
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog modal-sm" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Atenção</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <form>
+                            <div class="modal-body">
+                                Deseja sair do Sistema?
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
+                                <a class="btn btn-danger" href="${context}/fifa?page=logout">Sim</a>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+
+
         </div>
 
         <div class="overlay"></div>
