@@ -46,6 +46,12 @@
                             Fifa 
                         </span>
 
+                        <c:if test="${requestScope.err != null}">
+                            <div class="container text-center alert alert-danger">
+                                ${requestScope.err}
+                            </div>
+                        </c:if>
+                        
                         <div class="wrap-input100 validate-input m-b-16" data-validate = "Valid email is required: ex@abc.xyz">
                             <input class="input100" type="text" name="login"  placeholder="Login">
                             <span class="focus-input100"></span>

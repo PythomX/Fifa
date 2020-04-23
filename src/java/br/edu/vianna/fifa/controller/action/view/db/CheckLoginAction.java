@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.edu.vianna.fifa.controller.action.view;
+package br.edu.vianna.fifa.controller.action.view.db;
 
 import br.edu.vianna.fifa.controller.ICommanderAction;
-import br.edu.vianna.fifa.controller.action.view.popup.ViewErroPopupAction;
-import br.edu.vianna.fifa.controller.action.view.popup.ViewErroPopupLoginAction;
+import br.edu.vianna.fifa.controller.action.view.ViewHomeAction;
+import br.edu.vianna.fifa.controller.action.view.ViewLoginAction;
 import br.edu.vianna.fifa.model.dao.impl.UsuarioDAO;
 import br.edu.vianna.fifa.model.domain.Usuario;
 import javax.servlet.http.HttpServletRequest;
@@ -27,14 +27,15 @@ public class CheckLoginAction implements ICommanderAction {
 
         Usuario user = new UsuarioDAO().findByAccount(login, senha);
 
-        if (user == null) {
-            new ViewErroPopupLoginAction().openPage(request, response);
+        if (user != null) {
             
-        }
-
         request.getSession().setAttribute("user", user);
         request.setAttribute("user", user);
         new ViewHomeAction().openPage(request, response);
+        } else{
+            request.setAttribute("err", "Login ou senha incorretos!");
+            new ViewLoginAction().openPage(request, response);
+        }
 
     }
 

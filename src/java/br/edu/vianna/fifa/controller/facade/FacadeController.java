@@ -7,11 +7,10 @@ package br.edu.vianna.fifa.controller.facade;
 
 import br.edu.vianna.fifa.controller.ICommanderAction;
 import br.edu.vianna.fifa.controller.action.view.ViewLoginAction;
-import br.edu.vianna.fifa.controller.action.view.CheckLoginAction;
+import br.edu.vianna.fifa.controller.action.view.db.CheckLoginAction;
 import br.edu.vianna.fifa.controller.action.view.ViewHomeAction;
 import br.edu.vianna.fifa.controller.action.view.db.SaveUserAction;
 import br.edu.vianna.fifa.controller.action.view.popup.ViewErroPopupAction;
-import br.edu.vianna.fifa.controller.action.view.popup.ViewErroPopupLoginAction;
 import br.edu.vianna.fifa.controller.action.view.popup.ViewSucessPopupAction;
 import java.io.IOException;
 import java.util.HashMap;
@@ -45,7 +44,6 @@ public class FacadeController extends HttpServlet {
         /* --------------Erro Pop-----------*/
         comandos.put("erroPopup", new ViewErroPopupAction());
         comandos.put("sucessPopup", new ViewSucessPopupAction());
-        comandos.put("erroPopupLogin", new ViewErroPopupLoginAction());
         
         
     }
