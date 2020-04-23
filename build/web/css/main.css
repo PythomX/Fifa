@@ -618,3 +618,12 @@ h11 {
     font-size:150%;
 }
 
+
+
+/* Only for snippet */
+.double-nav .breadcrumb-dn {
+  color: #fff;
+}
+.button-collapse i {
+  color: #fff
+}
