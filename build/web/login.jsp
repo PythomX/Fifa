@@ -51,7 +51,7 @@
                                 ${requestScope.err}
                             </div>
                         </c:if>
-                        
+
                         <div class="wrap-input100 validate-input m-b-16" data-validate = "Valid email is required: ex@abc.xyz">
                             <input class="input100" type="text" name="login"  placeholder="Login">
                             <span class="focus-input100"></span>
@@ -72,7 +72,7 @@
 
                         <div class="container01" >
                             <div class="btn-logar-img " >
-                                <input class="botao" name="Logar" id="Logar" type="submit" width="50" height="50"> 
+                                <input name="Logar" src="images/icons/bola.png" id="Logar" type="image" alt="submit" width="50" height="50"> 
                             </div>
 
                         </div>
@@ -82,8 +82,6 @@
                             <span class="txt1">
                                 Sem cadastro?
                             </span>
-
-
 
                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@fat">Clique aqui</button>
                         </div>
@@ -101,7 +99,7 @@
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
-                            
+
                             <form action="${context}/fifa" method="POST">
                                 <input type="hidden" name="page" value="saveUser"/>
                                 <div class="modal-body">
