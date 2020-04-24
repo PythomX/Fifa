@@ -23,7 +23,7 @@ public class ViewAcessoNegado implements ICommanderAction{
 
     @Override
     public void openPage(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        RequestDispatcher rd = request.getRequestDispatcher("pages/erro.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher("${context}erro.jsp");
 
         rd.forward(request, response);
     }

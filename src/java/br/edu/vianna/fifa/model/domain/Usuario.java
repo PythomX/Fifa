@@ -43,10 +43,10 @@ public class Usuario implements Serializable {
     @Column(nullable = false, length = 45)
     private String nome;
     @Basic(optional = false)
-    @Column(nullable = false, length = 20)
+    @Column(nullable = false, length = 45)
     private String login;
     @Basic(optional = false)
-    @Column(nullable = false, length = 20)
+    @Column(nullable = false, length = 45)
     private String senha;
     @Basic(optional = false)
     @Column(nullable = false)

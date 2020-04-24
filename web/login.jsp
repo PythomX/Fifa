@@ -72,7 +72,7 @@
 
                         <div class="container01" >
                             <div class="btn-logar-img " >
-                                <input name="Logar" src="images/icons/bola.png" id="Logar" type="image" alt="submit" width="50" height="50"> 
+                                <button class="fa fa-futbol-o fa-4x" type="submit" id="Logar" name="Logar" alt=""></button>
                             </div>
 
                         </div>

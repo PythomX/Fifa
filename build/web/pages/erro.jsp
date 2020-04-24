@@ -5,9 +5,8 @@
 --%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@page import="java.sql.SQLException"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<c:set var="context" value="${pageContext.request.contextPath}" />
+<c:set var="context" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,7 +23,7 @@
         <link href="https://fonts.googleapis.com/css?family=Montserrat:900" rel="stylesheet">
 
         <!-- Custom stlylesheet -->
-        <link type="text/css" rel="stylesheet" href="../css/erro.css" />
+        <link type="text/css" rel="stylesheet" href="${context}/css/erro.css" />
 
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->

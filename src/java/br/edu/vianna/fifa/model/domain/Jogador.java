@@ -31,7 +31,6 @@ import javax.persistence.Table;
     @NamedQuery(name = "Jogador.findAll", query = "SELECT j FROM Jogador j"),
     @NamedQuery(name = "Jogador.findById", query = "SELECT j FROM Jogador j WHERE j.id = :id"),
     @NamedQuery(name = "Jogador.findByNome", query = "SELECT j FROM Jogador j WHERE j.nome = :nome"),
-    @NamedQuery(name = "Jogador.findByIdade", query = "SELECT j FROM Jogador j WHERE j.idade = :idade"),
     @NamedQuery(name = "Jogador.findByPosicao", query = "SELECT j FROM Jogador j WHERE j.posicao = :posicao")})
 public class Jogador implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -43,9 +42,6 @@ public class Jogador implements Serializable {
     @Basic(optional = false)
     @Column(nullable = false, length = 45)
     private String nome;
-    @Basic(optional = false)
-    @Column(nullable = false, length = 10)
-    private String idade;
     @Basic(optional = false)
     @Column(nullable = false, length = 9)
     private String posicao;
@@ -62,10 +58,9 @@ public class Jogador implements Serializable {
         this.id = id;
     }
 
-    public Jogador(Integer id, String nome, String idade, String posicao) {
+    public Jogador(Integer id, String nome, String posicao) {
         this.id = id;
         this.nome = nome;
-        this.idade = idade;
         this.posicao = posicao;
     }
 
@@ -83,14 +78,6 @@ public class Jogador implements Serializable {
 
     public void setNome(String nome) {
         this.nome = nome;
-    }
-
-    public String getIdade() {
-        return idade;
-    }
-
-    public void setIdade(String idade) {
-        this.idade = idade;
     }
 
     public String getPosicao() {

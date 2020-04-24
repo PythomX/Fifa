@@ -18,9 +18,15 @@ public class ViewLoginAction implements ICommanderAction {
 
     @Override
     public void openPage(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        
+        if (request.getSession().getAttribute("user") == null) {
         RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
 
         rd.forward(request, response);
+        } else {
+            new ViewHomeAction().openPage(request, response);
+        }
+        
     }
 
     @Override

@@ -10,7 +10,9 @@ import br.edu.vianna.fifa.controller.action.view.ViewAcessoNegado;
 import br.edu.vianna.fifa.controller.action.view.ViewLoginAction;
 import br.edu.vianna.fifa.controller.action.view.db.CheckLoginAction;
 import br.edu.vianna.fifa.controller.action.view.ViewHomeAction;
+import br.edu.vianna.fifa.controller.action.view.ViewNewTeamAction;
 import br.edu.vianna.fifa.controller.action.view.db.LogoutAction;
+import br.edu.vianna.fifa.controller.action.view.db.NewTeamAction;
 import br.edu.vianna.fifa.controller.action.view.db.SaveUserAction;
 import br.edu.vianna.fifa.controller.action.view.popup.ViewErroPopupAction;
 import br.edu.vianna.fifa.controller.action.view.popup.ViewSucessPopupAction;
@@ -37,11 +39,13 @@ public class FacadeController extends HttpServlet {
         comandos.put(null, new ViewLoginAction());
         comandos.put("login", new ViewLoginAction());
         comandos.put("home", new ViewHomeAction());
+        comandos.put("newTeam", new ViewNewTeamAction());
 
         /*---------------Views DB------------*/
         comandos.put("saveUser", new SaveUserAction());
         comandos.put("checkLogin", new CheckLoginAction());
         comandos.put("logout", new LogoutAction());
+        comandos.put("saveNewTeam", new NewTeamAction());
 
         /* --------------Erro Pop-----------*/
         comandos.put("erroPopup", new ViewErroPopupAction());
@@ -67,6 +71,7 @@ public class FacadeController extends HttpServlet {
             }
 
         } catch (Exception ex) {
+            System.out.println(ex.getCause());
             RequestDispatcher rd = request.getRequestDispatcher("pages/erro.jsp");
             request.setAttribute("erro", ex.toString());
             rd.forward(request, response);
