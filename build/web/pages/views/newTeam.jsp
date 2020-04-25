@@ -11,17 +11,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-        <!--===============================================================================================-->
-        <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
-        <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
-        <!--===============================================================================================-->
-        <link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
-        <!-- Bootstrap CSS CDN -->
-        <!-- Our Custom CSS -->
-        <link rel="stylesheet" href="css/style.css">
-        <!--===============================================================================================-->
-
-
+        
 
         <title>Novo Time</title>
     </head>
@@ -37,8 +27,8 @@
             <div class="form-group ">
                 <% for (int i = 0; i < 11; i++) { %>
                 <div class="form-row p-1">
-                    <input class="input-nome text-center" placeholder="Nome" type="text" name="nomeJogador[]" id="input-name">
-                    <select class="col-md-1 input-nome " id="inputState" name="posicaoJogador[]" >
+                    <input class="input-nome text-center" placeholder="Nome" required="" type="text" name="nomeJogador[]" id="input-name">
+                    <select class="col-md-1 input-nome" required="" id="inputState" name="posicaoJogador[]" >
                         <option selected disabled hidden>Posição</option>
                         <c:forEach items="${posicoes}" var="posicao">
                             <option value="${posicao.getPosicao()}">${posicao.getPosicao()}</option>

@@ -107,3 +107,9 @@ $(document).ready(function () {
         $('a[aria-expanded=true]').attr('aria-expanded', 'false');
     });
 });
+
+/*----------Lista de Usuarios----------*/
+$(document).ready(function () {
+  $('#tableUser').DataTable();
+  $('.dataTables_length').addClass('bs-select');
+});
