@@ -10,27 +10,40 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        
-        <link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+
         <!--===============================================================================================-->
-        <link href="vendor/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
         <!--===============================================================================================-->
         <link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
-        <!-- Bootstrap CSS CDN 
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+        <!-- Bootstrap CSS CDN -->
         <!-- Our Custom CSS -->
         <link rel="stylesheet" href="css/style.css">
-        <link rel="stylesheet" type="text/css" href="css/util.css">
-        <link rel="stylesheet" type="text/css" href="css/main.css">
         <!--===============================================================================================-->
-        <!-- Scrollbar Custom CSS 
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
-
-        <!-- Font Awesome JS -->
         <title>JSP Page</title>
     </head>
     <body>
         <h1>Hello World!</h1>
+
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+
+
+        <!--===============================================================================================-->	
+        <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+        <!--===============================================================================================-->
+        <script src="vendor/bootstrap/js/popper.js"></script>
+        <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+        <!--===============================================================================================-->
+        <script src="vendor/select2/select2.min.js"></script>
+        <script src="js/main.js" type="text/javascript" ></script>
     </body>
 </html>

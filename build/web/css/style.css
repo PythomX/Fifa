@@ -6,7 +6,45 @@
 body {
     font-family: 'Poppins', sans-serif;
     background: #fafafa;
+    
+}
+
+hr{
+    border: 1px solid white;
+}
+
+.container-login100 {
+    content: "";
+    display: block;
+    position: relative;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
     background-image: url("../images/back.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.input-nome{
+    border-radius: 15px;
+    border-color: transparent;
+    background-color: black;
+    opacity: 0.8;
+    color: white;
+    padding: 1px;
+}
+::-webkit-input-placeholder {
+   color: white;
+}
+.input-nome-time{
+    border-radius: 10px;
+    border-color: transparent;
+    background-color: black;
+    opacity: 0.8;
+    padding: 10px;
 }
 
 p {

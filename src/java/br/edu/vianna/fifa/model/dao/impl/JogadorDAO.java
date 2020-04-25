@@ -30,4 +30,11 @@ public class JogadorDAO extends GenericDAO<Jogador, Long>{
         return (List<Jogador>) q.getResultList();
     }
     
+    public List<Jogador> findAllPosition() throws SQLException {
+        
+        Query q = conexao.createNamedQuery("Jogador.findAllPosition");
+        
+        return (List<Jogador>) q.getResultList();
+    }
+    
 }

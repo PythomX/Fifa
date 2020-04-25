@@ -3,6 +3,7 @@
     Created on : 24/04/2020, 02:16:11
     Author     : mateu
 --%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="context" value="${pageContext.request.contextPath}" />
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -10,52 +11,62 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-        <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
         <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
-
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+        <!-- Bootstrap CSS CDN -->
+        <!-- Our Custom CSS -->
         <link rel="stylesheet" href="css/style.css">
+        <!--===============================================================================================-->
+
+
 
         <title>Novo Time</title>
     </head>
-    <body>
 
+    <form action="${context}/fifa" method="POST">
+        <input type="hidden" name="page" value="saveNewTeam"/>
+        <div class="modal-body ">
 
-
-
-        <form action="${context}/fifa" method="POST">
-            <input type="hidden" name="page" value="saveNewTeam"/>
-            <div class="modal-body justify-content-md-center">
-                <div class="form-group">
-                    <label class="text-center">Nome</label>
-                    <input type="text" name="nome" class="form-control col-md-3" id="input-name">
-                </div>
-                <div class="form-group">
-                    <label for="message-text" class="col-form-label">Login</label>
-                    <input class="form-control" name="login" required="" id="input-login">
-                </div>
-                <div class="form-group">
-                    <label for="message-text" class="col-form-label ">Senha</label>
-                    <input class="form-control " type="password" required="" name="senha" id="input-senha">
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                    <button id="Cadastrar" class="btn btn-success"  type="Submit">Cadastrar</button>
-                </div>
+            <div class="form-group text-center">
+                <input class="form-control input-nome-time text-center col-md-4 offset-4" name="nomeTime" placeholder="Nome do time" required="" type="text">
             </div>
-        </form>
+
+            <div class="form-group ">
+                <% for (int i = 0; i < 11; i++) { %>
+                <div class="form-row p-1">
+                    <input class="input-nome text-center" placeholder="Nome" type="text" name="nomeJogador[]" id="input-name">
+                    <select class="col-md-1 input-nome " id="inputState" name="posicaoJogador[]" >
+                        <option selected disabled hidden>Posição</option>
+                        <c:forEach items="${posicoes}" var="posicao">
+                            <option value="${posicao.getPosicao()}">${posicao.getPosicao()}</option>
+                        </c:forEach>
+                    </select>
+                </div>
+                <% }%>
+            </div>
+
+            <hr class="text-white">
+
+        </div>
+        <div class="text-center">
+            <button class="btn btn-secondary col-md-3"  type="Submit">Cadastrar</button>
+        </div>
+        <br>
+    </form>
 
 
 
 
+    <!--===============================================================================================-->	
+    <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/bootstrap/js/popper.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/select2/select2.min.js"></script>
+    <script src="js/main.js" type="text/javascript" ></script>
 
-
-        <!--===============================================================================================-->	
-        <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
-        <!--===============================================================================================-->
-        <script src="vendor/bootstrap/js/popper.js"></script>
-        <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-        <!--===============================================================================================-->
-        <script src="vendor/select2/select2.min.js"></script>
-    </body>
 </html>

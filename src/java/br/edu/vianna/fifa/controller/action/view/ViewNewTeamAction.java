@@ -6,6 +6,11 @@
 package br.edu.vianna.fifa.controller.action.view;
 
 import br.edu.vianna.fifa.controller.ICommanderAction;
+import br.edu.vianna.fifa.model.dao.impl.JogadorDAO;
+import br.edu.vianna.fifa.model.domain.Jogador;
+import br.edu.vianna.fifa.model.domain.e.EPosicao;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -25,6 +30,10 @@ public class ViewNewTeamAction implements ICommanderAction{
     public void openPage(HttpServletRequest request, HttpServletResponse response) throws Exception {
         RequestDispatcher rd = request.getRequestDispatcher("template.jsp?page=newTeam");
 
+        EPosicao[] posicoes = EPosicao.values();
+        
+        request.setAttribute("posicoes", posicoes);
+        
         rd.forward(request, response);
     }
     
