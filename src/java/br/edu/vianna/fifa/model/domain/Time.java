@@ -29,7 +29,7 @@ import javax.persistence.Table;
 @Table(catalog = "fifa", schema = "")
 @NamedQueries({
     @NamedQuery(name = "Time.findAll", query = "SELECT t FROM Time t"),
-    @NamedQuery(name = "Time.findById", query = "SELECT t FROM Time t WHERE t.id = :id"),
+    @NamedQuery(name = "Time.findByIdUser", query = "SELECT t FROM Time t WHERE t.idUsuario.id = :id"),
     @NamedQuery(name = "Time.findByNome", query = "SELECT t FROM Time t WHERE t.nome = :nome")})
 public class Time implements Serializable {
     private static final long serialVersionUID = 1L;

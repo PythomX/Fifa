@@ -37,4 +37,12 @@ public class JogadorDAO extends GenericDAO<Jogador, Long>{
         return (List<Jogador>) q.getResultList();
     }
     
+    public List<Jogador> findAllByIdTime(Long key) throws SQLException {
+        
+        Query q = conexao.createNamedQuery("Jogador.findAllByIdTime");
+       
+        q.setParameter("id", key);
+        return (List<Jogador>) q.getResultList();
+    }
+    
 }

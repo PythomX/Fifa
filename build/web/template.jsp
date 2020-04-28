@@ -108,7 +108,7 @@
                             <a href="${context}/fifa?page=newTeam"><i class="fas fa-user-plus fa-lg"></i>Novo</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fas fa-users-cog fa-lg"></i>Times</a>
+                            <a href="${context}/fifa?page=updateTeam"><i class="fas fa-users-cog fa-lg"></i>Times</a>
                         </li>
                     </ul>
                 </li>

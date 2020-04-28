@@ -15,7 +15,7 @@ import javax.persistence.Query;
  *
  * @author mateu
  */
-public class TimeDAO extends GenericDAO<Time, Long>{
+public class TimeDAO extends GenericDAO<Time, Long> {
 
     @Override
     public Time findById(Long key) throws SQLException {
@@ -24,10 +24,23 @@ public class TimeDAO extends GenericDAO<Time, Long>{
 
     @Override
     public List<Time> findAll() throws SQLException {
-        
+
         Query q = conexao.createNamedQuery("Time.findAll");
-        
+
         return (List<Time>) q.getResultList();
     }
-    
+
+    public Time findByIdUser(Long key) throws SQLException {
+
+        Query q = conexao.createNamedQuery("Time.findByIdUser");
+
+        try {
+            q.setParameter("id", key);
+            return (Time) q.getSingleResult();
+
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
 }
