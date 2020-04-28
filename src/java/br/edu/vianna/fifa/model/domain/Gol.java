@@ -34,7 +34,7 @@ public class Gol implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(nullable = false)
-    private Integer id;
+    private Long id;
     @Basic(optional = false)
     @Column(nullable = false, length = 10)
     private String tempo;
@@ -51,20 +51,20 @@ public class Gol implements Serializable {
     public Gol() {
     }
 
-    public Gol(Integer id) {
+    public Gol(Long id) {
         this.id = id;
     }
 
-    public Gol(Integer id, String tempo) {
+    public Gol(Long id, String tempo) {
         this.id = id;
         this.tempo = tempo;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

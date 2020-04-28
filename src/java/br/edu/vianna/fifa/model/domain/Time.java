@@ -37,7 +37,7 @@ public class Time implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(nullable = false)
-    private Integer id;
+    private Long id;
     @Basic(optional = false)
     @Column(nullable = false, length = 45)
     private String nome;
@@ -58,20 +58,20 @@ public class Time implements Serializable {
     public Time() {
     }
 
-    public Time(Integer id) {
+    public Time(Long id) {
         this.id = id;
     }
 
-    public Time(Integer id, String nome) {
+    public Time(Long id, String nome) {
         this.id = id;
         this.nome = nome;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

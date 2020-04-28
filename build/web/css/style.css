@@ -6,7 +6,7 @@
 body {
     font-family: 'Poppins', sans-serif;
     background: #fafafa;
-    
+
 }
 
 hr{
@@ -46,7 +46,7 @@ hr{
     padding: 1px;
 }
 ::-webkit-input-placeholder {
-   color: white;
+    color: white;
 }
 .input-nome-time{
     border-radius: 10px;
@@ -254,3 +254,25 @@ a.article:hover {
     background-position: relative;
 }
 
+/*----------Table---------*/
+
+table.table tr{
+    text-align: center;
+}
+table.table th i {
+    font-size: 13px;
+    margin: 0 5px;
+    cursor: pointer;
+}
+table.table td a {
+    cursor: pointer;
+    display: inline-block;
+    margin: 0 5px;
+    min-width: 24px;
+}
+table.table td a.edit {
+    color: #fff;
+}
+table.table td a.delete {
+    color: #E34724;
+}

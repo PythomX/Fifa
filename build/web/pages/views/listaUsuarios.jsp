@@ -17,50 +17,92 @@
     </head>
     <body>
 
+        <div class="modal-body ">
+            <table id="tableUser" class="table table-striped table-bordered table-dark ">
+                <thead class="thead-white col-md-1">
+                    <tr>
+                        <th scope="col">#Id</th>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Login</th>
+                        <th scope="col">Nivel de Acesso</th>
+                    </tr>
+                </thead>
+                <c:forEach items="${users}" var="user" >
 
-        <form action="${context}/fifa" method="POST">
-            <input type="hidden" name="page" value=""/>
-            <div class="modal-body ">
-                <table id="tableUser" class="table table-striped table-bordered table-dark text-center">
-                    <thead class="thead-white">
-                        <tr>
-                            <th scope="col">#Id</th>
-                            <th scope="col">Nome</th>
-                            <th scope="col">Login</th>
-                            <th scope="col">Nivel de Acesso</th>
+                    <tbody>
+                        <tr class="text-center ">
+                            <th id="id">${user.getId()}</th>
+                            <td id="nome">${user.getNome()}</td>
+                            <td id="login">${user.getLogin()}</td>
+                            <c:if test="${user.getNivelAcesso()}">
+                                <td id="nivelAcesso">Administrador</td>
+                            </c:if>
+                            <c:if test="${user.getNivelAcesso() != true}">
+                                <td id="nivelAcesso">Player</td>
+                            </c:if>
+                                <td >
+                                <a class="attUser" id="user" data-id="${user.getId()}"
+                                   data-nome="${user.getNome()}" data-login="${user.getLogin()}"
+                                   data-senha="${user.getSenha()}"title="Edit" data-toggle="modal" data-target="#attUser" ><i class="fas fa-edit p-1" ></i></a>
+                                   <a class="delete" title="Delete"  href="${context}/fifa?page=deleteUser&id=${user.getId()}"><i class="fas fa-trash text-danger p-1"></i></a>
+                            </td>
+
                         </tr>
-                    </thead>
-                    <c:forEach items="${users}" var="user" >
+                    </tbody>
+                </c:forEach>
+            </table>
+        </div>
 
-                        <tbody>
-                            <tr>
-                                <th scope="row">${user.getId()}</th>
-                                <td>${user.getNome()}</td>
-                                <td>${user.getLogin()}</td>
-                                <c:if test="${user.getNivelAcesso()}">
-                                    <td>Administrador</td>
-                                </c:if>
-                                <c:if test="${user.getNivelAcesso() != true}">
-                                    <td>Player</td>
-                                </c:if>
-                            </tr>
-                        </tbody>
-                    </c:forEach>
-                </table>
+        <!-- Modal -->
+        <div class="modal fade" id="attUser"  role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalTitle">Atualizar Jogador</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    
+                    
+                    <form action="${context}/fifa" method="POST">
+                        <input type="hidden" name="page" value="updateUser">
+                        <input type="hidden" id="id" name="id">
+                        <div class="modal-body">
+                            <div class="form-group text-center">
+                                <label class="control-label" for="recipient-name">Nome</label>
+                                <input class="col-md-4" type="text" name="nome" required="" id="nome">
+                                <label class="control-label offset-1" for="message-text">Login</label>
+                                <input class="col-md-4" type="text" name="login" required=""  id="login">
+                            </div>
+                            <div class="form-group text-center">
+                                <label class="control-label" for="recipient-name" >Senha</label>
+                                <input class="col-md-4" type="password" id="senha" name="senha" required="">
+                                <select class="col-md-5 offset-1" id="nivelAcesso" name="nivelAcesso">
+                                    <option value="Administrador">Administrador</option>
+                                    <option value="Player">Player</option>
+                                </select>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                                <button id="Cadastrar" class="btn btn-success"  type="Submit">Atualizar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
-        </form>
+        </div>
+
+        <!-- Fim Modal -->
+
 
 
 
         <!--===============================================================================================-->	
         <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
-        <!--===============================================================================================-->
-        <script src="vendor/bootstrap/js/popper.js"></script>
-        <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-        <!--===============================================================================================-->
-        <script src="vendor/select2/select2.min.js"></script>
         <script src="js/main.js" type="text/javascript" ></script>
-
+        <!--===============================================================================================-->
+        
 
 
     </body>

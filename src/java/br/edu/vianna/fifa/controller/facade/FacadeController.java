@@ -12,9 +12,11 @@ import br.edu.vianna.fifa.controller.action.view.db.CheckLoginAction;
 import br.edu.vianna.fifa.controller.action.view.ViewHomeAction;
 import br.edu.vianna.fifa.controller.action.view.ViewListaJogadoresAction;
 import br.edu.vianna.fifa.controller.action.view.ViewNewTeamAction;
+import br.edu.vianna.fifa.controller.action.view.db.DeleteUserAction;
 import br.edu.vianna.fifa.controller.action.view.db.LogoutAction;
 import br.edu.vianna.fifa.controller.action.view.db.NewTeamAction;
 import br.edu.vianna.fifa.controller.action.view.db.SaveUserAction;
+import br.edu.vianna.fifa.controller.action.view.db.UpdateUserAction;
 import br.edu.vianna.fifa.controller.action.view.popup.ViewErroPopupAction;
 import br.edu.vianna.fifa.controller.action.view.popup.ViewSucessPopupAction;
 import java.io.IOException;
@@ -37,19 +39,23 @@ public class FacadeController extends HttpServlet {
 
     static {
         comandos = new HashMap<>();
+        /*---------------Views------------*/
         comandos.put(null, new ViewLoginAction());
         comandos.put("login", new ViewLoginAction());
         comandos.put("home", new ViewHomeAction());
         comandos.put("newTeam", new ViewNewTeamAction());
         comandos.put("listaUsuarios", new ViewListaJogadoresAction());
 
+
         /*---------------Views DB------------*/
         comandos.put("saveUser", new SaveUserAction());
         comandos.put("checkLogin", new CheckLoginAction());
         comandos.put("logout", new LogoutAction());
         comandos.put("saveNewTeam", new NewTeamAction());
+        comandos.put("updateUser", new UpdateUserAction());
+        comandos.put("deleteUser", new DeleteUserAction());
 
-        /* --------------Erro Pop-----------*/
+        /* --------------Erro Popup-----------*/
         comandos.put("erroPopup", new ViewErroPopupAction());
         comandos.put("sucessPopup", new ViewSucessPopupAction());
         comandos.put("acessoNegado", new ViewAcessoNegado());

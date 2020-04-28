@@ -11,7 +11,7 @@ public abstract class Gol_ {
 	public static volatile SingularAttribute<Gol, Partida> idPartida;
 	public static volatile SingularAttribute<Gol, String> tempo;
 	public static volatile SingularAttribute<Gol, Jogador> idJogador;
-	public static volatile SingularAttribute<Gol, Integer> id;
+	public static volatile SingularAttribute<Gol, Long> id;
 	public static volatile SingularAttribute<Gol, Time> idTime;
 
 }

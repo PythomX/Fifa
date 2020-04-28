@@ -10,7 +10,7 @@ import javax.persistence.metamodel.StaticMetamodel;
 public abstract class Campeonato_ {
 
 	public static volatile ListAttribute<Campeonato, Partida> partidaList;
-	public static volatile SingularAttribute<Campeonato, Integer> id;
+	public static volatile SingularAttribute<Campeonato, Long> id;
 	public static volatile SingularAttribute<Campeonato, Time> idTime;
 
 }

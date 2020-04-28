@@ -34,6 +34,7 @@
 
     <body class="container-login100">
 
+
         <nav class="navbar navbar-expand-lg bg-dark text-center">
             <div class="navbar-brand ">
                 <button type="button" id="sidebarCollapse" class="btn btn-info-dark bg-dark">
@@ -130,8 +131,7 @@
             </ul>
 
         </nav>
-
-        <div class="container-fluid text-white ">
+        <div class="container-fluid ">
 
             <c:catch var="ex">
 
@@ -180,8 +180,8 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
         <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
         <script src="js/main.js" type="text/javascript" ></script>
+        <script src="js/table.js" type="text/javascript" ></script>
         <!--===============================================================================================-->
-        <!-- Font Awesome JS -->
 
     </body>
 </html>

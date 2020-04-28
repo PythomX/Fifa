@@ -15,7 +15,7 @@ public abstract class Partida_ {
 	public static volatile ListAttribute<Partida, Gol> golList;
 	public static volatile SingularAttribute<Partida, Campeonato> idCampeonato;
 	public static volatile SingularAttribute<Partida, Time> idPrimeiroTime;
-	public static volatile SingularAttribute<Partida, Integer> id;
+	public static volatile SingularAttribute<Partida, Long> id;
 
 }
 

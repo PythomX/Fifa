@@ -65,14 +65,14 @@
 
 /*---------------------------------------Tela Cadastro-------------------------------------*/
 $('#exampleModal').on('show.bs.modal', function (event) {
-    var button = $(event.relatedTarget) // Botão que acionou o modal
-    var recipient = button.data('whatever') // Extrai informação dos atributos data-*
+    var button = $(event.relatedTarget); // Botão que acionou o modal
+    var recipient = button.data('whatever'); // Extrai informação dos atributos data-*
     // Se necessário, você pode iniciar uma requisição AJAX aqui e, então, fazer a atualização em um callback.
     // Atualiza o conteúdo do modal. Nós vamos usar jQuery, aqui. No entanto, você poderia usar uma biblioteca de data binding ou outros métodos.
-    var modal = $(this)
-    modal.find('.modal-title').text('Nova mensagem para ' + recipient)
-    modal.find('.modal-body input').val(recipient)
-})
+    var modal = $(this);
+    modal.find('.modal-title').text('Nova mensagem para ' + recipient);
+    modal.find('.modal-body input').val(recipient);
+});
 
 $(document).ready(function () {
     $('#sucessPopup').modal('show');
@@ -108,8 +108,37 @@ $(document).ready(function () {
     });
 });
 
-/*----------Lista de Usuarios----------*/
+/*---------------------------------------Tela Atualizar Usuario-------------------------------------*/
+
+
 $(document).ready(function () {
-  $('#tableUser').DataTable();
-  $('.dataTables_length').addClass('bs-select');
+    $('#sucessPopup').modal('show');
+});
+
+$(document).ready(function () {
+    $('#erroCadPopup').modal('show');
+});
+
+
+
+$('#attUser').on('show.bs.modal', function (event) {
+
+    var button = $(event.relatedTarget);
+    var id = button.data('id');
+    var nome = button.data('nome');
+    var login = button.data('login');
+    var senha = button.data('senha');
+
+    var modal = $(this);
+
+    modal.find('#id').val(id);
+    modal.find('#nome').val(nome);
+    modal.find('#login').val(login);
+    modal.find('#senha').val(senha);
+});
+
+$('.delete').on("click", function (event) {
+    
+    $(this).parents("tr").remove();
+    
 });

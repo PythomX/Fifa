@@ -15,7 +15,7 @@ public abstract class Time_ {
 	public static volatile SingularAttribute<Time, Usuario> idUsuario;
 	public static volatile ListAttribute<Time, Partida> partidaList1;
 	public static volatile SingularAttribute<Time, String> nome;
-	public static volatile SingularAttribute<Time, Integer> id;
+	public static volatile SingularAttribute<Time, Long> id;
 	public static volatile ListAttribute<Time, Jogador> jogadorList;
 
 }

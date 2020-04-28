@@ -30,7 +30,7 @@ public class NewTeamAction implements ICommanderAction {
     @Override
     public void openPage(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-        try {
+        
 
             Usuario user = (Usuario) request.getSession().getAttribute("user");
             request.getSession().setAttribute("user", user);
@@ -56,9 +56,7 @@ public class NewTeamAction implements ICommanderAction {
 
             new ViewHomeAction().openPage(request, response);
 
-        } catch (Exception ex) {
-            new ViewErroPopupAction().openPage(request, response);
-        }
+       
 
     }
 

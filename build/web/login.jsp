@@ -112,8 +112,8 @@
                                         <input class="form-control" name="login" required="" id="input-login">
                                     </div>
                                     <div class="form-group">
-                                        <label for="message-text" class="col-form-label ">Senha</label>
-                                        <input class="form-control " type="password" required="" name="senha" id="input-senha">
+                                        <label for="message-text" class="col-form-label">Senha</label>
+                                        <input class="form-control" name="senha" type="password" required="" id="input-login">
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
