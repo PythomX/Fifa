@@ -11,11 +11,19 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-        
+
 
         <title>Novo Time</title>
     </head>
 
+    <c:if test="${requestScope.erro != null}">
+        <div class="alert alert-danger text-center ">
+            <strong> ${requestScope.erro}</strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    </c:if>
     <form action="${context}/fifa" method="POST">
         <input type="hidden" name="page" value="saveNewTeam"/>
         <div class="modal-body ">

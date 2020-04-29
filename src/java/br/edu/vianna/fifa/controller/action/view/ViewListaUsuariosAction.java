@@ -6,6 +6,9 @@
 package br.edu.vianna.fifa.controller.action.view;
 
 import br.edu.vianna.fifa.controller.ICommanderAction;
+import br.edu.vianna.fifa.model.dao.impl.UsuarioDAO;
+import br.edu.vianna.fifa.model.domain.Usuario;
+import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,18 +17,24 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author mateu
  */
-public class ViewAcessoNegado implements ICommanderAction{
+public class ViewListaUsuariosAction implements ICommanderAction{
 
     @Override
     public boolean pageReleased() {
-        return true;
+        return false;
     }
 
     @Override
     public void openPage(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        RequestDispatcher rd = request.getRequestDispatcher("${context}erro.jsp");
+        
+         RequestDispatcher rd = request.getRequestDispatcher("template.jsp?page=listaUsuarios");
+         
+         List<Usuario> users = new UsuarioDAO().findAll();
+         
+         request.setAttribute("users", users);
+         
+         rd.forward(request, response);
 
-        rd.forward(request, response);
     }
     
 }

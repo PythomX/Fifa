@@ -7,7 +7,6 @@ package br.edu.vianna.fifa.controller.action.view.db;
 
 import br.edu.vianna.fifa.controller.ICommanderAction;
 import br.edu.vianna.fifa.controller.action.view.ViewHomeAction;
-import br.edu.vianna.fifa.controller.action.view.popup.ViewErroPopupAction;
 import br.edu.vianna.fifa.model.dao.impl.JogadorDAO;
 import br.edu.vianna.fifa.model.dao.impl.TimeDAO;
 import br.edu.vianna.fifa.model.domain.Jogador;

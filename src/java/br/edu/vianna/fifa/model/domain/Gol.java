@@ -44,9 +44,6 @@ public class Gol implements Serializable {
     @JoinColumn(name = "idPartida", referencedColumnName = "id", nullable = false)
     @ManyToOne(optional = false)
     private Partida idPartida;
-    @JoinColumn(name = "idTime", referencedColumnName = "id", nullable = false)
-    @ManyToOne(optional = false)
-    private Time idTime;
 
     public Gol() {
     }
@@ -90,14 +87,6 @@ public class Gol implements Serializable {
 
     public void setIdPartida(Partida idPartida) {
         this.idPartida = idPartida;
-    }
-
-    public Time getIdTime() {
-        return idTime;
-    }
-
-    public void setIdTime(Time idTime) {
-        this.idTime = idTime;
     }
 
     @Override

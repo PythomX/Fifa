@@ -15,6 +15,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -29,7 +30,8 @@ import javax.persistence.Table;
 @Table(catalog = "fifa", schema = "")
 @NamedQueries({
     @NamedQuery(name = "Time.findAll", query = "SELECT t FROM Time t"),
-    @NamedQuery(name = "Time.findByIdUser", query = "SELECT t FROM Time t WHERE t.idUsuario.id = :id"),
+    @NamedQuery(name = "Time.findById", query = "SELECT t FROM Time t WHERE t.id = :id"),
+    @NamedQuery(name = "Jogador.findAllByIdTime", query = "SELECT j FROM Jogador j WHERE j.idTime.id = :id"),
     @NamedQuery(name = "Time.findByNome", query = "SELECT t FROM Time t WHERE t.nome = :nome")})
 public class Time implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -41,13 +43,11 @@ public class Time implements Serializable {
     @Basic(optional = false)
     @Column(nullable = false, length = 45)
     private String nome;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idTime")
-    private List<Gol> golList;
+    @ManyToMany(mappedBy = "timeList")
+    private List<Campeonato> campeonatoList;
     @JoinColumn(name = "idUsuario", referencedColumnName = "id", nullable = false)
     @ManyToOne(optional = false)
     private Usuario idUsuario;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idTime")
-    private List<Campeonato> campeonatoList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idTime")
     private List<Jogador> jogadorList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idPrimeiroTime")
@@ -83,12 +83,12 @@ public class Time implements Serializable {
         this.nome = nome;
     }
 
-    public List<Gol> getGolList() {
-        return golList;
+    public List<Campeonato> getCampeonatoList() {
+        return campeonatoList;
     }
 
-    public void setGolList(List<Gol> golList) {
-        this.golList = golList;
+    public void setCampeonatoList(List<Campeonato> campeonatoList) {
+        this.campeonatoList = campeonatoList;
     }
 
     public Usuario getIdUsuario() {
@@ -97,14 +97,6 @@ public class Time implements Serializable {
 
     public void setIdUsuario(Usuario idUsuario) {
         this.idUsuario = idUsuario;
-    }
-
-    public List<Campeonato> getCampeonatoList() {
-        return campeonatoList;
-    }
-
-    public void setCampeonatoList(List<Campeonato> campeonatoList) {
-        this.campeonatoList = campeonatoList;
     }
 
     public List<Jogador> getJogadorList() {

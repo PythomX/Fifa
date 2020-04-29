@@ -6,7 +6,7 @@
 package br.edu.vianna.fifa.controller.action.view.db;
 
 import br.edu.vianna.fifa.controller.ICommanderAction;
-import br.edu.vianna.fifa.controller.action.view.ViewListaJogadoresAction;
+import br.edu.vianna.fifa.controller.action.view.ViewListaUsuariosAction;
 import br.edu.vianna.fifa.model.dao.impl.UsuarioDAO;
 import br.edu.vianna.fifa.model.domain.Usuario;
 import javax.servlet.http.HttpServletRequest;
@@ -31,7 +31,7 @@ public class DeleteUserAction implements ICommanderAction {
         
         new UsuarioDAO().delete(user);
 
-        new ViewListaJogadoresAction().openPage(request, response);
+        response.sendRedirect("fifa?page=listaUsuarios");
 
     }
 

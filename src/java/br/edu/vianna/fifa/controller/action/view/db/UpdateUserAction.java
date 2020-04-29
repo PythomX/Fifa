@@ -6,8 +6,8 @@
 package br.edu.vianna.fifa.controller.action.view.db;
 
 import br.edu.vianna.fifa.controller.ICommanderAction;
-import br.edu.vianna.fifa.controller.action.view.ViewAcessoNegado;
-import br.edu.vianna.fifa.controller.action.view.ViewListaJogadoresAction;
+import br.edu.vianna.fifa.controller.action.view.ViewPageNotFoundAction;
+import br.edu.vianna.fifa.controller.action.view.ViewListaUsuariosAction;
 import br.edu.vianna.fifa.model.dao.impl.UsuarioDAO;
 import br.edu.vianna.fifa.model.domain.Usuario;
 import javax.servlet.http.HttpServletRequest;
@@ -45,7 +45,7 @@ public class UpdateUserAction implements ICommanderAction {
             }
                 Usuario usuario = new Usuario(user.getId(), nome, login, senha, user.getNivelAcesso());
                 new UsuarioDAO().update(usuario);
-                new ViewListaJogadoresAction().openPage(request, response);
+                new ViewListaUsuariosAction().openPage(request, response);
 
         
     }

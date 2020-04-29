@@ -79,7 +79,7 @@
                         Home
                     </a>
 
-                    <a href="#">
+                    <a href="${context}/fifa?page=championship">
                         <i class="fa fa-trophy fa-2x"></i>
                         Campeonato
                     </a>
@@ -108,7 +108,7 @@
                             <a href="${context}/fifa?page=newTeam"><i class="fas fa-user-plus fa-lg"></i>Novo</a>
                         </li>
                         <li>
-                            <a href="${context}/fifa?page=updateTeam"><i class="fas fa-users-cog fa-lg"></i>Times</a>
+                            <a href="${context}/fifa?page=showTeam"><i class="fas fa-users-cog fa-lg"></i>Times</a>
                         </li>
                     </ul>
                 </li>

@@ -26,7 +26,7 @@ public class LogoutAction implements ICommanderAction{
         
         request.getSession().invalidate();
         
-        new ViewLoginAction().openPage(request, response);
+        response.sendRedirect("fifa?page=login");
     }
     
 }

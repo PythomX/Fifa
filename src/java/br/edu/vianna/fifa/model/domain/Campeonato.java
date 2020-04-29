@@ -6,6 +6,7 @@
 package br.edu.vianna.fifa.model.domain;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -15,11 +16,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
@@ -29,7 +33,8 @@ import javax.persistence.Table;
 @Table(catalog = "fifa", schema = "")
 @NamedQueries({
     @NamedQuery(name = "Campeonato.findAll", query = "SELECT c FROM Campeonato c"),
-    @NamedQuery(name = "Campeonato.findById", query = "SELECT c FROM Campeonato c WHERE c.id = :id")})
+    @NamedQuery(name = "Campeonato.findById", query = "SELECT c FROM Campeonato c WHERE c.id = :id"),
+    @NamedQuery(name = "Campeonato.findByData", query = "SELECT c FROM Campeonato c WHERE c.data = :data")})
 public class Campeonato implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -37,9 +42,15 @@ public class Campeonato implements Serializable {
     @Basic(optional = false)
     @Column(nullable = false)
     private Long id;
-    @JoinColumn(name = "idTime", referencedColumnName = "id", nullable = false)
-    @ManyToOne(optional = false)
-    private Time idTime;
+    @Basic(optional = false)
+    @Column(nullable = false)
+    @Temporal(TemporalType.DATE)
+    private Date data;
+    @JoinTable(name = "camptimes", joinColumns = {
+        @JoinColumn(name = "idCamp", referencedColumnName = "id", nullable = false)}, inverseJoinColumns = {
+        @JoinColumn(name = "idTime", referencedColumnName = "id", nullable = false)})
+    @ManyToMany
+    private List<Time> timeList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idCampeonato")
     private List<Partida> partidaList;
 
@@ -50,6 +61,11 @@ public class Campeonato implements Serializable {
         this.id = id;
     }
 
+    public Campeonato(Long id, Date data) {
+        this.id = id;
+        this.data = data;
+    }
+
     public Long getId() {
         return id;
     }
@@ -58,12 +74,20 @@ public class Campeonato implements Serializable {
         this.id = id;
     }
 
-    public Time getIdTime() {
-        return idTime;
+    public Date getData() {
+        return data;
     }
 
-    public void setIdTime(Time idTime) {
-        this.idTime = idTime;
+    public void setData(Date data) {
+        this.data = data;
+    }
+
+    public List<Time> getTimeList() {
+        return timeList;
+    }
+
+    public void setTimeList(List<Time> timeList) {
+        this.timeList = timeList;
     }
 
     public List<Partida> getPartidaList() {

@@ -6,6 +6,7 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<c:set var="context" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
     <head>
@@ -16,21 +17,20 @@
 
 
         <form action="${context}/fifa" method="POST">
-            <input type="hidden" name="page" value="saveNewTeam"/>
+            <input type="hidden" name="page" value="updateTeam"/>
             <div class="modal-body ">
 
-                    <div class="form-group text-center">
-                        <input class="form-control input-nome-time text-center col-md-4 offset-4" value="${time.getNome()}" name="nomeTime" placeholder="Nome do time" required="" type="text">
-                    </div>
-                
+                <div class="form-group text-center">
+                    <input class="form-control input-nome-time text-center col-md-4 offset-4" value="${time.getNome()}" name="nomeTime" placeholder="Nome do time" required="" type="text">
+                </div>
+
                 <div class="form-group ">
                     <c:forEach items="${time.getJogadorList()}" var="jogador">
                         <div class="form-row p-1">
                             <input class="input-nome text-center" placeholder="Nome" value="${jogador.getNome()}" required="" type="text" name="nomeJogador[]" id="input-name">
                             <select class="col-md-1 input-nome" required="" id="inputState" name="posicaoJogador[]" >
-                                <option selected disabled hidden>${jogador.getPosicao()}</option>
                                 <c:forEach items="${posicoes}" var="posicao">
-                                    <option value="${posicao.getPosicao()}">${posicao.getPosicao()}</option>
+                                    <option value="${posicao.getPosicao()}"<c:if test="${posicao.getPosicao() == jogador.getPosicao()}">selected</c:if>>${posicao.getPosicao()}</option>
                                 </c:forEach>
                             </select>
                         </div>
@@ -41,10 +41,13 @@
 
             </div>
             <div class="text-center">
-                <button class="btn btn-secondary col-md-3"  type="Submit">Atualizar</button>
+                <button class="btn btn-secondary col-md-3" id="Cadastrar" type="submit">Atualizar</button>
             </div>
-            <br>
         </form>
 
+
+
+
+        <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
     </body>
 </html>

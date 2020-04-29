@@ -6,17 +6,19 @@
 package br.edu.vianna.fifa.controller.facade;
 
 import br.edu.vianna.fifa.controller.ICommanderAction;
-import br.edu.vianna.fifa.controller.action.view.ViewAcessoNegado;
+import br.edu.vianna.fifa.controller.action.view.ViewChampionshipAction;
+import br.edu.vianna.fifa.controller.action.view.ViewPageNotFoundAction;
 import br.edu.vianna.fifa.controller.action.view.ViewLoginAction;
 import br.edu.vianna.fifa.controller.action.view.db.CheckLoginAction;
 import br.edu.vianna.fifa.controller.action.view.ViewHomeAction;
-import br.edu.vianna.fifa.controller.action.view.ViewListaJogadoresAction;
+import br.edu.vianna.fifa.controller.action.view.ViewListaUsuariosAction;
 import br.edu.vianna.fifa.controller.action.view.ViewNewTeamAction;
-import br.edu.vianna.fifa.controller.action.view.ViewUpdateTeamAction;
+import br.edu.vianna.fifa.controller.action.view.ViewShowTeamAction;
 import br.edu.vianna.fifa.controller.action.view.db.DeleteUserAction;
 import br.edu.vianna.fifa.controller.action.view.db.LogoutAction;
 import br.edu.vianna.fifa.controller.action.view.db.NewTeamAction;
 import br.edu.vianna.fifa.controller.action.view.db.SaveUserAction;
+import br.edu.vianna.fifa.controller.action.view.db.UpdateTeamAction;
 import br.edu.vianna.fifa.controller.action.view.db.UpdateUserAction;
 import br.edu.vianna.fifa.controller.action.view.popup.ViewErroPopupAction;
 import br.edu.vianna.fifa.controller.action.view.popup.ViewSucessPopupAction;
@@ -42,25 +44,27 @@ public class FacadeController extends HttpServlet {
         comandos = new HashMap<>();
         /*---------------Views------------*/
         comandos.put(null, new ViewLoginAction());
-        comandos.put("login", new ViewLoginAction());
         comandos.put("home", new ViewHomeAction());
+        comandos.put("listaUsuarios", new ViewListaUsuariosAction());
+        comandos.put("login", new ViewLoginAction());
         comandos.put("newTeam", new ViewNewTeamAction());
-        comandos.put("updateTeam", new ViewUpdateTeamAction());
-        comandos.put("listaUsuarios", new ViewListaJogadoresAction());
+        comandos.put("showTeam", new ViewShowTeamAction());
+        comandos.put("championship", new ViewChampionshipAction());
 
 
         /*---------------Views DB------------*/
-        comandos.put("saveUser", new SaveUserAction());
         comandos.put("checkLogin", new CheckLoginAction());
+        comandos.put("deleteUser", new DeleteUserAction());
         comandos.put("logout", new LogoutAction());
         comandos.put("saveNewTeam", new NewTeamAction());
+        comandos.put("saveUser", new SaveUserAction());
+        comandos.put("updateTeam", new UpdateTeamAction());
         comandos.put("updateUser", new UpdateUserAction());
-        comandos.put("deleteUser", new DeleteUserAction());
 
         /* --------------Erro Popup-----------*/
         comandos.put("erroPopup", new ViewErroPopupAction());
         comandos.put("sucessPopup", new ViewSucessPopupAction());
-        comandos.put("acessoNegado", new ViewAcessoNegado());
+        comandos.put("pageNotFound", new ViewPageNotFoundAction());
 
     }
 
@@ -77,12 +81,12 @@ public class FacadeController extends HttpServlet {
             } else if (request.getSession().getAttribute("user") != null) {
                 comandos.get(page).openPage(request, response);
             } else {
-                comandos.get("acessoNegado").openPage(request, response);
+                comandos.get("pageNotFound").openPage(request, response);
             }
 
         } catch (Exception ex) {
             System.out.println(ex.getCause());
-            RequestDispatcher rd = request.getRequestDispatcher("pages/erro.jsp");
+            RequestDispatcher rd = request.getRequestDispatcher("pages/pageNotFound.jsp");
             request.setAttribute("erro", ex.toString());
             rd.forward(request, response);
         }
