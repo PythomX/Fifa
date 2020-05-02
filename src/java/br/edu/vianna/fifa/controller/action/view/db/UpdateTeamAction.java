@@ -34,19 +34,18 @@ public class UpdateTeamAction implements ICommanderAction {
         request.getSession().setAttribute("user", user);
 
         String nome = request.getParameter("nomeTime");
-        Time time = new TimeDAO().findByIdUser(user.getId());
-        time.setNome(nome);
-        time.setIdUsuario(user);
+        
+        user.getIdTime().setNome(nome);
 
-        new TimeDAO().update(time);
+        new TimeDAO().update(user.getIdTime());
 
         String[] nomeJogador = request.getParameterValues("nomeJogador[]");
         String[] posicao = request.getParameterValues("posicaoJogador[]");
 
-        List<Jogador> jogadores = new JogadorDAO().findAllByIdTime(time.getId());
+        List<Jogador> jogadores = new JogadorDAO().findAllByIdTime(user.getIdTime().getId());
         Jogador jogador = new Jogador();  
         JogadorDAO jdao = new JogadorDAO();
-        jogador.setIdTime(time);
+        jogador.setIdTime(user.getIdTime());
         for (int i = 0; i < jogadores.size() -1; i++) {
 
             String nomej = nomeJogador[i];

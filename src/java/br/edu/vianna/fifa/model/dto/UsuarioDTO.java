@@ -5,27 +5,20 @@
  */
 package br.edu.vianna.fifa.model.dto;
 
-import java.util.Date;
-
 /**
  *
  * @author mateu
  */
-public class CampeonatoDTO {
+public class UsuarioDTO {
  
     private Long id;
-    private Long times;
-    private Date data;
     private String nome;
+    private String login;
 
-    public CampeonatoDTO() {
-    }
-
-    public CampeonatoDTO(Long id, Long times, Date data, String nome) {
+    public UsuarioDTO(Long id, String nome, String login) {
         this.id = id;
-        this.times = times;
-        this.data = data;
         this.nome = nome;
+        this.login = login;
     }
 
     public Long getId() {
@@ -36,22 +29,6 @@ public class CampeonatoDTO {
         this.id = id;
     }
 
-    public Long getTimes() {
-        return times;
-    }
-
-    public void setTimes(Long times) {
-        this.times = times;
-    }
-
-    public Date getData() {
-        return data;
-    }
-
-    public void setData(Date data) {
-        this.data = data;
-    }
-
     public String getNome() {
         return nome;
     }
@@ -60,9 +37,15 @@ public class CampeonatoDTO {
         this.nome = nome;
     }
 
-    
-    
+    public String getLogin() {
+        return login;
+    }
 
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    
     
     
     

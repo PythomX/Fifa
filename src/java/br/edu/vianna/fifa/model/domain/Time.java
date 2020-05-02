@@ -14,9 +14,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -31,7 +29,7 @@ import javax.persistence.Table;
 @NamedQueries({
     @NamedQuery(name = "Time.findAll", query = "SELECT t FROM Time t"),
     @NamedQuery(name = "Time.findById", query = "SELECT t FROM Time t WHERE t.id = :id"),
-    @NamedQuery(name = "Jogador.findAllByIdTime", query = "SELECT j FROM Jogador j WHERE j.idTime.id = :id"),
+    @NamedQuery(name = "Time.findByIdUser", query = "SELECT t FROM Time t WHERE t.id = :id"),
     @NamedQuery(name = "Time.findByNome", query = "SELECT t FROM Time t WHERE t.nome = :nome")})
 public class Time implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -45,9 +43,10 @@ public class Time implements Serializable {
     private String nome;
     @ManyToMany(mappedBy = "timeList")
     private List<Campeonato> campeonatoList;
-    @JoinColumn(name = "idUsuario", referencedColumnName = "id", nullable = false)
-    @ManyToOne(optional = false)
-    private Usuario idUsuario;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idTime")
+    private List<Rank> rankList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idTime")
+    private List<Usuario> usuarioList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idTime")
     private List<Jogador> jogadorList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idPrimeiroTime")
@@ -91,12 +90,20 @@ public class Time implements Serializable {
         this.campeonatoList = campeonatoList;
     }
 
-    public Usuario getIdUsuario() {
-        return idUsuario;
+    public List<Rank> getRankList() {
+        return rankList;
     }
 
-    public void setIdUsuario(Usuario idUsuario) {
-        this.idUsuario = idUsuario;
+    public void setRankList(List<Rank> rankList) {
+        this.rankList = rankList;
+    }
+
+    public List<Usuario> getUsuarioList() {
+        return usuarioList;
+    }
+
+    public void setUsuarioList(List<Usuario> usuarioList) {
+        this.usuarioList = usuarioList;
     }
 
     public List<Jogador> getJogadorList() {

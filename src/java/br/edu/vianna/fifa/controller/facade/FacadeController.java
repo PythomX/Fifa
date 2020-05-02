@@ -12,10 +12,12 @@ import br.edu.vianna.fifa.controller.action.view.ViewLoginAction;
 import br.edu.vianna.fifa.controller.action.view.db.CheckLoginAction;
 import br.edu.vianna.fifa.controller.action.view.ViewHomeAction;
 import br.edu.vianna.fifa.controller.action.view.ViewListaUsuariosAction;
+import br.edu.vianna.fifa.controller.action.view.ViewShowChampionshipAction;
 import br.edu.vianna.fifa.controller.action.view.ViewNewTeamAction;
 import br.edu.vianna.fifa.controller.action.view.ViewShowTeamAction;
 import br.edu.vianna.fifa.controller.action.view.db.DeleteUserAction;
 import br.edu.vianna.fifa.controller.action.view.db.LogoutAction;
+import br.edu.vianna.fifa.controller.action.view.db.NewChampAction;
 import br.edu.vianna.fifa.controller.action.view.db.NewTeamAction;
 import br.edu.vianna.fifa.controller.action.view.db.SaveUserAction;
 import br.edu.vianna.fifa.controller.action.view.db.UpdateTeamAction;
@@ -50,6 +52,7 @@ public class FacadeController extends HttpServlet {
         comandos.put("newTeam", new ViewNewTeamAction());
         comandos.put("showTeam", new ViewShowTeamAction());
         comandos.put("championship", new ViewChampionshipAction());
+        comandos.put("showChamp", new ViewShowChampionshipAction());
 
 
         /*---------------Views DB------------*/
@@ -60,6 +63,8 @@ public class FacadeController extends HttpServlet {
         comandos.put("saveUser", new SaveUserAction());
         comandos.put("updateTeam", new UpdateTeamAction());
         comandos.put("updateUser", new UpdateUserAction());
+        comandos.put("newChamp", new NewChampAction());
+        
 
         /* --------------Erro Popup-----------*/
         comandos.put("erroPopup", new ViewErroPopupAction());

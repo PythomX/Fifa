@@ -32,9 +32,9 @@ public class CampeonatoDAO extends GenericDAO<Campeonato, Long>{
     }
     
     public List<CampeonatoDTO> findAllForTable() throws SQLException{
-        
+      //(Long id, Long times, Date data, String nome)  
         Query q = conexao.createQuery("SELECT NEW br.edu.vianna.fifa.model.dto.CampeonatoDTO"
-                + "(c.id, COUNT(t), c.data) FROM Campeonato c LEFT JOIN c.idTime t GROUP BY c.id");
+                + "(c.id, count(t), c.data, c.nome) FROM Campeonato c LEFT JOIN c.timeList t GROUP BY c.id");
         
         return q.getResultList();
         

@@ -7,6 +7,7 @@ package br.edu.vianna.fifa.model.dao.impl;
 
 import br.edu.vianna.fifa.model.dao.GenericDAO;
 import br.edu.vianna.fifa.model.domain.Usuario;
+import br.edu.vianna.fifa.model.dto.UsuarioDTO;
 import java.sql.SQLException;
 import java.util.List;
 import javax.persistence.Query;
@@ -43,7 +44,7 @@ public class UsuarioDAO extends GenericDAO<Usuario, Long> {
         }
 
     }
-    
+
     public Usuario findByAccount(String login, String senha) throws SQLException {
 
         Query q = conexao.createNamedQuery("Usuario.findByAccount");
@@ -57,6 +58,16 @@ public class UsuarioDAO extends GenericDAO<Usuario, Long> {
             return null;
         }
 
+    }
+
+    public List<UsuarioDTO> findAllForChamp() throws SQLException {
+        
+        //(Long id, String nome, String login)
+        Query q = conexao.createQuery("SELECT NEW br.edu.vianna.fifa.model.dto.UsuarioDTO"
+                + "(u.id, u.nome, u.login) FROM Usuario u JOIN u.idTime.jogadorList jl WHERE jl IS NOT NULL"
+                + " GROUP BY u.id");
+        
+        return q.getResultList();
     }
 
 }

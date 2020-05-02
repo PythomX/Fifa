@@ -29,7 +29,7 @@
         <div class="modal-body ">
 
             <div class="form-group text-center">
-                <input class="form-control input-nome-time text-center col-md-4 offset-4" name="nomeTime" placeholder="Nome do time" required="" type="text">
+                <input class="form-control input-nome-time text-center col-md-4 offset-4" value="${user.idTime.nome}" readonly="true" type="text">
             </div>
 
             <div class="form-group ">

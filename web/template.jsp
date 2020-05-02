@@ -25,7 +25,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
         <link rel="stylesheet" type="text/css" href="css/style.css">
         <!--===============================================================================================-->
-
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/jq-3.3.1/dt-1.10.20/b-1.6.1/r-2.2.3/sl-1.3.1/datatables.min.css"/>
 
         <!-- Scrollbar Custom CSS -->
 
@@ -61,7 +61,7 @@
                     <div class="sidebar-brand">
                         <i class="fas fa-futbol fa-3x"></i>
                     </div>
-                    <h4>${sessionScope.user.nome}</h4>
+                    <h4>${user.nome}</h4>
                     <c:if test="${sessionScope.user.nivelAcesso == true}">
                         <h6>Administrador</h6>
                     </c:if>
@@ -104,9 +104,12 @@
                         Time
                     </a>
                     <ul class="collapse list-unstyled" id="pageSubTeam">
-                        <li>
-                            <a href="${context}/fifa?page=newTeam"><i class="fas fa-user-plus fa-lg"></i>Novo</a>
-                        </li>
+                        <c:if test="${jogadores.size() <= 0}">
+                            <li>
+                                <a href="${context}/fifa?page=newTeam"><i class="fas fa-user-plus fa-lg"></i>Novo</a>
+                            </li>
+                        </c:if>
+                        
                         <li>
                             <a href="${context}/fifa?page=showTeam"><i class="fas fa-users-cog fa-lg"></i>Times</a>
                         </li>
@@ -131,7 +134,7 @@
             </ul>
 
         </nav>
-        <div class="container-fluid ">
+        <div class="container-fluid" style="min-height: 50vh;">
 
             <c:catch var="ex">
 
@@ -182,6 +185,9 @@
         <script src="js/main.js" type="text/javascript" ></script>
         <script src="js/table.js" type="text/javascript" ></script>
         <!--===============================================================================================-->
+
+
+
 
     </body>
 </html>

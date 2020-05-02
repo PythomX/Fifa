@@ -115,6 +115,13 @@
                                         <label for="message-text" class="col-form-label">Senha</label>
                                         <input class="form-control" name="senha" type="password" required="" id="input-login">
                                     </div>
+                                    
+                                    <hr class="text-white">
+                                    
+                                    <div class="form-group">
+                                        <label for="message-text" class="col-form-label">Nome do Time</label>
+                                        <input class="form-control" name="nomeTime" required="" id="input-login">
+                                    </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
                                         <button id="Cadastrar" class="btn btn-success"  type="Submit">Cadastrar</button>

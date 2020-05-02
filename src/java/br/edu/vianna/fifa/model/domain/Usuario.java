@@ -6,17 +6,16 @@
 package br.edu.vianna.fifa.model.domain;
 
 import java.io.Serializable;
-import java.util.List;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -31,8 +30,7 @@ import javax.persistence.Table;
     @NamedQuery(name = "Usuario.findByNome", query = "SELECT u FROM Usuario u WHERE u.nome = :nome"),
     @NamedQuery(name = "Usuario.findByLogin", query = "SELECT u FROM Usuario u WHERE u.login = :login"),
     @NamedQuery(name = "Usuario.findBySenha", query = "SELECT u FROM Usuario u WHERE u.senha = :senha"),
-    @NamedQuery(name = "Usuario.findByAccount", query = "SELECT u FROM Usuario u WHERE u.login = :login and u.senha = :senha")})
-public class Usuario implements Serializable {
+@NamedQuery(name = "Usuario.findByAccount", query = "SELECT u FROM Usuario u WHERE u.login = :login and u.senha = :senha")})public class Usuario implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -51,8 +49,9 @@ public class Usuario implements Serializable {
     @Basic(optional = false)
     @Column(nullable = false)
     private boolean nivelAcesso;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsuario")
-    private List<Time> timeList;
+    @JoinColumn(name = "idTime", referencedColumnName = "id", nullable = false)
+    @ManyToOne(optional = false)
+    private Time idTime;
 
     public Usuario() {
     }
@@ -109,12 +108,12 @@ public class Usuario implements Serializable {
         this.nivelAcesso = nivelAcesso;
     }
 
-    public List<Time> getTimeList() {
-        return timeList;
+    public Time getIdTime() {
+        return idTime;
     }
 
-    public void setTimeList(List<Time> timeList) {
-        this.timeList = timeList;
+    public void setIdTime(Time idTime) {
+        this.idTime = idTime;
     }
 
     @Override

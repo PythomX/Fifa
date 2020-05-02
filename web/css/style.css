@@ -276,3 +276,33 @@ table.table td a.edit {
 table.table td a.delete {
     color: #E34724;
 }
+
+table tr:checked {
+  tbody {
+     tr.selected {
+      background-color: #d9edf7;
+      color: #31708f;
+      &:hover {
+        background-color: darken(#d9edf7, 5%);
+      }
+    }
+  }
+}
+
+.table-selectable, .table-selectable-multiple {
+   tbody {
+     tr {
+      cursor: pointer;
+    }
+     tr.selected {
+      background-color: #d9edf7;
+      color: #31708f;
+      &:hover {
+        background-color: darken(#d9edf7, 5%);
+      }
+    }
+  }
+}
+
+//.desclicado{background: #32383e; color:#fff;}
+//.clicado{background: #999; color: #fff;}

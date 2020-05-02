@@ -29,17 +29,12 @@ public class NewTeamAction implements ICommanderAction {
     @Override
     public void openPage(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-        
-
             Usuario user = (Usuario) request.getSession().getAttribute("user");
             request.getSession().setAttribute("user", user);
 
-            String nome = request.getParameter("nomeTime");
-            Time time = new Time(null, nome);
-            time.setIdUsuario(user);
-
-            new TimeDAO().insert(time);
-
+            Time time = new TimeDAO().findByIdUser(user.getIdTime().getId());
+            
+            
             String[] nomeJogador = request.getParameterValues("nomeJogador[]");
             String[] posicao = request.getParameterValues("posicaoJogador[]");
 

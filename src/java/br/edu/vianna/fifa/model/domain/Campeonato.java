@@ -34,7 +34,8 @@ import javax.persistence.TemporalType;
 @NamedQueries({
     @NamedQuery(name = "Campeonato.findAll", query = "SELECT c FROM Campeonato c"),
     @NamedQuery(name = "Campeonato.findById", query = "SELECT c FROM Campeonato c WHERE c.id = :id"),
-    @NamedQuery(name = "Campeonato.findByData", query = "SELECT c FROM Campeonato c WHERE c.data = :data")})
+    @NamedQuery(name = "Campeonato.findByData", query = "SELECT c FROM Campeonato c WHERE c.data = :data"),
+    @NamedQuery(name = "Campeonato.findByNome", query = "SELECT c FROM Campeonato c WHERE c.nome = :nome")})
 public class Campeonato implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -46,11 +47,16 @@ public class Campeonato implements Serializable {
     @Column(nullable = false)
     @Temporal(TemporalType.DATE)
     private Date data;
+    @Basic(optional = false)
+    @Column(nullable = false, length = 45)
+    private String nome;
     @JoinTable(name = "camptimes", joinColumns = {
         @JoinColumn(name = "idCamp", referencedColumnName = "id", nullable = false)}, inverseJoinColumns = {
         @JoinColumn(name = "idTime", referencedColumnName = "id", nullable = false)})
     @ManyToMany
     private List<Time> timeList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idChamp")
+    private List<Rank> rankList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idCampeonato")
     private List<Partida> partidaList;
 
@@ -61,9 +67,10 @@ public class Campeonato implements Serializable {
         this.id = id;
     }
 
-    public Campeonato(Long id, Date data) {
+    public Campeonato(Long id, Date data, String nome) {
         this.id = id;
         this.data = data;
+        this.nome = nome;
     }
 
     public Long getId() {
@@ -82,12 +89,28 @@ public class Campeonato implements Serializable {
         this.data = data;
     }
 
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
     public List<Time> getTimeList() {
         return timeList;
     }
 
     public void setTimeList(List<Time> timeList) {
         this.timeList = timeList;
+    }
+
+    public List<Rank> getRankList() {
+        return rankList;
+    }
+
+    public void setRankList(List<Rank> rankList) {
+        this.rankList = rankList;
     }
 
     public List<Partida> getPartidaList() {

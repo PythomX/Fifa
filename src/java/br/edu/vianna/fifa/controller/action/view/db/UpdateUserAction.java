@@ -38,13 +38,13 @@ public class UpdateUserAction implements ICommanderAction {
             
             if (nivelAcesso.equals("Administrador")) {
                 user.setNivelAcesso(true);
-            } else if(nivelAcesso.equals("Player")){
+            } else {
                 user.setNivelAcesso(false);
-            } else{
-                throw new Exception();
-            }
-                Usuario usuario = new Usuario(user.getId(), nome, login, senha, user.getNivelAcesso());
-                new UsuarioDAO().update(usuario);
+            } 
+                user.setNome(nome);
+                user.setLogin(login);
+                user.setSenha(senha);
+                new UsuarioDAO().update(user);
                 new ViewListaUsuariosAction().openPage(request, response);
 
         
