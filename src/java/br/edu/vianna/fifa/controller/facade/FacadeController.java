@@ -7,6 +7,8 @@ package br.edu.vianna.fifa.controller.facade;
 
 import br.edu.vianna.fifa.controller.ICommanderAction;
 import br.edu.vianna.fifa.controller.action.view.ViewChampionshipAction;
+import br.edu.vianna.fifa.controller.action.view.ViewEditChampionshipAction;
+import br.edu.vianna.fifa.controller.action.view.ViewEditMatchAction;
 import br.edu.vianna.fifa.controller.action.view.ViewPageNotFoundAction;
 import br.edu.vianna.fifa.controller.action.view.ViewLoginAction;
 import br.edu.vianna.fifa.controller.action.view.db.CheckLoginAction;
@@ -14,8 +16,10 @@ import br.edu.vianna.fifa.controller.action.view.ViewHomeAction;
 import br.edu.vianna.fifa.controller.action.view.ViewListaUsuariosAction;
 import br.edu.vianna.fifa.controller.action.view.ViewShowChampionshipAction;
 import br.edu.vianna.fifa.controller.action.view.ViewNewTeamAction;
+import br.edu.vianna.fifa.controller.action.view.db.PlayChampionshipAction;
 import br.edu.vianna.fifa.controller.action.view.ViewShowTeamAction;
 import br.edu.vianna.fifa.controller.action.view.db.DeleteUserAction;
+import br.edu.vianna.fifa.controller.action.view.db.InsertGoalAction;
 import br.edu.vianna.fifa.controller.action.view.db.LogoutAction;
 import br.edu.vianna.fifa.controller.action.view.db.NewChampAction;
 import br.edu.vianna.fifa.controller.action.view.db.NewTeamAction;
@@ -53,6 +57,8 @@ public class FacadeController extends HttpServlet {
         comandos.put("showTeam", new ViewShowTeamAction());
         comandos.put("championship", new ViewChampionshipAction());
         comandos.put("showChamp", new ViewShowChampionshipAction());
+        comandos.put("editChamp", new ViewEditChampionshipAction());
+        comandos.put("editMatch", new ViewEditMatchAction());
 
 
         /*---------------Views DB------------*/
@@ -64,6 +70,8 @@ public class FacadeController extends HttpServlet {
         comandos.put("updateTeam", new UpdateTeamAction());
         comandos.put("updateUser", new UpdateUserAction());
         comandos.put("newChamp", new NewChampAction());
+        comandos.put("playChamp", new PlayChampionshipAction());
+        comandos.put("insertGoal", new InsertGoalAction());
         
 
         /* --------------Erro Popup-----------*/

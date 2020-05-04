@@ -19,8 +19,7 @@
         <!--===============================================================================================-->
         <link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
         <!-- Bootstrap CSS CDN -->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
-        <!-- Our Custom CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" >        <!-- Our Custom CSS -->
         <!-- Scrollbar Custom CSS -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
         <link rel="stylesheet" type="text/css" href="css/style.css">
@@ -92,7 +91,7 @@
                         <ul class="collapse list-unstyled" id="pageSubmenu">
                             <li>
                                 <a  href="${context}/fifa?page=listaUsuarios">
-                                    <i class="fas fa-users fa-lg"></i>Jogadores</a>
+                                    <i class="fas fa-users fa-lg"></i>Usuarios</a>
                             </li>
                         </ul>
                     </c:if>
@@ -109,7 +108,7 @@
                                 <a href="${context}/fifa?page=newTeam"><i class="fas fa-user-plus fa-lg"></i>Novo</a>
                             </li>
                         </c:if>
-                        
+
                         <li>
                             <a href="${context}/fifa?page=showTeam"><i class="fas fa-users-cog fa-lg"></i>Times</a>
                         </li>
@@ -134,10 +133,9 @@
             </ul>
 
         </nav>
-        <div class="container-fluid" style="min-height: 50vh;">
+        <div class="container-fluid " style="min-height: 90vh;">
 
             <c:catch var="ex">
-
                 <c:if test="${param.page == null}">
                     <jsp:include page="pages/views/home.jsp" />
                 </c:if>                            
@@ -178,7 +176,7 @@
         <!-- Popper.JS -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
         <!-- Bootstrap JS -->
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
         <!-- jQuery Custom Scroller CDN -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
         <script src="vendor/bootstrap/js/bootstrap.min.js"></script>

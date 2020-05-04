@@ -8,6 +8,7 @@ package br.edu.vianna.fifa.controller.action.view;
 import br.edu.vianna.fifa.controller.ICommanderAction;
 import br.edu.vianna.fifa.model.dao.impl.CampeonatoDAO;
 import br.edu.vianna.fifa.model.dao.impl.PartidaDAO;
+import br.edu.vianna.fifa.model.dao.impl.TimeDAO;
 import br.edu.vianna.fifa.model.domain.Campeonato;
 import br.edu.vianna.fifa.model.domain.Partida;
 import br.edu.vianna.fifa.model.dto.CampeonatoDTO;
@@ -20,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author mateu
  */
-public class ViewChampionshipAction implements ICommanderAction {
+public class ViewEditChampionshipAction implements ICommanderAction{
 
     @Override
     public boolean pageReleased() {
@@ -30,23 +31,19 @@ public class ViewChampionshipAction implements ICommanderAction {
     @Override
     public void openPage(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-        RequestDispatcher rd = request.getRequestDispatcher("template.jsp?page=championship");
-
-        List<Campeonato> champs = new CampeonatoDAO().findAllForTable();
-        List<CampeonatoDTO> quantidades = new CampeonatoDAO().findAmountTimesForTable();
+        RequestDispatcher rd = request.getRequestDispatcher("template.jsp?page=editChamp");
         
-        int i = 0;
-        for (Campeonato champ : champs) {
-        List<Partida> partidas = new PartidaDAO().findMatchByChamp(champs.get(i).getId());
-            champ.setPartidaList(partidas);
-            i++;
-        }
-            
-        request.setAttribute("champs", champs);
-        request.setAttribute("quantidades", quantidades);
-
+        Long id = Long.parseLong(request.getParameter("id"));
+        Campeonato champ = new CampeonatoDAO().findById(id);
+        List<Partida> partidas = new PartidaDAO().findMatchByChamp(champ.getId());
+        CampeonatoDTO quantidade = new CampeonatoDAO().findAmountTimesByChamp(id);
+        
+        
+        request.setAttribute("partidas", partidas);
+        request.setAttribute("quantidade", quantidade);
+        request.setAttribute("champ", champ);
         rd.forward(request, response);
-
+        
     }
-
+    
 }

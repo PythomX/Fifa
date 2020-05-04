@@ -15,17 +15,10 @@ public class CampeonatoDTO {
  
     private Long id;
     private Long times;
-    private Date data;
-    private String nome;
 
-    public CampeonatoDTO() {
-    }
-
-    public CampeonatoDTO(Long id, Long times, Date data, String nome) {
+    public CampeonatoDTO(Long id, Long times) {
         this.id = id;
         this.times = times;
-        this.data = data;
-        this.nome = nome;
     }
 
     public Long getId() {
@@ -43,23 +36,6 @@ public class CampeonatoDTO {
     public void setTimes(Long times) {
         this.times = times;
     }
-
-    public Date getData() {
-        return data;
-    }
-
-    public void setData(Date data) {
-        this.data = data;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
     
     
 

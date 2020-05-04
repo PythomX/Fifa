@@ -26,7 +26,10 @@ import javax.persistence.Table;
 @Table(catalog = "fifa", schema = "")
 @NamedQueries({
     @NamedQuery(name = "Rank.findAll", query = "SELECT r FROM Rank r"),
-    @NamedQuery(name = "Rank.findByIdRank", query = "SELECT r FROM Rank r WHERE r.idRank = :idRank")})
+    @NamedQuery(name = "Rank.findByIdRank", query = "SELECT r FROM Rank r WHERE r.idRank = :idRank"),
+    @NamedQuery(name = "Rank.findByVitorias", query = "SELECT r FROM Rank r WHERE r.vitorias = :vitorias"),
+    @NamedQuery(name = "Rank.findByDerrotas", query = "SELECT r FROM Rank r WHERE r.derrotas = :derrotas"),
+    @NamedQuery(name = "Rank.findByEmpates", query = "SELECT r FROM Rank r WHERE r.empates = :empates")})
 public class Rank implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -34,6 +37,15 @@ public class Rank implements Serializable {
     @Basic(optional = false)
     @Column(nullable = false)
     private Long idRank;
+    @Basic(optional = false)
+    @Column(nullable = false, length = 45)
+    private String vitorias;
+    @Basic(optional = false)
+    @Column(nullable = false, length = 45)
+    private String derrotas;
+    @Basic(optional = false)
+    @Column(nullable = false, length = 45)
+    private String empates;
     @JoinColumn(name = "idChamp", referencedColumnName = "id", nullable = false)
     @ManyToOne(optional = false)
     private Campeonato idChamp;
@@ -48,12 +60,43 @@ public class Rank implements Serializable {
         this.idRank = idRank;
     }
 
+    public Rank(Long idRank, String vitorias, String derrotas, String empates) {
+        this.idRank = idRank;
+        this.vitorias = vitorias;
+        this.derrotas = derrotas;
+        this.empates = empates;
+    }
+
     public Long getIdRank() {
         return idRank;
     }
 
     public void setIdRank(Long idRank) {
         this.idRank = idRank;
+    }
+
+    public String getVitorias() {
+        return vitorias;
+    }
+
+    public void setVitorias(String vitorias) {
+        this.vitorias = vitorias;
+    }
+
+    public String getDerrotas() {
+        return derrotas;
+    }
+
+    public void setDerrotas(String derrotas) {
+        this.derrotas = derrotas;
+    }
+
+    public String getEmpates() {
+        return empates;
+    }
+
+    public void setEmpates(String empates) {
+        this.empates = empates;
     }
 
     public Campeonato getIdChamp() {

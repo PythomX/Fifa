@@ -45,4 +45,14 @@ public class JogadorDAO extends GenericDAO<Jogador, Long>{
         return (List<Jogador>) q.getResultList();
     }
     
+    public Jogador findByNomeAndId(String nome, Long id) throws SQLException{
+        
+        Query q = conexao.createNamedQuery("Jogador.findByNomeAndId");
+        
+        q.setParameter("nome", nome);
+        q.setParameter("id", id);
+        return (Jogador) q.getSingleResult();
+        
+    }
+    
 }

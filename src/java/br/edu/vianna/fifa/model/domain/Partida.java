@@ -6,6 +6,7 @@
 package br.edu.vianna.fifa.model.domain;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Basic;
@@ -33,8 +34,10 @@ import javax.persistence.TemporalType;
 @NamedQueries({
     @NamedQuery(name = "Partida.findAll", query = "SELECT p FROM Partida p"),
     @NamedQuery(name = "Partida.findById", query = "SELECT p FROM Partida p WHERE p.id = :id"),
-    @NamedQuery(name = "Partida.findByLocalTime", query = "SELECT p FROM Partida p WHERE p.localTime = :localTime")})
+    @NamedQuery(name = "Partida.findMatchByChamp", query = "SELECT p FROM Partida p WHERE p.idCampeonato.id = :id GROUP BY p.id"),
+    @NamedQuery(name = "Partida.findByDataHora", query = "SELECT p FROM Partida p WHERE p.dataHora = :dataHora")})
 public class Partida implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -44,7 +47,7 @@ public class Partida implements Serializable {
     @Basic(optional = false)
     @Column(nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
-    private Date localTime;
+    private Date dataHora;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idPartida")
     private List<Gol> golList;
     @JoinColumn(name = "idCampeonato", referencedColumnName = "id", nullable = false)
@@ -64,9 +67,9 @@ public class Partida implements Serializable {
         this.id = id;
     }
 
-    public Partida(Long id, Date localTime) {
+    public Partida(Long id, Date dataHora) {
         this.id = id;
-        this.localTime = localTime;
+        this.dataHora = dataHora;
     }
 
     public Long getId() {
@@ -77,12 +80,12 @@ public class Partida implements Serializable {
         this.id = id;
     }
 
-    public Date getLocalTime() {
-        return localTime;
+    public Date getDataHora() {
+        return dataHora;
     }
 
-    public void setLocalTime(Date localTime) {
-        this.localTime = localTime;
+    public void setDataHora(Date dataHora) {
+        this.dataHora = dataHora;
     }
 
     public List<Gol> getGolList() {
@@ -141,5 +144,5 @@ public class Partida implements Serializable {
     public String toString() {
         return "br.edu.vianna.fifa.model.domain.Partida[ id=" + id + " ]";
     }
-    
+
 }

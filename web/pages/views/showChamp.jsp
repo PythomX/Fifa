@@ -19,7 +19,7 @@
         <div class="form-group ">
             <input class="form-control col-md-4 text-center offset-4" form="champ" placeholder="Nome do Campeonato" required="" name="nomeChamp">
         </div>
-        
+
         <div class="modal-body text-center ">
             <div class="row justify-content-center ">
                 <div class="col-md-5">
@@ -79,9 +79,6 @@
                 <button type="submit" form="champ" class="btn btn-dark col-md-3">Criar</button>
             </div>
         </div>
-
-
-
 
 
 

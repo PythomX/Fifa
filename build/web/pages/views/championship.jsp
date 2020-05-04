@@ -16,33 +16,47 @@
     </head>
     <body>
 
-            
-            <div class="modal-body ">
-                <c:if test="${user.nivelAcesso}">
-                    <a class="btn btn-dark offset-lg-10 text-white" type="button" href="${context}/fifa?page=showChamp">Novo<i class="fas fa-plus p-1 text-white"></i></a>
-                    <hr class="text-white">
-                </c:if>
-                <table id="tableUser" class="table table-striped table-bordered table-dark" border="1" cellspacing="1">
-                    <thead>
+
+        <div class="modal-body ">
+            <c:if test="${user.nivelAcesso}">
+                <a class="btn btn-dark offset-lg-10 text-white" type="button" href="${context}/fifa?page=showChamp">Novo<i class="fas fa-plus p-1 text-white"></i></a>
+                <hr class="text-white">
+            </c:if>
+            <table id="tableUser" class="table table-striped table-bordered table-dark" border="1" cellspacing="1">
+                <thead>
+                    <tr>
+                        <th scope="col">#Id</th>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Times</th>
+                        <th scope="col">Data</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <c:forEach items="${champs}" var="champ" varStatus="status">
                         <tr>
-                            <th scope="col">#Id</th>
-                            <th scope="col">Nome</th>
-                            <th scope="col">Times</th>
-                            <th scope="col">Data</th>
+                            <td>${champ.id}</td>
+                            <td>${champ.nome}</td>
+                            <td>${quantidades[status.index].times}</td>
+                            <td><fmt:formatDate pattern = "dd/MM/yyyy" value = "${champ.data}" /></td>
+                            <c:if test="${sessionScope.user.nivelAcesso == true && champ.partidaList == null}">
+                                <td><a href="${context}/fifa?page=playChamp&id=${champ.id}">
+                                        <i class="fas fa-play text-success"></i></c:if></a></td>
+
+                            <c:if test="${sessionScope.user.nivelAcesso && champ.partidaList != null}">
+                                <td><a href="${context}/fifa?page=editChamp&id=${champ.id}"> 
+                                        <i class="fas fa-edit text-white"></i></a>
+                                    </c:if>
+
+                                <c:if test="${sessionScope.user.nivelAcesso != true}">
+                                <td><a href="${context}/fifa?page=editChamp&id=${champ.id}"> 
+                                        <i class="fas fa-eye text-white"></i></a>
+                                </c:if></a>
+
                         </tr>
-                    </thead>
-                    <tbody>
-                        <c:forEach items="${champs}" var="champ">
-                            <tr>
-                                <td>${champ.id}</td>
-                                <td>${champ.nome}</td>
-                                <td>${champ.times}</td>
-                                <td><fmt:formatDate pattern = "dd/MM/yyyy" value = "${champ.data}" /></td>
-                            </tr>
-                        </c:forEach>
-                    </tbody>
-                </table>
-            </div>
+                    </c:forEach>
+                </tbody>
+            </table>
+        </div>
 
 
         <script src="vendor/jquery/jquery-3.2.1.min.js"></script>

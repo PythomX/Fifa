@@ -306,3 +306,8 @@ table tr:checked {
 
 //.desclicado{background: #32383e; color:#fff;}
 //.clicado{background: #999; color: #fff;}
+
+.opacity-tab{
+    background-color: #343a40;
+    opacity: 0.8;
+}

@@ -31,12 +31,33 @@ public class CampeonatoDAO extends GenericDAO<Campeonato, Long>{
         return (List<Campeonato>) q.getResultList();
     }
     
-    public List<CampeonatoDTO> findAllForTable() throws SQLException{
-      //(Long id, Long times, Date data, String nome)  
+    public List<Campeonato> findAllForTable() throws SQLException{
+       
+        Query q = conexao.createNamedQuery("Campeonato.findAllForTable");
+        
+        return (List<Campeonato>) q.getResultList();
+        
+    }
+    
+    
+    public List<CampeonatoDTO> findAmountTimesForTable() throws SQLException{
+       
         Query q = conexao.createQuery("SELECT NEW br.edu.vianna.fifa.model.dto.CampeonatoDTO"
-                + "(c.id, count(t), c.data, c.nome) FROM Campeonato c LEFT JOIN c.timeList t GROUP BY c.id");
+                + " (c.id, count(t)) FROM Campeonato c LEFT JOIN c.timeList t GROUP BY c.id");
         
         return q.getResultList();
         
     }
+    
+    public CampeonatoDTO findAmountTimesByChamp(Long id) throws SQLException{
+       
+        Query q = conexao.createQuery("SELECT NEW br.edu.vianna.fifa.model.dto.CampeonatoDTO"
+                + " (c.id, count(t)) FROM Campeonato c LEFT JOIN c.timeList t WHERE c.id = :id GROUP BY c.id");
+        
+        q.setParameter("id", id);
+        return (CampeonatoDTO) q.getSingleResult();
+        
+    }
+    
+    
 }

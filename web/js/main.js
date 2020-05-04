@@ -88,7 +88,7 @@ $(document).ready(function () {
     // SideNav Initialization
     $(".button-collapse").sideNav();
     new WOW().init();
-})
+});
 
 $(document).ready(function () {
     $("#sidebar").mCustomScrollbar({
@@ -140,5 +140,39 @@ $('#attUser').on('show.bs.modal', function (event) {
 $('.delete').on("click", function (event) {
     
     $(this).parents("tr").remove();
+    
+});
+
+$('#modalGoal').modal('handleUpdate').on('shown.bs.modal');
+
+$(document).ready(function(){
+   
+    var jogadoresPrimeiroTime = $('#jogadoresPrimeiroTime');
+    var jogadoresSegundoTime = $('#jogadoresSegundoTime');
+    var primeiroSelect = $('#primeiroSelect');
+    var segundoSelect = $('#segundoSelect');
+    
+    primeiroSelect.prop('disable', true);
+    jogadoresSegundoTime.hide();
+    
+    $('#time').change(function(){
+        
+      var selecionado = $(this).children('option:selected').data('pos');
+        if (selecionado === 'primeiro'){
+            jogadoresPrimeiroTime.show();
+            primeiroSelect.prop('disable', false);
+            
+            jogadoresSegundoTime.hide();
+            segundoSelect.prop('disable', true);
+        } else{
+            jogadoresPrimeiroTime.hide();
+            primeiroSelect.prop('disable', true);
+            
+            jogadoresSegundoTime.show();
+            segundoSelect.prop('disable', false);
+        }
+        
+    });
+        
     
 });
