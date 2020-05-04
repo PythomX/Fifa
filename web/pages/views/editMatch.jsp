@@ -34,9 +34,14 @@
                         </div>
                     </div>
                 </div>
-                <div class="modal-footer justify-content-center">
-                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modalGoal">Add Gol</button>
-                    <button type="button" class="btn btn-danger">Finalizar Partida</button>
+                <div class="modal-footer ">
+
+                    <a class="btn btn-primary " href="${context}/fifa?page=editChamp&id=${partida.idCampeonato.id}" role="button">Voltar</a>
+                    <c:if test="${!partida.finalizado}">
+                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modalGoal">Add Gol</button>
+                        <a type="button" href="${context}/fifa?page=finishMatch&id=${partida.id}" class="btn btn-danger">Finalizar Partida</a>
+                    </c:if>
+
                 </div>
             </div>
 
@@ -96,6 +101,7 @@
 
                     </form>
                     <div class="modal-footer">
+
                         <button type="submit" form="formAddGoal" class="btn btn-success">Adicionar</button>
                         <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
                     </div>

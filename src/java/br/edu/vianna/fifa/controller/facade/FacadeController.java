@@ -19,6 +19,7 @@ import br.edu.vianna.fifa.controller.action.view.ViewNewTeamAction;
 import br.edu.vianna.fifa.controller.action.view.db.PlayChampionshipAction;
 import br.edu.vianna.fifa.controller.action.view.ViewShowTeamAction;
 import br.edu.vianna.fifa.controller.action.view.db.DeleteUserAction;
+import br.edu.vianna.fifa.controller.action.view.db.FinishMatchAction;
 import br.edu.vianna.fifa.controller.action.view.db.InsertGoalAction;
 import br.edu.vianna.fifa.controller.action.view.db.LogoutAction;
 import br.edu.vianna.fifa.controller.action.view.db.NewChampAction;
@@ -72,6 +73,7 @@ public class FacadeController extends HttpServlet {
         comandos.put("newChamp", new NewChampAction());
         comandos.put("playChamp", new PlayChampionshipAction());
         comandos.put("insertGoal", new InsertGoalAction());
+        comandos.put("finishMatch", new FinishMatchAction());
         
 
         /* --------------Erro Popup-----------*/

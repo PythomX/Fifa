@@ -6,7 +6,6 @@
 package br.edu.vianna.fifa.model.domain;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Basic;
@@ -35,9 +34,9 @@ import javax.persistence.TemporalType;
     @NamedQuery(name = "Partida.findAll", query = "SELECT p FROM Partida p"),
     @NamedQuery(name = "Partida.findById", query = "SELECT p FROM Partida p WHERE p.id = :id"),
     @NamedQuery(name = "Partida.findMatchByChamp", query = "SELECT p FROM Partida p WHERE p.idCampeonato.id = :id GROUP BY p.id"),
-    @NamedQuery(name = "Partida.findByDataHora", query = "SELECT p FROM Partida p WHERE p.dataHora = :dataHora")})
+    @NamedQuery(name = "Partida.findByDataHora", query = "SELECT p FROM Partida p WHERE p.dataHora = :dataHora"),
+    @NamedQuery(name = "Partida.findByFinalizado", query = "SELECT p FROM Partida p WHERE p.finalizado = :finalizado")})
 public class Partida implements Serializable {
-
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -48,6 +47,9 @@ public class Partida implements Serializable {
     @Column(nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date dataHora;
+    @Basic(optional = false)
+    @Column(nullable = false)
+    private boolean finalizado;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idPartida")
     private List<Gol> golList;
     @JoinColumn(name = "idCampeonato", referencedColumnName = "id", nullable = false)
@@ -67,9 +69,10 @@ public class Partida implements Serializable {
         this.id = id;
     }
 
-    public Partida(Long id, Date dataHora) {
+    public Partida(Long id, Date dataHora, boolean finalizado) {
         this.id = id;
         this.dataHora = dataHora;
+        this.finalizado = finalizado;
     }
 
     public Long getId() {
@@ -86,6 +89,14 @@ public class Partida implements Serializable {
 
     public void setDataHora(Date dataHora) {
         this.dataHora = dataHora;
+    }
+
+    public boolean getFinalizado() {
+        return finalizado;
+    }
+
+    public void setFinalizado(boolean finalizado) {
+        this.finalizado = finalizado;
     }
 
     public List<Gol> getGolList() {
@@ -144,5 +155,5 @@ public class Partida implements Serializable {
     public String toString() {
         return "br.edu.vianna.fifa.model.domain.Partida[ id=" + id + " ]";
     }
-
+    
 }

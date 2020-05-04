@@ -38,6 +38,7 @@ import javax.persistence.TemporalType;
     @NamedQuery(name = "Campeonato.findByData", query = "SELECT c FROM Campeonato c WHERE c.data = :data"),
     @NamedQuery(name = "Campeonato.findByNome", query = "SELECT c FROM Campeonato c WHERE c.nome = :nome")})
 public class Campeonato implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -146,5 +147,5 @@ public class Campeonato implements Serializable {
     public String toString() {
         return "br.edu.vianna.fifa.model.domain.Campeonato[ id=" + id + " ]";
     }
-    
+
 }

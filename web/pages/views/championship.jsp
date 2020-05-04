@@ -38,16 +38,17 @@
                             <td>${champ.nome}</td>
                             <td>${quantidades[status.index].times}</td>
                             <td><fmt:formatDate pattern = "dd/MM/yyyy" value = "${champ.data}" /></td>
-                            <c:if test="${sessionScope.user.nivelAcesso == true && champ.partidaList == null}">
+
+                            <c:if test="${user.nivelAcesso && champ.partidaList.size() <= 0}">
                                 <td><a href="${context}/fifa?page=playChamp&id=${champ.id}">
                                         <i class="fas fa-play text-success"></i></c:if></a></td>
 
-                            <c:if test="${sessionScope.user.nivelAcesso && champ.partidaList != null}">
+                            <c:if test="${user.nivelAcesso && champ.partidaList.size() > 0}">
                                 <td><a href="${context}/fifa?page=editChamp&id=${champ.id}"> 
                                         <i class="fas fa-edit text-white"></i></a>
                                     </c:if>
 
-                                <c:if test="${sessionScope.user.nivelAcesso != true}">
+                                <c:if test="${!user.nivelAcesso}">
                                 <td><a href="${context}/fifa?page=editChamp&id=${champ.id}"> 
                                         <i class="fas fa-eye text-white"></i></a>
                                 </c:if></a>
