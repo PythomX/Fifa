@@ -27,6 +27,10 @@ import javax.persistence.Table;
 @NamedQueries({
     @NamedQuery(name = "Gol.findAll", query = "SELECT g FROM Gol g"),
     @NamedQuery(name = "Gol.findById", query = "SELECT g FROM Gol g WHERE g.id = :id"),
+    @NamedQuery(name = "Gol.findByFirstTeam", query = "SELECT g FROM Gol g JOIN g.idJogador j JOIN j.idTime t"
+            + " JOIN g.idPartida p WHERE p.id = :idPartida AND  p.idPrimeiroTime.id = t.id "),
+    @NamedQuery(name = "Gol.findBySecondTeam", query = "SELECT g FROM Gol g JOIN g.idJogador j JOIN j.idTime t"
+            + " JOIN g.idPartida p WHERE p.id = :idPartida AND  p.idSegundoTime.id = t.id"),
     @NamedQuery(name = "Gol.findByTempo", query = "SELECT g FROM Gol g WHERE g.tempo = :tempo")})
 public class Gol implements Serializable {
     private static final long serialVersionUID = 1L;

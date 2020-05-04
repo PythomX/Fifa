@@ -152,7 +152,7 @@ $(document).ready(function(){
     var primeiroSelect = $('#primeiroSelect');
     var segundoSelect = $('#segundoSelect');
     
-    primeiroSelect.prop('disable', true);
+    primeiroSelect.prop('disabled', true);
     jogadoresSegundoTime.hide();
     
     $('#time').change(function(){
@@ -160,19 +160,17 @@ $(document).ready(function(){
       var selecionado = $(this).children('option:selected').data('pos');
         if (selecionado === 'primeiro'){
             jogadoresPrimeiroTime.show();
-            primeiroSelect.prop('disable', false);
+            primeiroSelect.prop('disabled', false);
             
             jogadoresSegundoTime.hide();
-            segundoSelect.prop('disable', true);
+            segundoSelect.prop('disabled', true);
         } else{
             jogadoresPrimeiroTime.hide();
-            primeiroSelect.prop('disable', true);
+            primeiroSelect.prop('disabled', true);
             
             jogadoresSegundoTime.show();
-            segundoSelect.prop('disable', false);
+            segundoSelect.prop('disabled', false);
         }
         
     });
-        
-    
 });

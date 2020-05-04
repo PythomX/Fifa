@@ -33,6 +33,8 @@ public class FinishMatchAction implements ICommanderAction{
         
         new PartidaDAO().update(partida);
         
+        response.sendRedirect("fifa?page=editChamp&id="+partida.getIdCampeonato().getId());
+        
     }
     
 }

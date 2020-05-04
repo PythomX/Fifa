@@ -5,10 +5,9 @@
         <group>
             <file>file:/C:/Users/mateu/OneDrive/Documentos/NetBeansProjects/Fifa/src/java/br/edu/vianna/fifa/controller/facade/FacadeController.java</file>
             <file>file:/C:/Users/mateu/OneDrive/Documentos/NetBeansProjects/Fifa/web/pages/views/editMatch.jsp</file>
-            <file>file:/C:/Users/mateu/OneDrive/Documentos/NetBeansProjects/Fifa/src/java/br/edu/vianna/fifa/model/domain/Partida.java</file>
+            <file>file:/C:/Users/mateu/OneDrive/Documentos/NetBeansProjects/Fifa/src/java/br/edu/vianna/fifa/controller/action/view/ViewEditChampionshipAction.java</file>
             <file>file:/C:/Users/mateu/OneDrive/Documentos/NetBeansProjects/Fifa/web/pages/views/editChamp.jsp</file>
-            <file>file:/C:/Users/mateu/OneDrive/Documentos/NetBeansProjects/Fifa/web/pages/views/showChamp.jsp</file>
-            <file>file:/C:/Users/mateu/OneDrive/Documentos/NetBeansProjects/Fifa/web/pages/views/championship.jsp</file>
+            <file>file:/C:/Users/mateu/OneDrive/Documentos/NetBeansProjects/Fifa/src/java/br/edu/vianna/fifa/controller/action/view/db/InsertGoalAction.java</file>
         </group>
     </open-files>
 </project-private>

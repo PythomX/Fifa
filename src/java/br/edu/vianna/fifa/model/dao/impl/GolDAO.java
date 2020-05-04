@@ -30,4 +30,22 @@ public class GolDAO extends GenericDAO<Gol, Long>{
         return (List<Gol>) q.getResultList();
     }
     
+    public List<Gol> findByFirstTeam(Long idPartida) throws SQLException{
+        
+        Query q = conexao.createNamedQuery("Gol.findByFirstTeam");
+        
+        q.setParameter("idPartida", idPartida);
+        return q.getResultList();
+        
+    }
+    
+    public List<Gol> findBySecondTeam(Long idPartida) throws SQLException{
+        
+        Query q = conexao.createNamedQuery("Gol.findBySecondTeam");
+        
+        q.setParameter("idPartida", idPartida);
+        return q.getResultList();
+        
+    }
+    
 }

@@ -76,9 +76,16 @@
                                     <div class="col-2 ">
                                         <h1><b>0</b></h1>
                                     </div>
+                                    <c:if test="${user.nivelAcesso}">
                                     <div class="col-2 mt-2">
                                         <h5><a href="${context}/fifa?page=editMatch&id=${partida.id}"><i class="fas fa-futbol text-success"></i></a></h5>
                                     </div>
+                                    </c:if>
+                                    <c:if test="${!user.nivelAcesso}">
+                                    <div class="col-2 mt-2">
+                                        <h5>x</h5>
+                                    </div>
+                                    </c:if>
                                     <div class="col-2 ">
                                         <h1><b>0</b></h1>
                                     </div>

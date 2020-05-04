@@ -27,10 +27,12 @@
                     <div class="row">
                         <div class="col-md-5 text-center">
                             <p class="h1">${partida.idPrimeiroTime.nome}</p>
+                            <p class="h1">${first.size()}</p>
                         </div>
                         <div class="col-2 mt-2"><p class="h4">Vs</p></div>
                         <div class="col-md-5 text-center">
                             <p class="h1 text-center">${partida.idSegundoTime.nome}</p>
+                            <p class="h1">${second.size()}</p>
                         </div>
                     </div>
                 </div>
@@ -64,14 +66,14 @@
                         <div class="modal-body">
                             <div class="form-group">
                                 <label>Time</label>
-                                <select class="form-control" name="nomeTeam" id="time">
+                                <select class="form-control" name="nomeTeam" id="time" required>
                                     <option value="${partida.idPrimeiroTime.nome}" data-pos="primeiro">${partida.idPrimeiroTime.nome}</option>
                                     <option value="${partida.idPrimeiroTime.nome}" data-pos="segundo">${partida.idSegundoTime.nome}</option>
                                 </select>
                             </div>
                             <div class="form-group" id="jogadoresPrimeiroTime">
                                 <label>Jogador</label>
-                                <select class="form-control" name="jogadorId" id="primeiroSelect" >
+                                <select class="form-control" name="jogadorId" id="primeiroSelect" required >
                                     <c:forEach items="${partida.idPrimeiroTime.jogadorList}" var="jogador">
                                         <option value="${jogador.id}">${jogador.nome}</option>
                                     </c:forEach>
@@ -79,7 +81,7 @@
                             </div>
                             <div class="form-group" id="jogadoresSegundoTime">
                                 <label>Jogador</label>
-                                <select class="form-control" name="jogadorId" id="segundoSelect">
+                                <select class="form-control" name="jogadorId" id="segundoSelect" required>
                                     <c:forEach items="${partida.idSegundoTime.jogadorList}" var="jogador">
                                         <option value="${jogador.id}">${jogador.nome}</option>
                                     </c:forEach>

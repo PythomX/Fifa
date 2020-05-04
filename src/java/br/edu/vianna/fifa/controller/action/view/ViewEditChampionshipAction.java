@@ -7,9 +7,11 @@ package br.edu.vianna.fifa.controller.action.view;
 
 import br.edu.vianna.fifa.controller.ICommanderAction;
 import br.edu.vianna.fifa.model.dao.impl.CampeonatoDAO;
+import br.edu.vianna.fifa.model.dao.impl.GolDAO;
 import br.edu.vianna.fifa.model.dao.impl.PartidaDAO;
 import br.edu.vianna.fifa.model.dao.impl.TimeDAO;
 import br.edu.vianna.fifa.model.domain.Campeonato;
+import br.edu.vianna.fifa.model.domain.Gol;
 import br.edu.vianna.fifa.model.domain.Partida;
 import br.edu.vianna.fifa.model.dto.CampeonatoDTO;
 import java.util.List;
@@ -38,6 +40,14 @@ public class ViewEditChampionshipAction implements ICommanderAction{
         List<Partida> partidas = new PartidaDAO().findMatchByChamp(champ.getId());
         CampeonatoDTO quantidade = new CampeonatoDAO().findAmountTimesByChamp(id);
         
+        //List<Gol> gols = new GolDAO();
+        /*
+        for (Partida partida : partidas) {
+            Partida match = new PartidaDAO().findById(partida.getId());
+            Gol gol = new Gol();
+            
+            gol.setIdPartida(partida);
+        }*/
         
         request.setAttribute("partidas", partidas);
         request.setAttribute("quantidade", quantidade);
