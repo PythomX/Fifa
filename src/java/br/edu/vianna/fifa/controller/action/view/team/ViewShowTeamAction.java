@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.edu.vianna.fifa.controller.action.view;
+package br.edu.vianna.fifa.controller.action.view.team;
 
 import br.edu.vianna.fifa.controller.ICommanderAction;
 import br.edu.vianna.fifa.model.dao.impl.JogadorDAO;

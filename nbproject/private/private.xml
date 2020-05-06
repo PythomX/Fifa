@@ -2,12 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/Users/mateu/OneDrive/Documentos/NetBeansProjects/Fifa/src/java/br/edu/vianna/fifa/controller/facade/FacadeController.java</file>
-            <file>file:/C:/Users/mateu/OneDrive/Documentos/NetBeansProjects/Fifa/web/pages/views/editMatch.jsp</file>
-            <file>file:/C:/Users/mateu/OneDrive/Documentos/NetBeansProjects/Fifa/src/java/br/edu/vianna/fifa/controller/action/view/ViewEditChampionshipAction.java</file>
-            <file>file:/C:/Users/mateu/OneDrive/Documentos/NetBeansProjects/Fifa/web/pages/views/editChamp.jsp</file>
-            <file>file:/C:/Users/mateu/OneDrive/Documentos/NetBeansProjects/Fifa/src/java/br/edu/vianna/fifa/controller/action/view/db/InsertGoalAction.java</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>

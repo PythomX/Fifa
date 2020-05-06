@@ -30,8 +30,8 @@ import javax.persistence.Table;
 @NamedQueries({
     @NamedQuery(name = "Jogador.findAll", query = "SELECT j FROM Jogador j"),
     @NamedQuery(name = "Jogador.findById", query = "SELECT j FROM Jogador j WHERE j.id = :id"),
-    @NamedQuery(name = "Jogador.findByNome", query = "SELECT j FROM Jogador j WHERE j.nome = :nome"),
     @NamedQuery(name = "Jogador.findAllByIdTime", query = "SELECT j FROM Jogador j WHERE j.idTime.id = :id"),
+    @NamedQuery(name = "Jogador.findByNome", query = "SELECT j FROM Jogador j WHERE j.nome = :nome"),
     @NamedQuery(name = "Jogador.findByPosicao", query = "SELECT j FROM Jogador j WHERE j.posicao = :posicao")})
 public class Jogador implements Serializable {
     private static final long serialVersionUID = 1L;

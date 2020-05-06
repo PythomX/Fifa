@@ -3,10 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.edu.vianna.fifa.controller.action.view;
+package br.edu.vianna.fifa.controller.action.view.db.user;
 
 import br.edu.vianna.fifa.controller.ICommanderAction;
-import javax.servlet.RequestDispatcher;
+import br.edu.vianna.fifa.controller.action.view.user.ViewListaUsuariosAction;
+import br.edu.vianna.fifa.model.dao.impl.UsuarioDAO;
+import br.edu.vianna.fifa.model.domain.Usuario;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -14,18 +16,23 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author mateu
  */
-public class ViewPageNotFoundAction implements ICommanderAction{
+public class DeleteUserAction implements ICommanderAction {
 
     @Override
     public boolean pageReleased() {
-        return true;
+        return false;
     }
 
     @Override
     public void openPage(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        RequestDispatcher rd = request.getRequestDispatcher("${context}/pageNotFound.jsp");
 
-        rd.forward(request, response);
+        Long id = Long.parseLong(request.getParameter("id"));
+        Usuario user = new UsuarioDAO().findById(id);
+        
+        new UsuarioDAO().delete(user);
+
+        response.sendRedirect("fifa?page=listaUsuarios");
+
     }
-    
+
 }

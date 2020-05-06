@@ -3,12 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.edu.vianna.fifa.controller.action.view.db;
+package br.edu.vianna.fifa.controller.action.view.championship;
 
 import br.edu.vianna.fifa.controller.ICommanderAction;
-import br.edu.vianna.fifa.controller.action.view.ViewListaUsuariosAction;
 import br.edu.vianna.fifa.model.dao.impl.UsuarioDAO;
-import br.edu.vianna.fifa.model.domain.Usuario;
+import br.edu.vianna.fifa.model.dto.UsuarioDTO;
+import java.util.List;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -16,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author mateu
  */
-public class DeleteUserAction implements ICommanderAction {
+public class ViewShowChampionshipAction implements ICommanderAction{
 
     @Override
     public boolean pageReleased() {
@@ -26,13 +27,14 @@ public class DeleteUserAction implements ICommanderAction {
     @Override
     public void openPage(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-        Long id = Long.parseLong(request.getParameter("id"));
-        Usuario user = new UsuarioDAO().findById(id);
+        RequestDispatcher rd = request.getRequestDispatcher("template.jsp?page=showChamp");
         
-        new UsuarioDAO().delete(user);
-
-        response.sendRedirect("fifa?page=listaUsuarios");
-
+        List<UsuarioDTO> users = new UsuarioDAO().findAllForChamp();
+        
+        
+        request.setAttribute("users", users);
+        rd.forward(request, response);
+        
     }
-
+    
 }

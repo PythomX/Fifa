@@ -34,8 +34,9 @@ import javax.persistence.TemporalType;
 @NamedQueries({
     @NamedQuery(name = "Campeonato.findAll", query = "SELECT c FROM Campeonato c"),
     @NamedQuery(name = "Campeonato.findById", query = "SELECT c FROM Campeonato c WHERE c.id = :id"),
-    @NamedQuery(name = "Campeonato.findAllForTable", query = "SELECT c FROM Campeonato c LEFT JOIN c.timeList t GROUP BY c.id"),
     @NamedQuery(name = "Campeonato.findByData", query = "SELECT c FROM Campeonato c WHERE c.data = :data"),
+    @NamedQuery(name = "Campeonato.findAllStarted", query = "SELECT c FROM Campeonato c JOIN c.partidaList p WHERE c.id = :id AND p.idCampeonato.id IS NOT NULL"),
+    @NamedQuery(name = "Campeonato.findAllForTable", query = "SELECT c FROM Campeonato c LEFT JOIN c.timeList t GROUP BY c.id"),
     @NamedQuery(name = "Campeonato.findByNome", query = "SELECT c FROM Campeonato c WHERE c.nome = :nome")})
 public class Campeonato implements Serializable {
 

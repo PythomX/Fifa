@@ -42,6 +42,14 @@ public class TimeDAO extends GenericDAO<Time, Long> {
             return null;
         }
     }
+
+    public List<Time> findAllByChamp(Long id) throws SQLException{
+
+        Query q = conexao.createNamedQuery("Time.findAllByChamp");
+        
+        q.setParameter("id", id);
+        return q.getResultList();
+    }
     
     
     

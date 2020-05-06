@@ -57,9 +57,9 @@
         <div class="modal fade" id="attUser"  role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="modalTitle">Atualizar Jogador</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                    <div class="modal-header bg-dark">
+                        <h5 class="modal-title text-white" id="modalTitle">Atualizar Usuario</h5>
+                        <button type="button" class="close text-white" data-dismiss="modal" aria-label="Fechar">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
@@ -69,16 +69,16 @@
                         <input type="hidden" name="page" value="updateUser">
                         <input type="hidden" id="id" name="id">
                         <div class="modal-body">
-                            <div class="form-group text-center">
-                                <label class="control-label" for="recipient-name">Nome</label>
-                                <input class="col-md-4" type="text" name="nome" required="" id="nome">
-                                <label class="control-label offset-1" for="message-text">Login</label>
-                                <input class="col-md-4" type="text" name="login" required=""  id="login">
+                            <div class="form-group row justify-content-center">
+                                <label class="control-label mr-1" for="recipient-name">Nome</label>
+                                <input class="form-control col-md-4 text-center" type="text" name="nome" required="" id="nome">
+                                <label class="control-label ml-2 mr-1" for="message-text">Login</label>
+                                <input class="form-control col-md-4 text-center" type="text" name="login" required=""  id="login">
                             </div>
-                            <div class="form-group text-center">
-                                <label class="control-label" for="recipient-name" >Senha</label>
-                                <input class="col-md-4" type="password" id="senha" name="senha" required="">
-                                <select class="col-md-5 offset-1" id="nivelAcesso" name="nivelAcesso">
+                            <div class="form-group row justify-content-center">
+                                <label class="control-label mr-1" for="recipient-name" >Senha</label>
+                                <input class="form-control col-md-4 text-center" type="password" id="senha" name="senha" required="">
+                                <select class=" form-control col-md-5 ml-3 mr-1 text-center" id="nivelAcesso" name="nivelAcesso">
                                     <option value="Administrador">Administrador</option>
                                     <option value="Player">Player</option>
                                 </select>

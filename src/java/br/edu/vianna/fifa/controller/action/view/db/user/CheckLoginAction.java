@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.edu.vianna.fifa.controller.action.view.db;
+package br.edu.vianna.fifa.controller.action.view.db.user;
 
 import br.edu.vianna.fifa.controller.ICommanderAction;
 import br.edu.vianna.fifa.controller.action.view.ViewHomeAction;
-import br.edu.vianna.fifa.controller.action.view.ViewLoginAction;
+import br.edu.vianna.fifa.controller.action.view.user.ViewLoginAction;
 import br.edu.vianna.fifa.model.dao.impl.JogadorDAO;
 import br.edu.vianna.fifa.model.dao.impl.UsuarioDAO;
 import br.edu.vianna.fifa.model.domain.Jogador;

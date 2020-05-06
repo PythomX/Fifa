@@ -26,17 +26,17 @@
     </c:if>
     <form action="${context}/fifa" method="POST">
         <input type="hidden" name="page" value="saveNewTeam"/>
+        <div class="container">
         <div class="modal-body ">
 
-            <div class="form-group text-center">
-                <input class="form-control input-nome-time text-center col-md-4 offset-4" value="${user.idTime.nome}" readonly="true" type="text">
+            <div class="row justify-content-center">
+                <input class="form-control col-md-8 m-4 mb-3 input-nome-time text-center" value="${user.idTime.nome}" readonly="true" type="text">
             </div>
 
-            <div class="form-group ">
                 <% for (int i = 0; i < 11; i++) { %>
-                <div class="form-row p-1">
+                <div class="m-2 text-center">
                     <input class="input-nome text-center" placeholder="Nome" required="" type="text" name="nomeJogador[]" id="input-name">
-                    <select class="col-md-1 input-nome" required="" id="inputState" name="posicaoJogador[]" >
+                    <select class="col-md-2 text-center input-nome" required="" id="inputState" name="posicaoJogador[]" >
                         <option selected disabled hidden>Posição</option>
                         <c:forEach items="${posicoes}" var="posicao">
                             <option value="${posicao.getPosicao()}">${posicao.getPosicao()}</option>
@@ -44,10 +44,10 @@
                     </select>
                 </div>
                 <% }%>
-            </div>
 
             <hr class="text-white">
 
+        </div>
         </div>
         <div class="text-center">
             <button class="btn btn-secondary col-md-3"  type="Submit">Cadastrar</button>

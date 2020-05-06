@@ -6,27 +6,29 @@
 package br.edu.vianna.fifa.controller.facade;
 
 import br.edu.vianna.fifa.controller.ICommanderAction;
-import br.edu.vianna.fifa.controller.action.view.ViewChampionshipAction;
-import br.edu.vianna.fifa.controller.action.view.ViewEditChampionshipAction;
-import br.edu.vianna.fifa.controller.action.view.ViewEditMatchAction;
-import br.edu.vianna.fifa.controller.action.view.ViewPageNotFoundAction;
-import br.edu.vianna.fifa.controller.action.view.ViewLoginAction;
-import br.edu.vianna.fifa.controller.action.view.db.CheckLoginAction;
+import br.edu.vianna.fifa.controller.action.view.championship.ViewChampionshipAction;
+import br.edu.vianna.fifa.controller.action.view.championship.ViewEditChampionshipAction;
+import br.edu.vianna.fifa.controller.action.view.match.ViewEditMatchAction;
+import br.edu.vianna.fifa.controller.action.view.notfound.ViewPageNotFoundAction;
+import br.edu.vianna.fifa.controller.action.view.user.ViewLoginAction;
+import br.edu.vianna.fifa.controller.action.view.db.user.CheckLoginAction;
 import br.edu.vianna.fifa.controller.action.view.ViewHomeAction;
-import br.edu.vianna.fifa.controller.action.view.ViewListaUsuariosAction;
-import br.edu.vianna.fifa.controller.action.view.ViewShowChampionshipAction;
-import br.edu.vianna.fifa.controller.action.view.ViewNewTeamAction;
-import br.edu.vianna.fifa.controller.action.view.db.PlayChampionshipAction;
-import br.edu.vianna.fifa.controller.action.view.ViewShowTeamAction;
-import br.edu.vianna.fifa.controller.action.view.db.DeleteUserAction;
-import br.edu.vianna.fifa.controller.action.view.db.FinishMatchAction;
-import br.edu.vianna.fifa.controller.action.view.db.InsertGoalAction;
+import br.edu.vianna.fifa.controller.action.view.user.ViewListaUsuariosAction;
+import br.edu.vianna.fifa.controller.action.view.championship.ViewShowChampionshipAction;
+import br.edu.vianna.fifa.controller.action.view.team.ViewNewTeamAction;
+import br.edu.vianna.fifa.controller.action.view.ranking.ViewRankingAction;
+import br.edu.vianna.fifa.controller.action.view.ranking.ViewShowRankingAction;
+import br.edu.vianna.fifa.controller.action.view.db.championship.PlayChampionshipAction;
+import br.edu.vianna.fifa.controller.action.view.team.ViewShowTeamAction;
+import br.edu.vianna.fifa.controller.action.view.db.user.DeleteUserAction;
+import br.edu.vianna.fifa.controller.action.view.db.match.FinishMatchAction;
+import br.edu.vianna.fifa.controller.action.view.db.match.InsertGoalAction;
 import br.edu.vianna.fifa.controller.action.view.db.LogoutAction;
-import br.edu.vianna.fifa.controller.action.view.db.NewChampAction;
-import br.edu.vianna.fifa.controller.action.view.db.NewTeamAction;
-import br.edu.vianna.fifa.controller.action.view.db.SaveUserAction;
-import br.edu.vianna.fifa.controller.action.view.db.UpdateTeamAction;
-import br.edu.vianna.fifa.controller.action.view.db.UpdateUserAction;
+import br.edu.vianna.fifa.controller.action.view.db.championship.NewChampAction;
+import br.edu.vianna.fifa.controller.action.view.db.team.NewTeamAction;
+import br.edu.vianna.fifa.controller.action.view.db.user.SaveUserAction;
+import br.edu.vianna.fifa.controller.action.view.db.team.UpdateTeamAction;
+import br.edu.vianna.fifa.controller.action.view.db.user.UpdateUserAction;
 import br.edu.vianna.fifa.controller.action.view.popup.ViewErroPopupAction;
 import br.edu.vianna.fifa.controller.action.view.popup.ViewSucessPopupAction;
 import java.io.IOException;
@@ -60,6 +62,8 @@ public class FacadeController extends HttpServlet {
         comandos.put("showChamp", new ViewShowChampionshipAction());
         comandos.put("editChamp", new ViewEditChampionshipAction());
         comandos.put("editMatch", new ViewEditMatchAction());
+        comandos.put("ranking", new ViewRankingAction());
+        comandos.put("showRanking", new ViewShowRankingAction());
 
 
         /*---------------Views DB------------*/

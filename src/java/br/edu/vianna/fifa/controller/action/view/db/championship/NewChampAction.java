@@ -3,14 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.edu.vianna.fifa.controller.action.view.db;
+package br.edu.vianna.fifa.controller.action.view.db.championship;
 
 import br.edu.vianna.fifa.controller.ICommanderAction;
-import br.edu.vianna.fifa.controller.action.view.ViewChampionshipAction;
+import br.edu.vianna.fifa.controller.action.view.championship.ViewChampionshipAction;
 import br.edu.vianna.fifa.model.dao.impl.CampeonatoDAO;
+import br.edu.vianna.fifa.model.dao.impl.GolDAO;
+import br.edu.vianna.fifa.model.dao.impl.RankDAO;
 import br.edu.vianna.fifa.model.dao.impl.TimeDAO;
 import br.edu.vianna.fifa.model.domain.Campeonato;
+import br.edu.vianna.fifa.model.domain.Gol;
+import br.edu.vianna.fifa.model.domain.Partida;
+import br.edu.vianna.fifa.model.domain.Rank;
 import br.edu.vianna.fifa.model.domain.Time;
+import br.edu.vianna.fifa.model.dto.JogadorArtilheiroDTO;
+import br.edu.vianna.fifa.model.dto.PartidasRankingDTO;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -36,30 +44,29 @@ public class NewChampAction implements ICommanderAction {
 
         List<Time> listaTimes = new ArrayList<>();
         List<Campeonato> listaChamps = new ArrayList<>();
-        
+
         Time time = new Time();
         Campeonato champ = new Campeonato();
-        
+
         champ.setData(new Date());
         champ.setNome(nomeChamp);
-        
+
         listaChamps.add(champ);
         time.setCampeonatoList(listaChamps);
-        
+
         for (int i = 0; i < id.length; i++) {
 
             Long idUser = Long.parseLong(id[i]);
             time = new TimeDAO().findByIdUser(idUser);
             listaTimes.add(time);
         }
-            champ.setTimeList(listaTimes);
-            
-            new CampeonatoDAO().insert(champ);
-            new ViewChampionshipAction().openPage(request, response);
-            
-            
-            
+        champ.setTimeList(listaTimes);
+
+        new CampeonatoDAO().insert(champ);
+        new ViewChampionshipAction().openPage(request, response);
 
     }
+
+    
 
 }

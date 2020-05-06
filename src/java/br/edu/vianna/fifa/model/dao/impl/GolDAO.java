@@ -48,4 +48,12 @@ public class GolDAO extends GenericDAO<Gol, Long>{
         
     }
     
+    public List<Gol> findAllByMatch(Long idPartida) throws SQLException{
+        
+        Query q = conexao.createNamedQuery("Gol.findAllByMatch");
+        
+        q.setParameter("id", idPartida);
+        return q.getResultList();
+        
+    }
 }

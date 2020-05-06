@@ -115,7 +115,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="${context}/fifa?page=ranking">
                         <i class="fa fa-chart-line fa-2x"></i>
                         Rank
                     </a>

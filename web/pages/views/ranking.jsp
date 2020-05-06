@@ -1,6 +1,6 @@
 <%-- 
-    Document   : championship
-    Created on : 29/04/2020, 12:21:17
+    Document   : ranking
+    Created on : 05/05/2020, 14:59:34
     Author     : mateu
 --%>
 
@@ -16,12 +16,8 @@
     </head>
     <body>
 
-
         <div class="modal-body ">
-            <c:if test="${user.nivelAcesso}">
-                <a class="btn btn-dark offset-lg-10 text-white" type="button" href="${context}/fifa?page=showChamp">Novo<i class="fas fa-plus p-1 text-white"></i></a>
-                <hr class="text-white">
-            </c:if>
+            
             <table id="tableUser" class="table table-striped table-bordered table-dark" border="1" cellspacing="1">
                 <thead>
                     <tr>
@@ -29,6 +25,7 @@
                         <th scope="col">Nome</th>
                         <th scope="col">Times</th>
                         <th scope="col">Data</th>
+                        
                     </tr>
                 </thead>
                 <tbody>
@@ -38,21 +35,9 @@
                             <td>${champ.nome}</td>
                             <td>${quantidades[status.index].times}</td>
                             <td><fmt:formatDate pattern = "dd/MM/yyyy" value = "${champ.data}" /></td>
+                            <td><a href="${context}/fifa?page=showRanking&id=${champ.id}"> 
+                                    <i class="fas fa-eye text-white"></i></a>
 
-                            <c:if test="${user.nivelAcesso && champ.partidaList.size() <= 0}">
-                                <td><a title="Iniciar" href="${context}/fifa?page=playChamp&id=${champ.id}">
-                                        <i class="fas fa-play text-success"></i></a></td>
-                                    </c:if>
-
-                            <c:if test="${user.nivelAcesso && champ.partidaList.size() > 0}">
-                                <td><a title="Editar" href="${context}/fifa?page=editChamp&id=${champ.id}"> 
-                                        <i class="fas fa-edit text-white"></i></a></td>
-                                    </c:if>
-
-                            <c:if test="${!user.nivelAcesso}">
-                                <td><a title="Visualizar" href="${context}/fifa?page=editChamp&id=${champ.id}"> 
-                                        <i class="fas fa-eye text-white"></i></a></td>
-                                    </c:if>
 
                         </tr>
                     </c:forEach>
@@ -62,5 +47,6 @@
 
 
         <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+
     </body>
 </html>

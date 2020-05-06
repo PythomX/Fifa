@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.edu.vianna.fifa.controller.action.view;
+package br.edu.vianna.fifa.controller.action.view.ranking;
 
 import br.edu.vianna.fifa.controller.ICommanderAction;
 import br.edu.vianna.fifa.model.dao.impl.CampeonatoDAO;
@@ -20,7 +20,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author mateu
  */
-public class ViewChampionshipAction implements ICommanderAction {
+public class ViewRankingAction implements ICommanderAction {
 
     @Override
     public boolean pageReleased() {
@@ -30,9 +30,10 @@ public class ViewChampionshipAction implements ICommanderAction {
     @Override
     public void openPage(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-        RequestDispatcher rd = request.getRequestDispatcher("template.jsp?page=championship");
+        RequestDispatcher rd = request.getRequestDispatcher("template.jsp?page=ranking");
 
         List<Campeonato> champs = new CampeonatoDAO().findAllForTable();
+
         List<CampeonatoDTO> quantidades = new CampeonatoDAO().findAmountTimesForTable();
         
         int i = 0;
@@ -46,7 +47,7 @@ public class ViewChampionshipAction implements ICommanderAction {
         request.setAttribute("quantidades", quantidades);
 
         rd.forward(request, response);
-
+        
     }
 
 }

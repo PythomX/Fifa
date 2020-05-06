@@ -18,27 +18,27 @@
 
         <form action="${context}/fifa" method="POST">
             <input type="hidden" name="page" value="updateTeam"/>
-            <div class="modal-body ">
+            <div class="container">
+                <div class="modal-body ">
 
-                <div class="form-group text-center">
-                    <input class="form-control input-nome-time text-center col-md-4 offset-4" value="${time.getNome()}" name="nomeTime" placeholder="Nome do time" required="" type="text">
-                </div>
+                    <div class="row justify-content-center">
+                        <input class="form-control col-md-8 m-4 mb-3 input-nome-time text-center " value="${time.getNome()}" name="nomeTime" placeholder="Nome do time" required="" type="text">
+                    </div>
 
-                <div class="form-group ">
                     <c:forEach items="${time.getJogadorList()}" var="jogador">
-                        <div class="form-row p-1">
+                        <div class="m-2 text-center">
                             <input class="input-nome text-center" placeholder="Nome" value="${jogador.getNome()}" required="" type="text" name="nomeJogador[]" id="input-name">
-                            <select class="col-md-1 input-nome" required="" id="inputState" name="posicaoJogador[]" >
+                            <select class="col-md-2 text-center input-nome" required="" id="inputState" name="posicaoJogador[]" >
                                 <c:forEach items="${posicoes}" var="posicao">
-                                    <option value="${posicao.getPosicao()}"<c:if test="${posicao.getPosicao() == jogador.getPosicao()}">selected</c:if>>${posicao.getPosicao()}</option>
+                                    <option class="text-center input-nome" value="${posicao.getPosicao()}"<c:if test="${posicao.getPosicao() == jogador.getPosicao()}">selected</c:if>>${posicao.getPosicao()}</option>
                                 </c:forEach>
                             </select>
                         </div>
                     </c:forEach>
+
+                    <hr class="text-white">
+
                 </div>
-
-                <hr class="text-white">
-
             </div>
             <div class="text-center">
                 <button class="btn btn-secondary col-md-3" id="Cadastrar" type="submit">Atualizar</button>

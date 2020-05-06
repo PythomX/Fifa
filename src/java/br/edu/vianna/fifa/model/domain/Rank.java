@@ -26,26 +26,46 @@ import javax.persistence.Table;
 @Table(catalog = "fifa", schema = "")
 @NamedQueries({
     @NamedQuery(name = "Rank.findAll", query = "SELECT r FROM Rank r"),
-    @NamedQuery(name = "Rank.findByIdRank", query = "SELECT r FROM Rank r WHERE r.idRank = :idRank"),
+    @NamedQuery(name = "Rank.findById", query = "SELECT r FROM Rank r WHERE r.id = :id"),
     @NamedQuery(name = "Rank.findByVitorias", query = "SELECT r FROM Rank r WHERE r.vitorias = :vitorias"),
     @NamedQuery(name = "Rank.findByDerrotas", query = "SELECT r FROM Rank r WHERE r.derrotas = :derrotas"),
-    @NamedQuery(name = "Rank.findByEmpates", query = "SELECT r FROM Rank r WHERE r.empates = :empates")})
+    @NamedQuery(name = "Rank.findByEmpates", query = "SELECT r FROM Rank r WHERE r.empates = :empates"),
+    @NamedQuery(name = "Rank.findByPontos", query = "SELECT r FROM Rank r WHERE r.pontos = :pontos"),
+    @NamedQuery(name = "Rank.findByPartidas", query = "SELECT r FROM Rank r WHERE r.partidas = :partidas"),
+    @NamedQuery(name = "Rank.findByIdChamp", query = "SELECT r FROM Rank r JOIN r.idChamp c WHERE c.id = :id ORDER BY r.pontos DESC"),
+    @NamedQuery(name = "Rank.findByIdTimeAndChamp", query = "SELECT r FROM Rank r JOIN r.idTime t JOIN r.idChamp c "
+            + " WHERE t.id = :idTime AND c.id = :idChamp"),
+    @NamedQuery(name = "Rank.findByGolsTomado", query = "SELECT r FROM Rank r WHERE r.golsTomado = :golsTomado"),
+    @NamedQuery(name = "Rank.findByGols", query = "SELECT r FROM Rank r WHERE r.gols = :gols")})
 public class Rank implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(nullable = false)
-    private Long idRank;
+    private Long id;
     @Basic(optional = false)
-    @Column(nullable = false, length = 45)
-    private String vitorias;
+    @Column(nullable = false)
+    private int vitorias;
     @Basic(optional = false)
-    @Column(nullable = false, length = 45)
-    private String derrotas;
+    @Column(nullable = false)
+    private int derrotas;
     @Basic(optional = false)
-    @Column(nullable = false, length = 45)
-    private String empates;
+    @Column(nullable = false)
+    private int empates;
+    @Basic(optional = false)
+    @Column(nullable = false)
+    private int pontos;
+    @Basic(optional = false)
+    @Column(nullable = false)
+    private int partidas;
+    @Basic(optional = false)
+    @Column(nullable = false)
+    private int golsTomado;
+    @Basic(optional = false)
+    @Column(nullable = false)
+    private int gols;
     @JoinColumn(name = "idChamp", referencedColumnName = "id", nullable = false)
     @ManyToOne(optional = false)
     private Campeonato idChamp;
@@ -56,47 +76,83 @@ public class Rank implements Serializable {
     public Rank() {
     }
 
-    public Rank(Long idRank) {
-        this.idRank = idRank;
+    public Rank(Long id) {
+        this.id = id;
     }
 
-    public Rank(Long idRank, String vitorias, String derrotas, String empates) {
-        this.idRank = idRank;
+    public Rank(Long id, int vitorias, int derrotas, int empates, int pontos, int partidas, int golsTomado, int gols) {
+        this.id = id;
         this.vitorias = vitorias;
         this.derrotas = derrotas;
         this.empates = empates;
+        this.pontos = pontos;
+        this.partidas = partidas;
+        this.golsTomado = golsTomado;
+        this.gols = gols;
     }
 
-    public Long getIdRank() {
-        return idRank;
+    public Long getId() {
+        return id;
     }
 
-    public void setIdRank(Long idRank) {
-        this.idRank = idRank;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public String getVitorias() {
+    public int getVitorias() {
         return vitorias;
     }
 
-    public void setVitorias(String vitorias) {
+    public void setVitorias(int vitorias) {
         this.vitorias = vitorias;
     }
 
-    public String getDerrotas() {
+    public int getDerrotas() {
         return derrotas;
     }
 
-    public void setDerrotas(String derrotas) {
+    public void setDerrotas(int derrotas) {
         this.derrotas = derrotas;
     }
 
-    public String getEmpates() {
+    public int getEmpates() {
         return empates;
     }
 
-    public void setEmpates(String empates) {
+    public void setEmpates(int empates) {
         this.empates = empates;
+    }
+
+    public int getPontos() {
+        return pontos;
+    }
+
+    public void setPontos(int pontos) {
+        this.pontos = pontos;
+    }
+
+    public int getPartidas() {
+        return partidas;
+    }
+
+    public void setPartidas(int partidas) {
+        this.partidas = partidas;
+    }
+
+    public int getGolsTomado() {
+        return golsTomado;
+    }
+
+    public void setGolsTomado(int golsTomado) {
+        this.golsTomado = golsTomado;
+    }
+
+    public int getGols() {
+        return gols;
+    }
+
+    public void setGols(int gols) {
+        this.gols = gols;
     }
 
     public Campeonato getIdChamp() {
@@ -118,7 +174,7 @@ public class Rank implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (idRank != null ? idRank.hashCode() : 0);
+        hash += (id != null ? id.hashCode() : 0);
         return hash;
     }
 
@@ -129,7 +185,7 @@ public class Rank implements Serializable {
             return false;
         }
         Rank other = (Rank) object;
-        if ((this.idRank == null && other.idRank != null) || (this.idRank != null && !this.idRank.equals(other.idRank))) {
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
         return true;
@@ -137,7 +193,7 @@ public class Rank implements Serializable {
 
     @Override
     public String toString() {
-        return "br.edu.vianna.fifa.model.domain.Rank[ idRank=" + idRank + " ]";
+        return "br.edu.vianna.fifa.model.domain.Rank[ id=" + id + " ]";
     }
-    
+
 }

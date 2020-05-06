@@ -33,10 +33,11 @@ import javax.persistence.TemporalType;
 @NamedQueries({
     @NamedQuery(name = "Partida.findAll", query = "SELECT p FROM Partida p"),
     @NamedQuery(name = "Partida.findById", query = "SELECT p FROM Partida p WHERE p.id = :id"),
-    @NamedQuery(name = "Partida.findMatchByChamp", query = "SELECT p FROM Partida p WHERE p.idCampeonato.id = :id GROUP BY p.id"),
     @NamedQuery(name = "Partida.findByDataHora", query = "SELECT p FROM Partida p WHERE p.dataHora = :dataHora"),
+    @NamedQuery(name = "Partida.findMatchByChamp", query = "SELECT p FROM Partida p WHERE p.idCampeonato.id = :id GROUP BY p.id"),
     @NamedQuery(name = "Partida.findByFinalizado", query = "SELECT p FROM Partida p WHERE p.finalizado = :finalizado")})
 public class Partida implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -155,5 +156,5 @@ public class Partida implements Serializable {
     public String toString() {
         return "br.edu.vianna.fifa.model.domain.Partida[ id=" + id + " ]";
     }
-    
+
 }

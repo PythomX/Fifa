@@ -3,12 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.edu.vianna.fifa.controller.action.view;
+package br.edu.vianna.fifa.controller.action.view.user;
 
 import br.edu.vianna.fifa.controller.ICommanderAction;
-import br.edu.vianna.fifa.model.dao.impl.UsuarioDAO;
-import br.edu.vianna.fifa.model.dto.UsuarioDTO;
-import java.util.List;
+import br.edu.vianna.fifa.controller.action.view.ViewHomeAction;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,24 +15,25 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author mateu
  */
-public class ViewShowChampionshipAction implements ICommanderAction{
-
-    @Override
-    public boolean pageReleased() {
-        return false;
-    }
+public class ViewLoginAction implements ICommanderAction {
 
     @Override
     public void openPage(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        
+        if (request.getSession().getAttribute("user") == null) {
+        RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
 
-        RequestDispatcher rd = request.getRequestDispatcher("template.jsp?page=showChamp");
-        
-        List<UsuarioDTO> users = new UsuarioDAO().findAllForChamp();
-        
-        
-        request.setAttribute("users", users);
         rd.forward(request, response);
+        } else {
+            new ViewHomeAction().openPage(request, response);
+        }
         
     }
-    
+
+    @Override
+    public boolean pageReleased() {
+        return true;
+    }
+
+
 }

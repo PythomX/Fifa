@@ -31,8 +31,10 @@ import javax.persistence.Table;
             + " JOIN g.idPartida p WHERE p.id = :idPartida AND  p.idPrimeiroTime.id = t.id "),
     @NamedQuery(name = "Gol.findBySecondTeam", query = "SELECT g FROM Gol g JOIN g.idJogador j JOIN j.idTime t"
             + " JOIN g.idPartida p WHERE p.id = :idPartida AND  p.idSegundoTime.id = t.id"),
+    @NamedQuery(name = "Gol.findAllByMatch", query = "SELECT g FROM Gol g WHERE g.idPartida.id = :id"),
     @NamedQuery(name = "Gol.findByTempo", query = "SELECT g FROM Gol g WHERE g.tempo = :tempo")})
 public class Gol implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -117,5 +119,5 @@ public class Gol implements Serializable {
     public String toString() {
         return "br.edu.vianna.fifa.model.domain.Gol[ id=" + id + " ]";
     }
-    
+
 }

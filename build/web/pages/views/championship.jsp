@@ -40,18 +40,19 @@
                             <td><fmt:formatDate pattern = "dd/MM/yyyy" value = "${champ.data}" /></td>
 
                             <c:if test="${user.nivelAcesso && champ.partidaList.size() <= 0}">
-                                <td><a href="${context}/fifa?page=playChamp&id=${champ.id}">
-                                        <i class="fas fa-play text-success"></i></c:if></a></td>
-
-                            <c:if test="${user.nivelAcesso && champ.partidaList.size() > 0}">
-                                <td><a href="${context}/fifa?page=editChamp&id=${champ.id}"> 
-                                        <i class="fas fa-edit text-white"></i></a>
+                                <td><a title="Iniciar" href="${context}/fifa?page=playChamp&id=${champ.id}">
+                                        <i class="fas fa-play text-success"></i></a></td>
                                     </c:if>
 
-                                <c:if test="${!user.nivelAcesso}">
-                                <td><a href="${context}/fifa?page=editChamp&id=${champ.id}"> 
-                                        <i class="fas fa-eye text-white"></i></a>
-                                </c:if></a>
+                            <c:if test="${user.nivelAcesso && champ.partidaList.size() > 0}">
+                                <td><a title="Editar" href="${context}/fifa?page=editChamp&id=${champ.id}"> 
+                                        <i class="fas fa-edit text-white"></i></a></td>
+                                    </c:if>
+
+                            <c:if test="${!user.nivelAcesso}">
+                                <td><a title="Visualizar" href="${context}/fifa?page=editChamp&id=${champ.id}"> 
+                                        <i class="fas fa-eye text-white"></i></a></td>
+                                    </c:if>
 
                         </tr>
                     </c:forEach>

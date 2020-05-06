@@ -30,8 +30,10 @@ import javax.persistence.Table;
     @NamedQuery(name = "Time.findAll", query = "SELECT t FROM Time t"),
     @NamedQuery(name = "Time.findById", query = "SELECT t FROM Time t WHERE t.id = :id"),
     @NamedQuery(name = "Time.findByIdUser", query = "SELECT t FROM Time t WHERE t.id = :id"),
+    @NamedQuery(name = "Time.findAllByChamp", query = "SELECT t FROM Time t JOIN t.campeonatoList c WHERE c.id = :id"),
     @NamedQuery(name = "Time.findByNome", query = "SELECT t FROM Time t WHERE t.nome = :nome")})
 public class Time implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -154,5 +156,5 @@ public class Time implements Serializable {
     public String toString() {
         return "br.edu.vianna.fifa.model.domain.Time[ id=" + id + " ]";
     }
-    
+
 }

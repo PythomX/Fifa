@@ -3,14 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.edu.vianna.fifa.controller.action.view;
+package br.edu.vianna.fifa.controller.action.view.notfound;
 
 import br.edu.vianna.fifa.controller.ICommanderAction;
-import br.edu.vianna.fifa.model.dao.impl.JogadorDAO;
-import br.edu.vianna.fifa.model.domain.Jogador;
-import br.edu.vianna.fifa.model.domain.e.EPosicao;
-import java.util.ArrayList;
-import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,21 +14,17 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author mateu
  */
-public class ViewNewTeamAction implements ICommanderAction{
+public class ViewPageNotFoundAction implements ICommanderAction{
 
     @Override
     public boolean pageReleased() {
-        return false;
+        return true;
     }
 
     @Override
     public void openPage(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        RequestDispatcher rd = request.getRequestDispatcher("template.jsp?page=newTeam");
+        RequestDispatcher rd = request.getRequestDispatcher("${context}/pageNotFound.jsp");
 
-        EPosicao[] posicoes = EPosicao.values();
-        
-        request.setAttribute("posicoes", posicoes);
-        
         rd.forward(request, response);
     }
     

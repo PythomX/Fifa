@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.edu.vianna.fifa.controller.action.view.db;
+package br.edu.vianna.fifa.controller.action.view.db.user;
 
 import br.edu.vianna.fifa.controller.ICommanderAction;
-import br.edu.vianna.fifa.controller.action.view.ViewPageNotFoundAction;
-import br.edu.vianna.fifa.controller.action.view.ViewListaUsuariosAction;
+import br.edu.vianna.fifa.controller.action.view.notfound.ViewPageNotFoundAction;
+import br.edu.vianna.fifa.controller.action.view.user.ViewListaUsuariosAction;
 import br.edu.vianna.fifa.model.dao.impl.UsuarioDAO;
 import br.edu.vianna.fifa.model.domain.Usuario;
 import javax.servlet.http.HttpServletRequest;

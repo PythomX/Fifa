@@ -3,10 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.edu.vianna.fifa.controller.action.view.db;
+package br.edu.vianna.fifa.controller.action.view.user;
 
 import br.edu.vianna.fifa.controller.ICommanderAction;
-import br.edu.vianna.fifa.controller.action.view.user.ViewLoginAction;
+import br.edu.vianna.fifa.model.dao.impl.UsuarioDAO;
+import br.edu.vianna.fifa.model.domain.Usuario;
+import java.util.List;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -14,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author mateu
  */
-public class LogoutAction implements ICommanderAction{
+public class ViewListaUsuariosAction implements ICommanderAction{
 
     @Override
     public boolean pageReleased() {
@@ -24,9 +27,14 @@ public class LogoutAction implements ICommanderAction{
     @Override
     public void openPage(HttpServletRequest request, HttpServletResponse response) throws Exception {
         
-        request.getSession().invalidate();
-        
-        response.sendRedirect("fifa?page=login");
+         RequestDispatcher rd = request.getRequestDispatcher("template.jsp?page=listaUsuarios");
+         
+         List<Usuario> users = new UsuarioDAO().findAll();
+         
+         request.setAttribute("users", users);
+         
+         rd.forward(request, response);
+
     }
     
 }

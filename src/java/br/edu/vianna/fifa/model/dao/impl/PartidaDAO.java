@@ -41,4 +41,13 @@ public class PartidaDAO extends GenericDAO<Partida, Long> {
 
     }
 
+    public List<Partida> findAllByTeam(Long id) throws SQLException{
+
+        Query q = conexao.createNamedQuery("Partida.findAllByTeam");
+        
+        q.setParameter("id", id);
+        return q.getResultList();
+    
+    }
+
 }

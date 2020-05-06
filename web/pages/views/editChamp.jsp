@@ -35,12 +35,12 @@
 
         <hr class="text-white">
 
-        <div class=" container-fluid border">
+        <div class=" container-fluid border ">
 
 
             <ul class="nav nav-tabs ">
                 <li class="nav-item">
-                    <a class="nav-link border active toggleTag" data-toggle="tab"  data-name="tabTeams" href="javascript:void()">Times</a>
+                    <a class="nav-link border  active toggleTag" data-toggle="tab"  data-name="tabTeams" href="javascript:void()">Times</a>
                 </li>
                 <li>
                     <a class="nav-link border toggleTag" data-toggle="tab"  data-name="tabMatch" href="javascript:void()">Partidas</a>
@@ -52,7 +52,7 @@
             <div class="row justify-content-center" id="tabTeams">
 
                 <c:forEach items="${partidas}" var="partida" varStatus="status">
-                    <div class="col-auto mt-3">
+                    <div class="col-auto mt-3 mb-3">
                         <div class="card text-center justify-content-center opacity-tab" style="width: 20rem; height: 10rem" >
                             <div class="card-mody text-white">
                                 <h5 class="card-title">${partida.idPrimeiroTime.nome} </h5>
@@ -61,7 +61,7 @@
                             </div>
                         </div>
                     </div>
-                            
+
                 </c:forEach>
 
             </div>
@@ -69,30 +69,42 @@
             <div class="row justify-content-center" id="tabMatch">
 
                 <c:forEach items="${partidas}" var="partida" varStatus="status">
-                    <div class="col-auto mt-3">
+                    <div class="col-auto mt-3 mb-3">
                         <div class="card text-center  justify-content-center opacity-tab" style="width: 20rem; height: 10rem" >
                             <div class="card-mody text-white">
                                 <div class="row text-center justify-content-center">
                                     <div class="col-2 ">
-                                        <h1><b>0</b></h1>
+                                        <h1><b>${matchGoals[partida].key}</b></h1>
                                     </div>
-                                    <c:if test="${user.nivelAcesso}">
-                                    <div class="col-2 mt-2">
-                                        <h5><a href="${context}/fifa?page=editMatch&id=${partida.id}"><i class="fas fa-futbol text-success"></i></a></h5>
-                                    </div>
+                                    <c:if test="${user.nivelAcesso && !partida.finalizado}">
+                                        <div class="col-2 mt-2">
+                                            <h5><a href="${context}/fifa?page=editMatch&id=${partida.id}"><i class="fas fa-plus text-success"></i></a></h5>
+                                        </div>
                                     </c:if>
-                                    <c:if test="${!user.nivelAcesso}">
-                                    <div class="col-2 mt-2">
-                                        <h5>x</h5>
-                                    </div>
+                                    <c:if test="${!user.nivelAcesso || partida.finalizado}">
+                                        <div class="col-2 mt-2">
+                                            <h5>x</h5>
+                                        </div>
                                     </c:if>
                                     <div class="col-2 ">
-                                        <h1><b>0</b></h1>
+                                        <h1><b>${matchGoals[partida].value}</b></h1>
                                     </div>
                                 </div>
                             </div>
-                            <div class="card-mody text-white">
-                                <h5 class="card-title">${partida.idPrimeiroTime.nome} Vs ${partida.idSegundoTime.nome}</h5>
+                            <div class="card-mody text-white ">
+                                <div class="row justify-content-center">
+                                    <div class="ml-2 mb-2">
+                                        <h5>${partida.idPrimeiroTime.nome} </h5>
+                                    </div>
+                                    <div class="ml-2 mb-2">
+                                        Vs 
+                                    </div>
+                                    <div class="ml-2 mb-2">
+                                        <h5>${partida.idSegundoTime.nome}</h5>
+                                    </div>
+                                </div>
+
+
                             </div>
                         </div>
                     </div>
@@ -100,7 +112,7 @@
 
             </div>
 
-            
+
 
 
         </div>
