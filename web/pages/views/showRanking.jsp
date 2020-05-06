@@ -44,9 +44,8 @@
                 </thead>
                 <tbody>
                     <c:forEach items="${ranks}" var="rank" varStatus="status">
-                        <% int count = 0;%>
                         <tr>
-                            <td><%= ++count%>º</td>
+                            <td>${status.count}º</td>
                             <td>${rank.idTime.nome}</td>
                             <td>${rank.pontos}</td>
                             <td>${rank.vitorias}</td>

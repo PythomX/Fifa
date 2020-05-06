@@ -45,15 +45,14 @@ public class FinishMatchAction implements ICommanderAction {
 
         new PartidaDAO().update(partida);
 
-        
         /*-------------------- Criando Ranking --------------------*/
         //List<Campeonato> championships =  new CampeonatoDAO().findAllStarted(partida.getIdCampeonato().getId());
         List<PartidasRankingDTO> matchRanking = new ArrayList<>();
 
         Campeonato championship = new CampeonatoDAO().findById(partida.getIdCampeonato().getId());
-        
+
         List<Partida> partidas = championship.getPartidaList();
-        
+
         Integer rounds = championship.getTimeList().size() - 1;
         Integer teamsByRound = partidas.size() / rounds;
 
@@ -68,17 +67,14 @@ public class FinishMatchAction implements ICommanderAction {
             Integer amountGoalsFirstTeam = 0;
             Integer amountGoalsSecondTeam = 0;
 
-            if (partida.getFinalizado()) {
+            List<Gol> gols = golDAO.findAllByMatch(partida.getId());
 
-                List<Gol> gols = golDAO.findAllByMatch(partida.getId());
+            for (Gol gol : gols) {
+                if (gol.getIdPartida().getIdPrimeiroTime().equals(first)) {
+                    amountGoalsFirstTeam++;
 
-                for (Gol gol : gols) {
-                    if (gol.getIdPartida().getIdPrimeiroTime().equals(first)) {
-                        amountGoalsFirstTeam++;
-                        
-                    } else {
-                        amountGoalsSecondTeam++;
-                    }
+                } else {
+                    amountGoalsSecondTeam++;
                 }
             }
 
@@ -100,14 +96,13 @@ public class FinishMatchAction implements ICommanderAction {
         CampeonatoDAO champDAO = new CampeonatoDAO();
         JogadorArtilheiroDTO topScorer = champDAO.findTopScorer(championship.getId());
         List<Rank> ranks = calculateRank(championship, matchRanking, topScorer);
-        
+
         partida.getIdCampeonato().setRankList(ranks);
 
         response.sendRedirect("fifa?page=editChamp&id=" + partida.getIdCampeonato().getId());
 
     }
 
-    
     private List<Rank> calculateRank(Campeonato championship, List<PartidasRankingDTO> matchRanking, JogadorArtilheiroDTO topScorer) throws SQLException {
 
         List<Rank> rank = new ArrayList<>();
@@ -174,7 +169,7 @@ public class FinishMatchAction implements ICommanderAction {
             rankRow.setGols(gols);
             rankRow.setGolsTomado(golsTomado);
             rank.add(rankRow);
-            
+
             Long pontosGolsTomado = Math.round(golsTomado * 0.5);
             pontos = (vitorias * 3) + gols - pontosGolsTomado.intValue();
 
@@ -191,6 +186,5 @@ public class FinishMatchAction implements ICommanderAction {
         return rank;
 
     }
-    
 
 }
