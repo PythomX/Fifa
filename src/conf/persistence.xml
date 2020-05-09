@@ -9,12 +9,6 @@
     <class>br.edu.vianna.fifa.model.domain.Jogador</class>
     <class>br.edu.vianna.fifa.model.domain.Usuario</class>
     <class>br.edu.vianna.fifa.model.domain.Rank</class>
-    <class>br.edu.vianna.fifa.model.domain.Campeonato_1</class>
-    <class>br.edu.vianna.fifa.model.domain.Time_1</class>
-    <class>br.edu.vianna.fifa.model.domain.Gol_1</class>
-    <class>br.edu.vianna.fifa.model.domain.Usuario_1</class>
-    <class>br.edu.vianna.fifa.model.domain.Jogador_1</class>
-    <class>br.edu.vianna.fifa.model.domain.Partida_1</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/fifa?zeroDateTimeBehavior=convertToNull"/>

@@ -16,7 +16,7 @@
     </head>
     <body>
 
-        <div class="card-body ">
+        <div class="card-body">
             <div class="card ">
 
                 <div class="card-header  bg-dark py-3">
@@ -29,7 +29,7 @@
                             <p class="h1">${partida.idPrimeiroTime.nome}</p>
                             <p class="h1">${first.size()}</p>
                         </div>
-                        <div class="col-2 mt-2"><p class="h4">Vs</p></div>
+                        <div class="col-2 mt-2"><h4 class="mt-4">Vs</h4></div>
                         <div class="col-md-5 text-center">
                             <p class="h1 text-center">${partida.idSegundoTime.nome}</p>
                             <p class="h1">${second.size()}</p>
@@ -37,8 +37,9 @@
                     </div>
                 </div>
                 <div class="modal-footer ">
-
-                    <a class="btn btn-primary " href="${context}/fifa?page=editChamp&id=${partida.idCampeonato.id}" role="button">Voltar</a>
+                    <div class="col justify-content-lg-start">
+                        <a class="btn btn-primary " href="${context}/fifa?page=editChamp&id=${partida.idCampeonato.id}" role="button">Voltar</a>
+                    </div>
                     <c:if test="${!partida.finalizado}">
                         <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modalGoal">Add Gol</button>
                         <a type="button" href="${context}/fifa?page=finishMatch&id=${partida.id}" class="btn btn-danger">Finalizar Partida</a>

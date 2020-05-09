@@ -51,7 +51,7 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <h5>Jogador cadastrado com sucesso.</h5>
+                                <h5>Usuario cadastrado com sucesso.</h5>
                             </div>
                             <div class="modal-footer">
                                 <button id="login" class="btn btn-success" type="Submit">Fechar</button>

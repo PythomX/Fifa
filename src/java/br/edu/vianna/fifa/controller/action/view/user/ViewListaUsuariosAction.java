@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author mateu
+ * @author jeanv
  */
 public class ViewListaUsuariosAction implements ICommanderAction{
 

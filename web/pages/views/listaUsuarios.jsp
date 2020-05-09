@@ -29,6 +29,7 @@
                 </thead>
                 <c:forEach items="${users}" var="user" >
 
+
                     <tbody>
                         <tr class="text-center ">
                             <th id="id">${user.getId()}</th>
@@ -40,11 +41,14 @@
                             <c:if test="${user.getNivelAcesso() != true}">
                                 <td id="nivelAcesso">Player</td>
                             </c:if>
-                                <td >
+                            <td >
                                 <a class="attUser" id="user" data-id="${user.getId()}"
                                    data-nome="${user.getNome()}" data-login="${user.getLogin()}"
                                    data-senha="${user.getSenha()}"title="Edit" data-toggle="modal" data-target="#attUser" ><i class="fas fa-edit p-1" ></i></a>
-                                   <a class="delete" title="Delete"  href="${context}/fifa?page=deleteUser&id=${user.getId()}"><i class="fas fa-trash text-danger p-1"></i></a>
+                                    <c:if test="${!requestScope.user }">
+
+                                    <a class="delete" title="Delete"  href="${context}/fifa?page=deleteUser&id=${user.getId()}"><i class="fas fa-trash text-danger p-1"></i></a>
+                                    </c:if>
                             </td>
 
                         </tr>
@@ -63,8 +67,8 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    
-                    
+
+
                     <form action="${context}/fifa" method="POST">
                         <input type="hidden" name="page" value="updateUser">
                         <input type="hidden" id="id" name="id">
@@ -102,7 +106,7 @@
         <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
         <script src="js/main.js" type="text/javascript" ></script>
         <!--===============================================================================================-->
-        
+
 
 
     </body>

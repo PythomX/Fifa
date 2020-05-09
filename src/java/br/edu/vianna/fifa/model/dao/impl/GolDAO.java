@@ -13,7 +13,7 @@ import javax.persistence.Query;
 
 /**
  *
- * @author mateu
+ * @author jeanv
  */
 public class GolDAO extends GenericDAO<Gol, Long>{
 

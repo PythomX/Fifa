@@ -8,17 +8,9 @@ package br.edu.vianna.fifa.controller.action.view.db.championship;
 import br.edu.vianna.fifa.controller.ICommanderAction;
 import br.edu.vianna.fifa.controller.action.view.championship.ViewChampionshipAction;
 import br.edu.vianna.fifa.model.dao.impl.CampeonatoDAO;
-import br.edu.vianna.fifa.model.dao.impl.GolDAO;
-import br.edu.vianna.fifa.model.dao.impl.RankDAO;
 import br.edu.vianna.fifa.model.dao.impl.TimeDAO;
 import br.edu.vianna.fifa.model.domain.Campeonato;
-import br.edu.vianna.fifa.model.domain.Gol;
-import br.edu.vianna.fifa.model.domain.Partida;
-import br.edu.vianna.fifa.model.domain.Rank;
 import br.edu.vianna.fifa.model.domain.Time;
-import br.edu.vianna.fifa.model.dto.JogadorArtilheiroDTO;
-import br.edu.vianna.fifa.model.dto.PartidasRankingDTO;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -27,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author mateu
+ * @author jeanv
  */
 public class NewChampAction implements ICommanderAction {
 

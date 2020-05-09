@@ -6,7 +6,6 @@
 package br.edu.vianna.fifa.controller.action.view.db;
 
 import br.edu.vianna.fifa.controller.ICommanderAction;
-import br.edu.vianna.fifa.controller.action.view.user.ViewLoginAction;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 

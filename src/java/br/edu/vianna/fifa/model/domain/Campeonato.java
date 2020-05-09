@@ -27,7 +27,7 @@ import javax.persistence.TemporalType;
 
 /**
  *
- * @author mateu
+ * @author jeanv
  */
 @Entity
 @Table(catalog = "fifa", schema = "")

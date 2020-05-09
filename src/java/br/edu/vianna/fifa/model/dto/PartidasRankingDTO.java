@@ -7,7 +7,7 @@ package br.edu.vianna.fifa.model.dto;
 
 /**
  *
- * @author mateu
+ * @author jeanv
  */
 public class PartidasRankingDTO {
     

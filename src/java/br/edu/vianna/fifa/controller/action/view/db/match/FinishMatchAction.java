@@ -12,6 +12,7 @@ import br.edu.vianna.fifa.model.dao.impl.PartidaDAO;
 import br.edu.vianna.fifa.model.dao.impl.RankDAO;
 import br.edu.vianna.fifa.model.dao.impl.TimeDAO;
 import br.edu.vianna.fifa.model.domain.Campeonato;
+import br.edu.vianna.fifa.model.domain.Jogador;
 import br.edu.vianna.fifa.model.domain.Gol;
 import br.edu.vianna.fifa.model.domain.Partida;
 import br.edu.vianna.fifa.model.domain.Rank;
@@ -26,7 +27,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author mateu
+ * @author jeanv
  */
 public class FinishMatchAction implements ICommanderAction {
 
@@ -69,12 +70,21 @@ public class FinishMatchAction implements ICommanderAction {
 
             List<Gol> gols = golDAO.findAllByMatch(partida.getId());
 
-            for (Gol gol : gols) {
-                if (gol.getIdPartida().getIdPrimeiroTime().equals(first)) {
-                    amountGoalsFirstTeam++;
+            List<Jogador> FirstPlayers = first.getJogadorList();
+            List<Jogador> secondPlayers = second.getJogadorList();
 
-                } else {
-                    amountGoalsSecondTeam++;
+            for (Gol gol : gols) {
+                for (Jogador j : FirstPlayers) {
+                    if (gol.getIdJogador().getId().equals(j.getId())) {
+                        amountGoalsFirstTeam++;
+                        break;
+                    }
+                }
+                for (Jogador j : secondPlayers) {
+                    if (gol.getIdJogador().getId().equals(j.getId())) {
+                        amountGoalsSecondTeam++;
+                        break;
+                    }
                 }
             }
 
@@ -133,8 +143,8 @@ public class FinishMatchAction implements ICommanderAction {
 
                 if (match.getFirstTeamId().equals(time.getId())) {
 
-                    gols += first;
-                    golsTomado += second;
+                    gols = first;
+                    golsTomado = second;
 
                     if (first > second) {
                         vitorias++;
@@ -145,8 +155,8 @@ public class FinishMatchAction implements ICommanderAction {
                     }
                 } else {
 
-                    golsTomado += first;
-                    gols += second;
+                    golsTomado = first;
+                    gols = second;
 
                     if (second > first) {
                         vitorias++;
@@ -156,8 +166,8 @@ public class FinishMatchAction implements ICommanderAction {
                         empates++;
                     }
                 }
-            }
 
+            }
             Rank rankRow = new RankDAO().findByIdTimeAndChamp(idTime, championship.getId());
 
             rankRow.setIdTime(time);
@@ -176,7 +186,11 @@ public class FinishMatchAction implements ICommanderAction {
             if (topScorer.getTimeId().equals(time.getId())) {
                 pontos += topScorerPoints;
             }
-
+            
+            if (pontos < 0 ) {
+                pontos = 0;
+            }
+            
             rankRow.setPontos(pontos);
 
             new RankDAO().update(rankRow);

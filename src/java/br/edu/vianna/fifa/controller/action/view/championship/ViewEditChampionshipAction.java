@@ -12,6 +12,7 @@ import br.edu.vianna.fifa.model.dao.impl.PartidaDAO;
 import br.edu.vianna.fifa.model.domain.Campeonato;
 import br.edu.vianna.fifa.model.domain.Gol;
 import br.edu.vianna.fifa.model.domain.Partida;
+import br.edu.vianna.fifa.model.domain.Time;
 import br.edu.vianna.fifa.model.dto.CampeonatoDTO;
 import java.util.HashMap;
 import java.util.List;
@@ -23,7 +24,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author mateu
+ * @author jeanv
  */
 public class ViewEditChampionshipAction implements ICommanderAction {
 
@@ -51,11 +52,12 @@ public class ViewEditChampionshipAction implements ICommanderAction {
                 continue;
             }
             
+            Time first = partida.getIdPrimeiroTime();
             List<Gol> gols = new GolDAO().findAllByMatch(partida.getId());
             firstTeamGoals = 0;
             secondTeamGoals = 0;
             for (Gol gol : gols) {
-                if (gol.getIdJogador().getIdTime() == partida.getIdPrimeiroTime()) {
+                if (gol.getIdJogador().getIdTime().equals(first)) {
                     firstTeamGoals++;
                 } else{
                     secondTeamGoals++;

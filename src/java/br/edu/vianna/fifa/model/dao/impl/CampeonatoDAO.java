@@ -15,7 +15,7 @@ import javax.persistence.Query;
 
 /**
  *
- * @author mateu
+ * @author jeanv
  */
 public class CampeonatoDAO extends GenericDAO<Campeonato, Long>{
 

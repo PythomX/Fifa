@@ -25,6 +25,8 @@ hr{
     background-position: center;
 }
 
+
+
 .container-login100::before{
     content: "";
     display: block;

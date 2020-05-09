@@ -20,7 +20,7 @@ import javax.persistence.Table;
 
 /**
  *
- * @author mateu
+ * @author jeanv
  */
 @Entity
 @Table(catalog = "fifa", schema = "")
